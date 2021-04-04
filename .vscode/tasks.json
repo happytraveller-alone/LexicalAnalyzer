@@ -1,0 +1,46 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "gcc",
+            "type": "shell", //"shell"
+            "command": "D:\\DirectProgramFile\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-Wall",
+                "-std=c17",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ], //["-g", "${file}", "-o", "${fileDirname}/${fileBasenameNoExtension}.exe"],
+            "group": "build",
+            "presentation": {
+                // Reveal the output only if unrecognized errors occur.
+                "reveal": "silent",
+                "focus": true,
+                "showReuseMessage": false,
+                "clear": true,
+                "panel": "shared",
+                "echo": true
+            },
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": { //"$gcc"
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+        }
+    ]
+}
