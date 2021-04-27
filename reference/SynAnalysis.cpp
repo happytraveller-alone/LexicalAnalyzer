@@ -34,7 +34,7 @@ int connectFirst[Max_Length];  //将某些First集结合起来的集合
 int firstVisit[Max_Proc];   //记录某非终结符的First集是否已经求过
 int followVisit[Max_Proc];  //记录某非终结符的Follow集是否已经求过
 
-int empty[Max_Proc];  //可推出空的非终结符的编号
+int EmptyStore[Max_Proc];  //可推出空的非终结符的编号
 int emptyRecu[Max_Proc];  //在求可推出空的非终结符的编号集时使用的防治递归的集合
 int followRecu[Max_Proc];  //在求Follow集时使用的防治递归的集合
 
@@ -65,40 +65,41 @@ const char *searchMapping(int num) {
         return "id";
     }
     //处理文法中的特殊符号
-    for (int i = 0; i < specialMap.size(); i++) {
+    for (int i = 0; i < int(specialMap.size()); i++) {
         if (specialMap[i].second == num) {
             return specialMap[i].first;
         }
     }
     //处理非终结符
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         if (nonTerMap[i].second == num) {
             return nonTerMap[i].first;
         }
     }
     //处理终结符
-    for (int i = 0; i < terMap.size(); i++) {
+    for (int i = 0; i < int(terMap.size()); i++) {
         if (terMap[i].second == num) {
             return terMap[i].first;
         }
     }
+    return "wrong";
 }
 
 //动态生成非终结符，在基点的基础上，确保不和终结符冲突
 int dynamicNonTer(char *word) {
     int i = 0;
     int dynamicNum;
-    for (i = 0; i < nonTerMap.size(); i++) {
+    for (i = 0; i < int(nonTerMap.size()); i++) {
         if (strcmp(word, nonTerMap[i].first) == 0) {
             return nonTerMap[i].second;
         }
     }
-    if (i == nonTerMap.size()) {
+    if (i == int(nonTerMap.size())) {
         if (i == 0) {
             dynamicNum = GRAMMAR_BASE;
             nonTerMap.push_back(make_pair(word, dynamicNum));
         } else {
-            dynamicNum = nonTerMap[nonTerMap.size() - 1].second + 1;
+            dynamicNum = nonTerMap[int(nonTerMap.size()) - 1].second + 1;
             nonTerMap.push_back(make_pair(word, dynamicNum));
         }
     }
@@ -106,7 +107,7 @@ int dynamicNonTer(char *word) {
 }
 //判断某个标号是不是非终结符的标号,1代表是，0代表否
 int inNonTer(int n) {
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         if (nonTerMap[i].second == n) {
             return 1;
         }
@@ -115,7 +116,7 @@ int inNonTer(int n) {
 }
 //判断某个标号是不是终结符的标号，1代表是，0代表否
 int inTer(int n) {
-    for (int i = 0; i < terMap.size(); i++) {
+    for (int i = 0; i < int(terMap.size()); i++) {
         if (terMap[i].second == n) {
             return 1;
         }
@@ -127,12 +128,12 @@ int inEmpty(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
     for (emptyLength = 0;; emptyLength++) {
-        if (empty[emptyLength] == -1) {
+        if (EmptyStore[emptyLength] == -1) {
             break;
         }
     }
     for (int i = 0; i < emptyLength; i++) {
-        if (empty[i] == n) {
+        if (EmptyStore[i] == n) {
             return 1;
         }
     }
@@ -186,32 +187,32 @@ int inProcRight(int n, int *p) {
 
 int seekCodeNum(char *word) {
     //处理文法中的特殊符号
-    for (int i = 0; i < specialMap.size(); i++) {
+    for (int i = 0; i < int(specialMap.size()); i++) {
         if (strcmp(word, specialMap[i].first) == 0) {
             return specialMap[i].second;
         }
     }
     //先搜索终结符映射表中有没有此终结符
-    for (int i = 0; i < terMap.size(); i++) {
+    for (int i = 0; i < int(terMap.size()); i++) {
         if (strcmp(word, terMap[i].first) == 0) {
             return terMap[i].second;
         }
     }
-    for (int i = 0; i < keyMap.size(); i++) {
+    for (int i = 0; i < int(keyMap.size()); i++) {
         if (strcmp(word, keyMap[i].first) == 0) {
             terMap.push_back(make_pair(word, keyMap[i].second));
             return keyMap[i].second;
         }
     }
 
-    for (int i = 0; i < operMap.size(); i++) {
+    for (int i = 0; i < int(operMap.size()); i++) {
         if (strcmp(word, operMap[i].first) == 0) {
             terMap.push_back(make_pair(word, operMap[i].second));
             return operMap[i].second;
         }
     }
 
-    for (int i = 0; i < limitMap.size(); i++) {
+    for (int i = 0; i < int(limitMap.size()); i++) {
         if (strcmp(word, limitMap[i].first) == 0) {
             terMap.push_back(make_pair(word, limitMap[i].second));
             return limitMap[i].second;
@@ -288,7 +289,7 @@ void initGrammer() {
     memset(firstVisit, 0, sizeof(firstVisit));  //非终结符的first集还未求过
     memset(followVisit, 0, sizeof(followVisit));  //非终结符的follow集还未求过
 
-    memset(empty, -1, sizeof(empty));
+    memset(EmptyStore, -1, sizeof(EmptyStore));
     memset(emptyRecu, -1, sizeof(emptyRecu));
     memset(followRecu, -1, sizeof(followRecu));
 
@@ -346,14 +347,14 @@ void initGrammer() {
     printf(
         "\n************************************文法终结符**********************"
         "********\n\n");
-    for (int i = 0; i < terMap.size(); i++) {
+    for (int i = 0; i < int(terMap.size()); i++) {
         printf("%s ", terMap[i].first);
     }
     printf("\n");
     printf(
         "\n************************************文法非终结符********************"
         "**********\n\n");
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         printf("%s ", nonTerMap[i].first);
     }
     printf("\n");
@@ -397,7 +398,7 @@ void nullSet(int currentNum) {
         if (proc[j][3] == currentNum && proc[j][4] == -1) {
             temp[0] = proc[j][1];
             temp[1] = -1;
-            merge(empty, temp, 1);
+            merge(EmptyStore, temp, 1);
             nullSet(proc[j][1]);
         }
     }
@@ -545,13 +546,13 @@ void First() {
     //先求出能直接推出空的非终结符集合
     nullSet(GRAMMAR_NULL);
     printf("\n");
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         firstSet(i);
     }
     printf(
         "\n************************************First集*************************"
         "*****\n\n");
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         printf("First[%s] = ", nonTerMap[i].first);
         for (int j = 0;; j++) {
             if (first[i][j] == -1) {
@@ -573,7 +574,7 @@ void connectFirstSet(int *p) {
             connectFirst[0] = GRAMMAR_NULL;
             connectFirst[1] = -1;
         } else {
-            for (i = 0; i < nonTerMap.size(); i++) {
+            for (i = 0; i < int(nonTerMap.size()); i++) {
                 if (nonTerMap[i].second == p[0]) {
                     flag = 1;
                     merge(connectFirst, first[i], 1);
@@ -582,7 +583,7 @@ void connectFirstSet(int *p) {
             }
             //也可能是终结符
             if (flag == 0) {
-                for (i = 0; i < terMap.size(); i++) {
+                for (i = 0; i < int(terMap.size()); i++) {
                     if (terMap[i].second == p[0]) {
                         temp[0] = terMap[i].second;
                         temp[1] = -1;
@@ -596,7 +597,7 @@ void connectFirstSet(int *p) {
     }
     //如果p的长度大于1
     else {
-        for (i = 0; i < nonTerMap.size(); i++) {
+        for (i = 0; i < int(nonTerMap.size()); i++) {
             if (nonTerMap[i].second == p[0]) {
                 flag = 1;
                 merge(connectFirst, first[i], 2);
@@ -605,7 +606,7 @@ void connectFirstSet(int *p) {
         }
         //也可能是终结符
         if (flag == 0) {
-            for (i = 0; i < terMap.size(); i++) {
+            for (i = 0; i < int(terMap.size()); i++) {
                 if (terMap[i].second == p[0]) {
                     temp[0] = terMap[i].second;
                     temp[1] = -1;
@@ -627,7 +628,7 @@ void connectFirstSet(int *p) {
             //如果右部的当前字符能推出空并且还不是最后一个字符，就将之后的一个字符并入First集中
             if (reduNull(p[k]) == 1 && k < length - 1) {
                 int u = 0;
-                for (u = 0; u < nonTerMap.size(); u++) {
+                for (u = 0; u < int(nonTerMap.size()); u++) {
                     //注意是记录下一个符号的位置
                     if (nonTerMap[u].second == p[k + 1]) {
                         flag = 1;
@@ -637,7 +638,7 @@ void connectFirstSet(int *p) {
                 }
                 //也可能是终结符
                 if (flag == 0) {
-                    for (u = 0; u < terMap.size(); u++) {
+                    for (u = 0; u < int(terMap.size()); u++) {
                         //注意是记录下一个符号的位置
                         if (terMap[u].second == p[k + 1]) {
                             temp[0] = terMap[i].second;
@@ -680,12 +681,12 @@ void followSet(int i) {
         if (inProcRight(currentNon, proc[j]) == 1) {
             int rightLength = 1;
             int k = 0;  // k为该非终结符在产生式右部的序号
-            int flag = 0;
+            // int flag = 0;
             int leftNum = proc[j][1];  //产生式的左边
             int h = 0;
             int kArray[Max_Length2];
             memset(kArray, -1, sizeof(kArray));
-            for (h = 0; h < nonTerMap.size(); h++) {
+            for (h = 0; h < int(nonTerMap.size()); h++) {
                 if (nonTerMap[h].second == leftNum) {
                     break;
                 }
@@ -753,14 +754,14 @@ void followSet(int i) {
 
 //求所有非终结符的Follow集
 void Follow() {
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         followRecu[0] = -1;
         followSet(i);
     }
     printf(
         "\n************************************Follow集************************"
         "******\n\n");
-    for (int i = 0; i < nonTerMap.size(); i++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
         printf("Follow[%s] = ", nonTerMap[i].first);
         for (int j = 0;; j++) {
             if (follow[i][j] == -1) {
@@ -778,7 +779,7 @@ void Select() {
         int leftNum = proc[i][1];  //产生式的左边
         int h = 0;
         int result = 1;
-        for (h = 0; h < nonTerMap.size(); h++) {
+        for (h = 0; h < int(nonTerMap.size()); h++) {
             if (nonTerMap[h].second == leftNum) {
                 break;
             }
@@ -839,7 +840,7 @@ void MTable() {
 
     for (int i = 0; i < procNum; i++) {
         int m = 0;  //非终结符的序号
-        for (int t = 0; t < nonTerMap.size(); t++) {
+        for (int t = 0; t < int(nonTerMap.size()); t++) {
             if (nonTerMap[t].second == proc[i + 1][1]) {
                 m = t;
                 break;
@@ -850,7 +851,7 @@ void MTable() {
             if (select[i][j] == -1) {
                 break;
             }
-            for (int k = 0; k < terMap.size(); k++) {
+            for (int k = 0; k < int(terMap.size()); k++) {
                 if (terMap[k].second == select[i][j]) {
                     int n = 0;
                     for (n = 1; n <= Max_Length2; n++) {
@@ -869,8 +870,8 @@ void MTable() {
             << "*********************************预测分析表********************"
                "**********"
             << endl;
-    for (int i = 0; i < nonTerMap.size(); i++) {
-        for (int j = 0; j < terMap.size(); j++) {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
+        for (int j = 0; j < int(terMap.size()); j++) {
             outfile << "M[" << nonTerMap[i].first << "][" << terMap[j].first
                     << "] = ";
             // printf("M[%s][%s] = ",nonTerMap[i].first,terMap[j].first);
@@ -1036,13 +1037,13 @@ void Analysis() {
         else /*查预测分析表*/
         {
             //记录下非终结符的位置
-            for (h1 = 0; h1 < nonTerMap.size(); h1++) {
+            for (h1 = 0; h1 < int(nonTerMap.size()); h1++) {
                 if (nonTerMap[h1].second == c1) {
                     break;
                 }
             }
             //记录下终结符的位置
-            for (h2 = 0; h2 < terMap.size(); h2++) {
+            for (h2 = 0; h2 < int(terMap.size()); h2++) {
                 if (terMap[h2].second == c2) {
                     break;
                 }

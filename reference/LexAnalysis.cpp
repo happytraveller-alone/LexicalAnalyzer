@@ -165,8 +165,8 @@ void initNode() {
     idenHead->next = NULL;
 }
 
-void createNewNode(char *content, char *descirbe, int type, int addr,
-                   int line) {
+void createNewNode(const char *content, const char *descirbe, int type,
+                   int addr, int line) {
     NormalNode *p = normalHead;
     NormalNode *temp = new NormalNode();
 
@@ -183,7 +183,8 @@ void createNewNode(char *content, char *descirbe, int type, int addr,
 
     p->next = temp;
 }
-void createNewError(char *content, char *descirbe, int type, int line) {
+void createNewError(const char *content, const char *descirbe, int type,
+                    int line) {
     ErrorNode *p = errorHead;
     ErrorNode *temp = new ErrorNode();
 
@@ -198,7 +199,8 @@ void createNewError(char *content, char *descirbe, int type, int line) {
     p->next = temp;
 }
 //返回值是新的标志符的入口地址
-int createNewIden(char *content, char *descirbe, int type, int addr, int line) {
+int createNewIden(const char *content, const char *descirbe, int type, int addr,
+                  int line) {
     IdentiferNode *p = idenHead;
     IdentiferNode *temp = new IdentiferNode();
     int flag = 0;
@@ -354,7 +356,7 @@ void close() {
 }
 
 int seekKey(char *word) {
-    for (int i = 0; i < keyMap.size(); i++) {
+    for (int i = 0; i < int(keyMap.size()); i++) {
         if (strcmp(word, keyMap[i].first) == 0) {
             return i + 1;
         }

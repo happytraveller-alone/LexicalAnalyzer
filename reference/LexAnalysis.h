@@ -157,9 +157,12 @@ void initOperMapping();
 void initLimitMapping();
 
 void initNode();
-void createNewNode(char *content, char *descirbe, int type, int addr, int line);
-void createNewError(char *content, char *descirbe, int type, int line);
-int createNewIden(char *content, char *descirbe, int type, int addr, int line);
+void createNewNode(const char *content, const char *descirbe, int type,
+                   int addr, int line);
+void createNewError(const char *content, const char *descirbe, int type,
+                    int line);
+int createNewIden(const char *content, const char *descirbe, int type, int addr,
+                  int line);
 void printNodeLink();
 void printErrorLink();
 void printIdentLink();

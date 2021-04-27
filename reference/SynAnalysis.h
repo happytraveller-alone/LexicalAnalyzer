@@ -1,3 +1,12 @@
+/*
+ * @Description:
+ * @Solution:
+ * @Version: 2.0
+ * @Author: happytraveller-alone
+ * @Date: 2021-04-27 10:34:42
+ * @LastEditors: happytraveller-alone
+ * @LastEditTime: 2021-04-27 11:31:18
+ */
 #ifndef _SYNANALYSIS_H
 #define _SYNANALYSIS_H
 
