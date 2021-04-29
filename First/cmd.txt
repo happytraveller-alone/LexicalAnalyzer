@@ -1,1 +1,0 @@
-g++ -g LexAnalysis.h SynAnalysis.h LexAnalysis.cpp SynAnalysis.cpp main.cpp -o test.exe -finput-charset=UTF-8 -fexec-charset=UTF-8 -std=c++11
