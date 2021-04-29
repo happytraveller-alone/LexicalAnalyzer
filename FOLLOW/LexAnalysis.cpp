@@ -7,7 +7,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
-#include <vector>  
+#include <vector>
 
 using namespace std;
 
@@ -46,9 +46,9 @@ struct IdentiferNode {
 };
 IdentiferNode *idenHead;  //首节??
 
-vector<pair<const char *, int> > keyMap;//关键字表
-vector<pair<const char *, int> > operMap;//运算表
-vector<pair<const char *, int> > limitMap;//限界符号表 
+vector<pair<const char *, int> > keyMap;    //关键字表
+vector<pair<const char *, int> > operMap;   //运算表
+vector<pair<const char *, int> > limitMap;  //限界符号表
 vector<pair<const char *, int> > AddMap;
 
 //初始化C语言的关键字的集合
@@ -77,7 +77,7 @@ void initOperMapping() {
     operMap.push_back(make_pair("*", MUL));
     operMap.push_back(make_pair("/", DIV));
     operMap.push_back(make_pair("%", MOD));
-    operMap.push_back(make_pair("+", ADD)); 
+    operMap.push_back(make_pair("+", ADD));
     operMap.push_back(make_pair("-", SUB));
     operMap.push_back(make_pair("<", LES_THAN));
     operMap.push_back(make_pair(">", GRT_THAN));
@@ -110,7 +110,7 @@ void initLimitMapping() {
     limitMap.push_back(make_pair(";", SEMI));
 }
 
-void initAddMap(){
+void initAddMap() {
     AddMap.clear();
     AddMap.push_back(make_pair("STR", STR1));
     AddMap.push_back(make_pair("CHAR", CHAR1));
@@ -242,60 +242,62 @@ void printNodeLink() {
 8.预处理错??
 */
 //第一个输出样式
-void printNode1(){
-    cout<<"TOKEN序列："<<endl<<"[ ";
+void printNode1() {
+    cout << "TOKEN序列：" << endl << "[ ";
     NormalNode *p = normalHead;
     p = p->next;
-    while(p!=NULL){
-        if(p->type == IDN){
-            cout<<"IDN, ";
-        }
-        else if(p->type < 70 && p->type>=50){
-            switch (p->type)
-            {
-            case INT:
-                cout<<"INT, ";
-                break;
-            case FLOAT:
-                cout<<"FLOAT, ";
-                break;
-            case CHAR:
-                cout<<"CHAR, ";
-                break;
-            case STR:
-                cout<<"STRING, ";
-                break;
-            default:
-                break;
+    while (p != NULL) {
+        if (p->type == IDN) {
+            cout << "IDN, ";
+        } else if (p->type < 70 && p->type >= 50) {
+            switch (p->type) {
+                case INT:
+                    cout << "INT, ";
+                    break;
+                case FLOAT:
+                    cout << "FLOAT, ";
+                    break;
+                case CHAR:
+                    cout << "CHAR, ";
+                    break;
+                case STR:
+                    cout << "STRING, ";
+                    break;
+                default:
+                    break;
             }
+        } else {
+            cout << p->content << ", ";
         }
-        else {
-            cout<< p->content<<", ";
-        }
-        p=p->next;
+        p = p->next;
     }
-    cout<<']'<<endl;
+    cout << ']' << endl;
 }
 //第二个输出样式
-void printNode2(){
+void printNode2() {
     NormalNode *p = normalHead;
     p = p->next;
 
     while (p != NULL) {
         if (p->type == IDN) {
-            cout << setw(10) << p->content << setw(10) <<"<"<<"IDN,"<< p->content <<">"<< endl;
-        } else if(p->type < 40 && p->type >= 0){
-            cout << setw(10) << p->content << setw(10) << "<" << (strupr(p->content)) << ",_>" << endl;
-        }else if(p->type > 50 && p->type < 60){
-            cout << setw(10) << p->content << setw(10) <<"<"<<"CONST,"<< p->content <<">"<< endl;
-        }else if(p->type >= 70 && p->type < 100){
-            cout << setw(10) << p->content << setw(10) <<"<"<<"OP,"<< p->content <<">"<< endl;
-        }else if(p->type >= 100){
-            cout << setw(10) << p->content << setw(10) <<"<"<< "SE,_>" << endl;
+            cout << setw(10) << p->content << setw(10) << "<"
+                 << "IDN," << p->content << ">" << endl;
+        } else if (p->type < 40 && p->type >= 0) {
+            cout << setw(10) << p->content << setw(10) << "<"
+                 << (strupr(p->content)) << ",_>" << endl;
+        } else if (p->type > 50 && p->type < 60) {
+            cout << setw(10) << p->content << setw(10) << "<"
+                 << "CONST," << p->content << ">" << endl;
+        } else if (p->type >= 70 && p->type < 100) {
+            cout << setw(10) << p->content << setw(10) << "<"
+                 << "OP," << p->content << ">" << endl;
+        } else if (p->type >= 100) {
+            cout << setw(10) << p->content << setw(10) << "<"
+                 << "SE,_>" << endl;
         }
         p = p->next;
     }
-    cout << endl << endl;//
+    cout << endl << endl;  //
 }
 void printErrorLink() {
     ErrorNode *p = errorHead;
@@ -381,9 +383,9 @@ void scanner() {
     while (ch != EOF) {
         i = 0;
         //以字母或者下划线开,处理关键字或者标识符
-        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')|| ch == '_') {
+        if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == '_') {
             while ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
-                   (ch >= '0' && ch <= '9') || ch == '_' ) {
+                   (ch >= '0' && ch <= '9') || ch == '_') {
                 array[i++] = ch;
                 ch = fgetc(infile);
             }
@@ -391,7 +393,7 @@ void scanner() {
             memcpy(word, array, i);
             word[i] = '\0';
             int seekTemp = seekKey(word);
-            if (seekTemp != IDN) { //首先查看是否为关键字
+            if (seekTemp != IDN) {  //首先查看是否为关键字
                 createNewNode(word, KEY_DESC, seekTemp, -1, line);
             } else {
                 int addr_tmp =
@@ -422,14 +424,13 @@ void scanner() {
                 } else {
                     flag = 1;
                 }
-
             }
             word = new char[i + 1];
             memcpy(word, array, i);
             word[i] = '\0';
-            if (flag == 1) { //错误的float类型
+            if (flag == 1) {  //错误的float类型
                 createNewError(word, FLOAT_ERROR, FLOAT_ERROR_NUM, line);
-            }else {
+            } else {
                 if (flag2 == 0) {
                     createNewNode(word, CONSTANT_DESC, INT, -1, line);
                 } else {
@@ -444,7 +445,7 @@ void scanner() {
             //处理运算??"/="
             if (ch == '=') {
                 createNewNode("/=", OPE_DESC, COMPLETE_DIV, -1, line);
-            } //处理除号
+            }  //处理除号
             else {
                 createNewNode("/", OPE_DESC, DIV, -1, line);
             }
@@ -529,13 +530,11 @@ void scanner() {
                     if (flag == 1) {
                         createNewError(word, FLOAT_ERROR, FLOAT_ERROR_NUM,
                                        line);
-                    }else {
+                    } else {
                         if (flag2 == 0) {
-                            createNewNode(word, CONSTANT_DESC, INT, -1,
-                                          line);
+                            createNewNode(word, CONSTANT_DESC, INT, -1, line);
                         } else {
-                            createNewNode(word, CONSTANT_DESC, FLOAT, -1,
-                                          line);
+                            createNewNode(word, CONSTANT_DESC, FLOAT, -1, line);
                         }
                     }
                     fseek(infile, -1L, SEEK_CUR);  //向后回退一??
@@ -613,8 +612,7 @@ void scanner() {
                 if (ch == '|') {
                     createNewNode("||", OPE_DESC, OR, -1, line);
                 }
-            } 
-            else if (ch == '=') {
+            } else if (ch == '=') {
                 ch = fgetc(infile);
                 if (ch == '=') {
                     createNewNode("==", OPE_DESC, EQUAL, -1, line);

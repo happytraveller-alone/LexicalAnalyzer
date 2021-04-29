@@ -5,7 +5,7 @@
  * @Author: happytraveller-alone
  * @Date: 2021-04-29 09:37:04
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-29 17:15:48
+ * @LastEditTime: 2021-04-29 17:28:04
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,5 +36,6 @@ int main() {
     // LL(1)语法分析过程
     initGrammer();
     First();
+    Follow();
     return 0;
 }

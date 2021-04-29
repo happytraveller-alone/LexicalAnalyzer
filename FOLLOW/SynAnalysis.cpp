@@ -30,6 +30,12 @@ int firstVisit[Max_Proc];  //记录某非终结符的First集是否已经求过
 int emptyRecu[Max_Proc];  //在求可推出空的非终结符的编号集时使用的防治递归的集合
 int EmptyStore[Max_Proc];  //可推出空的非终结符的编号
 
+// FOLLOW集合
+int follow[Max_Proc][Max_Length];
+int connectFirst[Max_Length];  //将某些First集结合起来的集合
+int followVisit[Max_Proc];  //记录某非终结符的Follow集是否已经求过
+int followRecu[Max_Proc];   //在求Follow集时使用的防治递归的集合
+
 // extern的部分代表可能出现的终结符和其编号,extern表示变量可能出现在别的文件中
 extern vector<pair<const char *, int> > keyMap;
 extern vector<pair<const char *, int> > operMap;
@@ -41,6 +47,7 @@ vector<pair<const char *, int> > terMap;  //终结符映射表,不可重复的
 vector<pair<const char *, int> >
     specialMap;  //文法中的特殊符号映射表，包括-> | $(空)
 
+// DONE:
 // 对文法中的约定符号进行处理->, 空($)、#
 void initSpecialMapping() {
     specialMap.clear();
@@ -49,6 +56,7 @@ void initSpecialMapping() {
     specialMap.push_back(make_pair("#", GRAMMAR_SPECIAL));
 }
 
+// DONE:
 // ok 动态生成非终结符放入map，在基点的基础上，确保不和终结符冲突，返回syn
 int dynamicNonTer(char *word) {
     int i = 0;
@@ -73,7 +81,7 @@ int dynamicNonTer(char *word) {
     return dynamicNum;
 }
 
-// ok
+// DONE:
 // 判断文法中提取的符号是不是终结符，是的话存入map返回syn，否则调用dynamicNoter处理非终结符
 int seekCodeNum(char *word) {
     //处理文法中的特殊符号
@@ -119,7 +127,9 @@ int seekCodeNum(char *word) {
     return dynamicNonTer(word);
 }
 
+// DONE:
 // 通过编号匹配内容
+// 实现成功
 const char *searchMapping(int num) {
     //标志符
     if (num == IDN) {
@@ -146,7 +156,7 @@ const char *searchMapping(int num) {
     return "wrong";
 }
 
-// ok
+// TODO: ADD something
 // 读取处理文法，将产生式拆分以后存入到了proc中输出，并且填入了终结符和非终结符MAP输出
 void initGrammer() {
     FILE *infile;
@@ -169,10 +179,17 @@ void initGrammer() {
 
     memset(proc, -1, sizeof(proc));
 
+    /*FIRST集所需进行的初始化*/
     memset(first, -1, sizeof(first));
     memset(firstVisit, 0, sizeof(firstVisit));  //非终结符的first集还未求过
     memset(EmptyStore, -1, sizeof(EmptyStore));
     memset(emptyRecu, -1, sizeof(emptyRecu));
+
+    /*FOLLOW集所需进行的初始化*/
+    memset(follow, -1, sizeof(follow));
+    memset(connectFirst, -1, sizeof(connectFirst));
+    memset(followVisit, 0, sizeof(followVisit));  //非终结符的follow集还未求过
+    memset(followRecu, -1, sizeof(followRecu));
 
     ch = fgetc(infile);
     i = 0;
@@ -203,7 +220,6 @@ void initGrammer() {
         //原本需要回退一个字符，由于是冗余字符，不回退
         if (ch == '\n') {  //一行读完以后才需要进行拆分工作
             count = 0;
-            // orNum = 0;
             line++;
             ch = fgetc(infile);
         }
@@ -229,6 +245,11 @@ void initGrammer() {
     outfile2.close();
 }
 
+/*
+ *生成FIRST集合
+ */
+
+// DONE:
 //判断某个标号是不是终结符的标号，1代表是，0代表否
 int inTer(int n) {
     for (int i = 0; i < int(terMap.size()); i++) {
@@ -238,6 +259,8 @@ int inTer(int n) {
     }
     return 0;
 }
+
+// DONE:
 //判断某个标号是不是非终结符的标号,1代表是，0代表否
 int inNonTer(int n) {
     for (int i = 0; i < int(nonTerMap.size()); i++) {
@@ -248,6 +271,7 @@ int inNonTer(int n) {
     return 0;
 }
 
+// DONE:
 //判断某个标号在不在此时的empty集中，1代表是，0代表否
 int inEmpty(int n) {
     //当前Empty集的长度
@@ -265,7 +289,8 @@ int inEmpty(int n) {
     return 0;
 }
 
-//????判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
+// DONE:
+//判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
 int inEmptyRecu(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
@@ -282,7 +307,8 @@ int inEmptyRecu(int n) {
     return 0;
 }
 
-//？？？？？？？？？
+// DONE:
+// TODO: 写清楚内部逻辑
 //将s集合合并至d集合中，type = 1代表包括空（$）,type = 2代表不包括空
 void merge(int *d, int *s, int type) {
     int flag = 0;
@@ -315,6 +341,7 @@ void merge(int *d, int *s, int type) {
     }
 }
 
+// DONE:
 //先求出能直接推出空的非终结符集合
 //局限性：A->BC B->空 C->空 无法得到A 能推出空 产生式右端只有一个单元
 void nullSet(int currentNum) {
@@ -331,6 +358,7 @@ void nullSet(int currentNum) {
     }
 }
 
+// DONE:
 //判断该非终结符是否能推出空，但终结符也可能传入，但没关系
 int reduNull(int currentNon) {
     int temp[2];
@@ -389,6 +417,7 @@ int reduNull(int currentNon) {
     return 0;
 }
 
+// DONE:
 //求first集，传入的参数是在非终结符集合中的序号
 void firstSet(int i) {
     int k = 0;
@@ -486,6 +515,7 @@ void firstSet(int i) {
     firstVisit[i] = 1;
 }
 
+// DONE:
 void First() {
     //先求出能直接推出空的非终结符集合
     nullSet(GRAMMAR_NULL);  // OK
@@ -508,4 +538,264 @@ void First() {
         outfile3 << endl;
     }
     outfile3.close();
+}
+
+/*
+ *生成FOLLOW集合
+ */
+
+//判断某个标号是不是在产生式的右边
+int inProcRight(int n, int *p) {
+    //注意这里默认是从3开始
+    for (int i = 3;; i++) {
+        if (p[i] == -1) {
+            break;
+        }
+        if (p[i] == n) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+int inFollowRecu(int n) {
+    int followLength = 0;
+    for (followLength = 0;; followLength++) {
+        if (followRecu[followLength] == -1) {
+            break;
+        }
+    }
+    for (int i = 0; i < followLength; i++) {
+        if (followRecu[i] == n) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+//将First结合起来的函数
+void connectFirstSet(int *p) {
+    int i = 0;
+    int flag = 0;
+    int temp[2];
+    //如果P的长度为1
+    if (p[1] == -1) {
+        if (p[0] == GRAMMAR_NULL) {
+            connectFirst[0] = GRAMMAR_NULL;
+            connectFirst[1] = -1;
+        } else {
+            for (i = 0; i < int(nonTerMap.size()); i++) {
+                if (nonTerMap[i].second == p[0]) {
+                    flag = 1;
+                    merge(connectFirst, first[i], 1);
+                    break;
+                }
+            }
+            //也可能是终结符
+            if (flag == 0) {
+                for (i = 0; i < int(terMap.size()); i++) {
+                    if (terMap[i].second == p[0]) {
+                        temp[0] = terMap[i].second;
+                        temp[1] = -1;
+                        merge(connectFirst, temp,
+                              2);  //终结符的First集就是其本身
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    //如果p的长度大于1
+    else {
+        for (i = 0; i < int(nonTerMap.size()); i++) {
+            if (nonTerMap[i].second == p[0]) {
+                flag = 1;
+                merge(connectFirst, first[i], 2);
+                break;
+            }
+        }
+        //也可能是终结符
+        if (flag == 0) {
+            for (i = 0; i < int(terMap.size()); i++) {
+                if (terMap[i].second == p[0]) {
+                    temp[0] = terMap[i].second;
+                    temp[1] = -1;
+                    merge(connectFirst, temp, 2);  //终结符的First集就是其本身
+                    break;
+                }
+            }
+        }
+        flag = 0;
+        int length = 0;
+        for (length = 0;; length++) {
+            if (p[length] == -1) {
+                break;
+            }
+        }
+        for (int k = 0; k < length; k++) {
+            emptyRecu[0] = -1;  //相当于初始化这个防递归集合
+
+            //如果右部的当前字符能推出空并且还不是最后一个字符，就将之后的一个字符并入First集中
+            if (reduNull(p[k]) == 1 && k < length - 1) {
+                int u = 0;
+                for (u = 0; u < int(nonTerMap.size()); u++) {
+                    //注意是记录下一个符号的位置
+                    if (nonTerMap[u].second == p[k + 1]) {
+                        flag = 1;
+                        merge(connectFirst, first[u], 2);
+                        break;
+                    }
+                }
+                //也可能是终结符
+                if (flag == 0) {
+                    for (u = 0; u < int(terMap.size()); u++) {
+                        //注意是记录下一个符号的位置
+                        if (terMap[u].second == p[k + 1]) {
+                            temp[0] = terMap[i].second;
+                            temp[1] = -1;
+                            merge(connectFirst, temp, 2);
+                            break;
+                        }
+                    }
+                }
+                flag = 0;
+            }
+            //到达最后一个字符，并且产生式右部都能推出空,将$并入First集中
+            else if (reduNull(p[k]) == 1 && k == length - 1) {
+                temp[0] = GRAMMAR_NULL;
+                temp[1] = -1;  //其实是模拟字符串操作的手段
+                merge(connectFirst, temp, 1);
+            } else {
+                break;
+            }
+        }
+    }
+}
+
+// FOLLOE集合生成
+void followSet(int i) {
+    int currentNon = nonTerMap[i].second;  //当前的非终结符标号
+    int temp[2];
+    int result = 1;
+    temp[0] = currentNon;
+    temp[1] = -1;
+    merge(followRecu, temp, 1);  //将当前标号加入防递归集合中
+
+    //如果当前符号就是开始符号,把特殊符号加入其Follow集中
+    if (proc[1][1] == currentNon) {
+        temp[0] = GRAMMAR_SPECIAL;  //这个也是要处理的
+        temp[1] = -1;
+        merge(follow[i], temp, 1);
+    }
+    for (int j = 1; j <= procNum; j++)  // j代表第几个产生式
+    {
+        //如果该非终结符在某个产生式的右部存在
+        if (inProcRight(currentNon, proc[j]) == 1) {
+            int rightLength = 1;
+            int k = 0;  // k为该非终结符在产生式右部的序号
+            // int flag = 0;
+            int leftNum = proc[j][1];  //产生式的左边
+            int h = 0;
+            int kArray[Max_Length2];
+            memset(kArray, -1, sizeof(kArray));
+            for (h = 0; h < int(nonTerMap.size()); h++) {
+                if (nonTerMap[h].second == leftNum) {
+                    break;
+                }
+            }
+
+            for (rightLength = 1;; rightLength++) {
+                if (currentNon == proc[j][rightLength + 2]) {
+                    kArray[k++] = rightLength;
+                }
+                if (proc[j][rightLength + 2] == -1) {
+                    break;
+                }
+            }
+            rightLength--;
+            for (int y = 0;; y++) {
+                if (kArray[y] == -1) {
+                    break;
+                }
+                //如果该非终结符在右部产生式的最后
+                if (kArray[y] == rightLength) {
+                    if (inFollowRecu(leftNum) == 1) {
+                        merge(follow[i], follow[h], 1);
+                        continue;
+                    }
+                    if (followVisit[h] == 0) {
+                        followSet(h);
+                        followVisit[h] = 1;
+                    }
+                    merge(follow[i], follow[h], 1);
+                }
+                //如果不在最后
+                else {
+                    int n = 0;
+                    result = 1;  //这是关键的，曾在这里失误过
+                    for (n = kArray[y] + 1; n <= rightLength; n++) {
+                        emptyRecu[0] = -1;
+                        result *= reduNull(proc[j][n + 2]);
+                    }
+                    if (result == 1) {
+                        if (inFollowRecu(leftNum) == 1) {
+                            merge(follow[i], follow[h], 1);
+                            continue;
+                        }
+                        if (followVisit[h] == 0) {
+                            followSet(h);
+                            followVisit[h] = 1;
+                        }
+                        merge(follow[i], follow[h], 1);
+                    }
+                    int temp2[Max_Length];
+                    memset(temp2, -1, sizeof(temp2));
+                    for (n = kArray[y] + 1; n <= rightLength; n++) {
+                        temp2[n - kArray[y] - 1] = proc[j][n + 2];
+                    }
+                    temp2[rightLength - kArray[y]] = -1;
+                    connectFirst[0] = -1;  //应该重新初始化一下
+                    connectFirstSet(temp2);
+                    merge(follow[i], connectFirst, 2);
+                }
+            }
+        }
+    }
+    followVisit[i] = 1;
+}
+
+//求所有非终结符的Follow集
+void Follow() {
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
+        followRecu[0] = -1;
+        followSet(i);
+    }
+    // printf(
+    //     "\n************************************Follow集************************"
+    //     "******\n\n");
+    // for (int i = 0; i < int(nonTerMap.size()); i++) {
+    //     printf("Follow[%s] = ", nonTerMap[i].first);
+    //     for (int j = 0;; j++) {
+    //         if (follow[i][j] == -1) {
+    //             break;
+    //         }
+    //         printf("%s ", searchMapping(follow[i][j]));
+    //     }
+    //     printf("\n");
+    // }
+
+    fstream outfile4;
+    outfile4.open("follow.txt", ios::out);
+    outfile4 << "follow list:" << endl;
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
+        outfile4 << "Follow[" << nonTerMap[i].first << "] = ";
+        for (int j = 0;; j++) {
+            if (follow[i][j] == -1) {
+                break;
+            }
+            outfile4 << searchMapping(follow[i][j]) << " ";
+        }
+        outfile4 << endl;
+    }
+    outfile4.close();
 }

@@ -1,0 +1,34 @@
+follow list:
+Follow[S] = #
+Follow[func] = #
+Follow[type] = IDN ( INT FLOAT CHAR STR
+Follow[args] = )
+Follow[func_body] = #
+Follow[arg] = )
+Follow[block] = # } int char float void ( IDN INT FLOAT CHAR STR continue break return for if else
+Follow[stmts] = }
+Follow[vars] =
+Follow[stmt] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[assign_stmt] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[jump_stmt] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[iteration_stmt] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[branch_stmt] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[expression] = ; ) && || ,
+Follow[isnull_expr] = ; ) ,
+Follow[logical_expression] = )
+Follow[result] = } int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+Follow[bool_expression] = )
+Follow[lop] = ( IDN INT FLOAT CHAR STR
+Follow[value] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ --
+Follow[operation] = ; ) && || ,
+Follow[compare_op] = ( IDN INT FLOAT CHAR STR
+Follow[equal_op] = ( IDN INT FLOAT CHAR STR
+Follow[item] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + -
+Follow[value'] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ --
+Follow[factor] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + - * / %
+Follow[item'] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + -
+Follow[call_func] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + - * / %
+Follow[const] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + - * / %
+Follow[es] = )
+Follow[isnull_es] = )
+Follow[num_const] = ; ) && || , > >= < <= == != = += -= *= /= %= ++ -- + - * / %
