@@ -1,4 +1,3 @@
-
 nonterminal list:
 S
 func

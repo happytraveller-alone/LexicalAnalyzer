@@ -1,34 +1,34 @@
-
 first list:
-First[S] = int char float void 
-First[func] = int char float void 
-First[type] = int char float void $ 
-First[args] = int char float void $ 
-First[func_body] = ; { 
-First[arg] = , $ 
-First[block] = { 
-First[stmts] = int char float void ( IDN const continue break return for if $ 
-First[vars] = , $ 
-First[stmt] = int char float void ( IDN const continue break return for if 
-First[assign_stmt] = ( IDN const 
-First[jump_stmt] = continue break return 
-First[iteration_stmt] = ( for 
-First[branch_stmt] = if 
-First[expression] = ( IDN const 
-First[isnull_expr] = ( IDN const $ 
-First[logical_expression] = ( IDN const 
-First[result] = else $ 
-First[bool_expression] = && || $ 
-First[lop] = && || 
-First[value] = ( IDN const 
-First[operation] = > >= < <= == != = += -= *= /= %= ++ -- $ 
-First[compare_op] = > >= < <= == != 
-First[equal_op] = = += -= *= /= %= 
-First[item] = ( IDN const 
-First[value'] = + - $ 
-First[factor] = ( IDN const 
-First[item'] = * / % $ 
-First[call_func] = ( $ 
-First[es] = ( IDN const , $ 
-First[isnull_es] = , $ 
-First[num_const] = 
+First[S] = int char float void IDN
+First[func] = int char float void IDN
+First[type] = int char float void $
+First[args] = int char float void IDN $
+First[func_body] = ; {
+First[arg] = , $
+First[block] = {
+First[stmts] = int char float void ( IDN INT FLOAT CHAR STR continue break return for if $
+First[vars] = , $
+First[stmt] = int char float void ( IDN INT FLOAT CHAR STR continue break return for if
+First[assign_stmt] = ( IDN INT FLOAT CHAR STR
+First[jump_stmt] = continue break return
+First[iteration_stmt] = ( for
+First[branch_stmt] = if
+First[expression] = ( IDN INT FLOAT CHAR STR
+First[isnull_expr] = ( IDN INT FLOAT CHAR STR $
+First[logical_expression] = ( IDN INT FLOAT CHAR STR
+First[result] = else $
+First[bool_expression] = && || $
+First[lop] = && ||
+First[value] = ( IDN INT FLOAT CHAR STR
+First[operation] = > >= < <= == != = += -= *= /= %= ++ -- $
+First[compare_op] = > >= < <= == !=
+First[equal_op] = = += -= *= /= %=
+First[item] = ( IDN INT FLOAT CHAR STR
+First[value'] = + - $
+First[factor] = ( IDN INT FLOAT CHAR STR
+First[item'] = * / % $
+First[call_func] = ( $
+First[const] = INT FLOAT CHAR STR
+First[es] = ( IDN INT FLOAT CHAR STR , $
+First[isnull_es] = , $
+First[num_const] = INT

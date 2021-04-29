@@ -15,7 +15,7 @@ block -> { stmts }
 vars -> , IDN init vars
 vars -> $
 stmts -> stmt stmts
-stmts -> $
+stmts -> $ 
 stmt -> type assign_stmt
 stmt -> jump_stmt
 stmt -> iteration_stmt

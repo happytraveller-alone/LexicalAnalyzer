@@ -116,14 +116,34 @@ int seekCodeNum(char *word) {
         }
     }
 
-    if (strcmp(word, "IDN") == 0) {
-        //处理标志符
-        terMap.push_back(make_pair(word, IDN));
-        return IDN;
-    } else {
-        //处理关键字、运算符、限界符表，即非终结符
-        return dynamicNonTer(word);
+    return dynamicNonTer(word);
+}
+
+// 通过编号匹配内容
+const char *searchMapping(int num) {
+    //标志符
+    if (num == IDN) {
+        return "id";
     }
+    //处理文法中的特殊符号
+    for (int i = 0; i < int(specialMap.size()); i++) {
+        if (specialMap[i].second == num) {
+            return specialMap[i].first;
+        }
+    }
+    //处理非终结符
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
+        if (nonTerMap[i].second == num) {
+            return nonTerMap[i].first;
+        }
+    }
+    //处理终结符
+    for (int i = 0; i < int(terMap.size()); i++) {
+        if (terMap[i].second == num) {
+            return terMap[i].first;
+        }
+    }
+    return "wrong";
 }
 
 // ok
@@ -188,11 +208,12 @@ void initGrammer() {
             ch = fgetc(infile);
         }
     }
-    procNum = line - 1;
+    procNum = line;
+
     // 输出终结符到文件
     fstream outfile1;
     outfile1.open("terminal.txt", ios::out);
-    outfile1 << endl << "terminal list:" << endl;
+    outfile1 << "terminal list:" << endl;
     for (int i = 0; i < int(terMap.size()); i++) {
         outfile1 << terMap[i].first << endl;
     }
@@ -201,38 +222,11 @@ void initGrammer() {
     // 输出非终结符到文件
     fstream outfile2;
     outfile2.open("nonterminal.txt", ios::out);
-    outfile2 << endl << "nonterminal list:" << endl;
+    outfile2 << "nonterminal list:" << endl;
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         outfile2 << nonTerMap[i].first << endl;
     }
     outfile2.close();
-}
-
-// 通过编号匹配内容
-const char *searchMapping(int num) {
-    //标志符
-    if (num == IDN) {
-        return "IDN";
-    }
-    //处理文法中的特殊符号
-    for (int i = 0; i < int(specialMap.size()); i++) {
-        if (specialMap[i].second == num) {
-            return specialMap[i].first;
-        }
-    }
-    //处理非终结符
-    for (int i = 0; i < int(nonTerMap.size()); i++) {
-        if (nonTerMap[i].second == num) {
-            return nonTerMap[i].first;
-        }
-    }
-    //处理终结符
-    for (int i = 0; i < int(terMap.size()); i++) {
-        if (terMap[i].second == num) {
-            return terMap[i].first;
-        }
-    }
-    return "wrong";
 }
 
 //判断某个标号是不是终结符的标号，1代表是，0代表否
@@ -271,7 +265,7 @@ int inEmpty(int n) {
     return 0;
 }
 
-//判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
+//????判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
 int inEmptyRecu(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
@@ -400,6 +394,7 @@ void firstSet(int i) {
     int k = 0;
     int currentNon = nonTerMap[i].second;  //当前的非终结符标号
     //依次遍历全部产生式
+    // cout<<nonTerMap[i].first<<endl;
     for (int j = 1; j <= procNum; j++)  // j代表第几个产生式
     {
         //找到该非终结符的产生式
@@ -411,7 +406,6 @@ void firstSet(int i) {
                 int temp[2];
                 temp[0] = proc[j][3];
                 temp[1] = -1;  //其实是模拟字符串操作的手段
-                printf("1\n");
                 merge(first[i], temp, 1);
             }
             //当右边的第一个是非终结符的时候
@@ -431,13 +425,11 @@ void firstSet(int i) {
                     firstSet(k);
                     firstVisit[k] = 1;
                 }
-                printf("2\n");
                 merge(
                     first[i], first[k],
                     2);  //如果first[k]此时有空值的话，暂时不把空值并入first[i]中
                 int rightLength = 0;
                 //先求出右部的长度
-
                 for (rightLength = 3;; rightLength++) {
                     if (proc[j][rightLength] == -1) {
                         break;
@@ -446,22 +438,33 @@ void firstSet(int i) {
                 //到目前为止，只求出了右边的第一个(还不包括空的部分)，For循环处理之后的
                 for (k = 3; k < rightLength; k++) {
                     emptyRecu[0] = -1;  //相当于初始化这个防递归集合？？？？
-
                     //如果右部的当前字符能推出空并且还不是最后一个字符，就将之后的一个字符并入First集中
                     if (reduNull(proc[j][k]) == 1 && k < rightLength - 1) {
                         int u = 0;
+                        int tornot = 0;
                         for (u = 0;; u++) {
                             //注意是记录下一个符号的位置
                             if (nonTerMap[u].second == proc[j][k + 1]) {
+                                tornot = 2;
+                                break;
+                            }
+                            if (terMap[u].second == proc[j][k + 1]) {
+                                tornot = 1;
                                 break;
                             }
                         }
-                        if (firstVisit[u] == 0) {
-                            firstSet(u);
-                            firstVisit[u] = 1;
+                        if (tornot == 2) {
+                            if (firstVisit[u] == 0) {
+                                firstSet(u);
+                                firstVisit[u] = 1;
+                            }
+                            merge(first[i], first[u], 2);
+                        } else if (tornot == 1) {
+                            int temp[2];
+                            temp[0] = proc[j][k + 1];
+                            temp[1] = -1;  //其实是模拟字符串操作的手段
+                            merge(first[i], temp, 1);
                         }
-                        printf("3\n");
-                        merge(first[i], first[u], 2);
                     }
                     // A->BCd
                     // k=B虽然刚才B已经求过frist并加入，但是C要加入的需要判断
@@ -472,7 +475,6 @@ void firstSet(int i) {
                         int temp[2];
                         temp[0] = GRAMMAR_NULL;
                         temp[1] = -1;  //其实是模拟字符串操作的手段
-                        printf("4\n");
                         merge(first[i], temp, 1);
                     } else {
                         break;
@@ -494,7 +496,7 @@ void First() {
 
     fstream outfile3;
     outfile3.open("first.txt", ios::out);
-    outfile3 << endl << "first list:" << endl;
+    outfile3 << "first list:" << endl;
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         outfile3 << "First[" << nonTerMap[i].first << "] = ";
         for (int j = 0;; j++) {
