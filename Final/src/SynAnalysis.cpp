@@ -55,7 +55,14 @@ vector<pair<const char *, int> > terMap;  //终结符映射表,不可重复的
 vector<pair<const char *, int> >
     specialMap;  //文法中的特殊符号映射表，包括-> | $(空)
 
-// 对文法中的约定符号进行处理->, 空($)、#
+/*
+ *函数名称：initSpecialMapping
+ *参数：无
+ *实现功能：对文法中的约定符号进行处理->, 空($)、#
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initSpecialMapping() {
     specialMap.clear();
     specialMap.push_back(make_pair("->", GRAMMAR_ARROW));
@@ -63,7 +70,14 @@ void initSpecialMapping() {
     specialMap.push_back(make_pair("#", GRAMMAR_SPECIAL));
 }
 
-// ok 动态生成非终结符放入map，在基点的基础上，确保不和终结符冲突，返回syn
+/*
+ *函数名称：dynamicNonTer
+ *参数：TOKEN的起始字符
+ *实现功能：动态生成非终结符放入map，在基点的基础上，确保不和终结符冲突，返回种别号
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int dynamicNonTer(char *word) {
     int i = 0;
     int dynamicNum;
@@ -87,8 +101,14 @@ int dynamicNonTer(char *word) {
     return dynamicNum;
 }
 
-// ok
-// 判断文法中提取的符号是不是终结符，是的话存入map返回syn，否则调用dynamicNoter处理非终结符
+/*
+ *函数名称：seekCodeNum
+ *参数：TOKEN的起始字符
+ *实现功能：判断文法中提取的符号是不是终结符，符合存入map返回种别号，否则调用dynamicNoter处理非终结符
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int seekCodeNum(char *word) {
     //处理文法中的特殊符号
     for (int i = 0; i < int(specialMap.size()); i++) {
@@ -133,7 +153,14 @@ int seekCodeNum(char *word) {
     return dynamicNonTer(word);
 }
 
-// 通过编号匹配内容
+/*
+ *函数名称：searchMapping
+ *参数：种别号
+ *实现功能：通过编号匹配内容
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 const char *searchMapping(int num) {
     //标志符
     if (num == IDN) {
@@ -160,8 +187,14 @@ const char *searchMapping(int num) {
     return "wrong";
 }
 
-// ok
-// 读取处理文法，将产生式拆分以后存入到了proc中输出，并且填入了终结符和非终结符MAP输出
+/*
+ *函数名称：initGrammer
+ *参数：无
+ *实现功能：读取处理文法，将产生式拆分以后存入到了proc中输出，并且填入了终结符和非终结符MAP输出
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initGrammer() {
     FILE *infile;
     char ch;
@@ -171,7 +204,6 @@ void initGrammer() {
     int codeNum;
     int line = 1;
     int count = 0;  //是文法读入过程中当前行读到了第几个文法单元
-    // int orNum = 0;
     infile = fopen("testtxt\\wenfa.txt", "r");
     if (!infile) {
         printf("文法打开失败！\n");
@@ -266,7 +298,14 @@ void initGrammer() {
     outfile2.close();
 }
 
-//判断某个标号是不是终结符的标号，1代表是，0代表否
+/*
+ *函数名称：inTer
+ *参数：种别号
+ *实现功能：判断某个标号是不是终结符的标号，1代表是，0代表否
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int inTer(int n) {
     for (int i = 0; i < int(terMap.size()); i++) {
         if (terMap[i].second == n) {
@@ -275,7 +314,15 @@ int inTer(int n) {
     }
     return 0;
 }
-//判断某个标号是不是非终结符的标号,1代表是，0代表否
+
+/*
+ *函数名称：inNonTer
+ *参数：TOKEN的起始字符
+ *实现功能：判断某个标号是不是非终结符的标号,1代表是，0代表否
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int inNonTer(int n) {
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         if (nonTerMap[i].second == n) {
@@ -285,7 +332,14 @@ int inNonTer(int n) {
     return 0;
 }
 
-//判断某个标号在不在此时的empty集中，1代表是，0代表否
+/*
+ *函数名称：inEmpty
+ *参数：种别号
+ *实现功能：判断某个标号在不在此时的empty集中，1代表是，0代表否
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int inEmpty(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
@@ -302,7 +356,14 @@ int inEmpty(int n) {
     return 0;
 }
 
-//????判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
+/*
+ *函数名称：inEmptyRecu
+ *参数：种别号
+ *实现功能：判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int inEmptyRecu(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
@@ -319,8 +380,14 @@ int inEmptyRecu(int n) {
     return 0;
 }
 
-//？？？？？？？？？
-//将s集合合并至d集合中，type = 1代表包括空（$）,type = 2代表不包括空
+/*
+ *函数名称：merge
+ *参数：Fisrt[i]集合，First[j]集合，传入类型
+ *实现功能：将s集合合并至d集合中，type = 1代表包括空（$）,type = 2代表不包括空
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void merge(int *d, int *s, int type) {
     int flag = 0;
     for (int i = 0;; i++) {
@@ -352,8 +419,15 @@ void merge(int *d, int *s, int type) {
     }
 }
 
-//先求出能直接推出空的非终结符集合
-//局限性：A->BC B->空 C->空 无法得到A 能推出空 产生式右端只有一个单元
+/*
+ *函数名称：nullSet
+ *参数：种别号
+ *实现功能：导入能直接推出空的非终结符
+ *局限性：A->BC B->空 C->空 无法得到A 能推出空 产生式右端只有一个单元
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void nullSet(int currentNum) {
     int temp[2];
     for (int j = 1; j <= procNum; j++) {
@@ -368,7 +442,15 @@ void nullSet(int currentNum) {
     }
 }
 
-//判断该非终结符是否能推出空，但终结符也可能传入，但没关系
+/*
+ *函数名称：nullSet
+ *参数：种别号
+ *实现功能：判断该非终结符是否能推出空
+ *局限性：A->BC B->空 C->空 无法得到A 能推出空 产生式右端只有一个单元
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int reduNull(int currentNon) {
     int temp[2];
     int result = 1;
@@ -426,7 +508,14 @@ int reduNull(int currentNon) {
     return 0;
 }
 
-//求first集，传入的参数是在非终结符集合中的序号
+/*
+ *函数名称：firstSet
+ *参数：
+ *实现功能：求first集，传入的参数是在非终结符集合中的序号
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void firstSet(int i) {
     int k = 0;
     int currentNon = nonTerMap[i].second;  //当前的非终结符标号
@@ -525,7 +614,14 @@ void firstSet(int i) {
     firstVisit[i] = 1;
 }
 
-// first构造
+/*
+ *函数名称：First
+ *参数：
+ *实现功能： first构造
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void First() {
     //先求出能直接推出空的非终结符集合
     nullSet(GRAMMAR_NULL);  // OK
@@ -549,7 +645,14 @@ void First() {
     outfile3.close();
 }
 
-//判断某个标号在不在此时的followRecu集中，1代表是，0代表否
+/*
+ *函数名称：inFollowRecu
+ *参数：行号
+ *实现功能：判断某个标号在不在此时的followRecu集中，1代表是，0代表否
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 int inFollowRecu(int n) {
     int followLength = 0;
     for (followLength = 0;; followLength++) {
@@ -565,7 +668,14 @@ int inFollowRecu(int n) {
     return 0;
 }
 
-//判断某个标号是不是在产生式的右边
+/*
+ *函数名称：inProcRight
+ *参数：表达式指针和行号
+ *实现功能：判断某个标号是不是在产生式的右边
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 int inProcRight(int n, int *p) {
     //注意这里默认是从3开始
     for (int i = 3;; i++) {
@@ -579,7 +689,14 @@ int inProcRight(int n, int *p) {
     return 0;
 }
 
-//将First结合起来的函数
+/*
+ *函数名称：connectFirstSet
+ *参数：
+ *实现功能：将First结合起来的函数
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void connectFirstSet(int *p) {
     int i = 0;
     int flag = 0;
@@ -678,6 +795,14 @@ void connectFirstSet(int *p) {
     }
 }
 
+/*
+ *函数名称：followSet
+ *参数：
+ *实现功能：Follow集处理
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void followSet(int i) {
     int currentNon = nonTerMap[i].second;  //当前的非终结符标号
     int temp[2];
@@ -769,7 +894,14 @@ void followSet(int i) {
     followVisit[i] = 1;
 }
 
-//求所有非终结符的Follow集
+/*
+ *函数名称：Follow
+ *参数：
+ *实现功能：求所有非终结符的Follow集
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void Follow() {
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         followRecu[0] = -1;
@@ -791,7 +923,14 @@ void Follow() {
     outfile4.close();
 }
 
-//求已经分解的产生式对应的Select集,注意Select集中不能含有空($),因而Type=2
+/*
+ *函数名称：Select
+ *参数：
+ *实现功能：求已经分解的产生式对应的Select集,注意Select集中不能含有空($),因而Type=2
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void Select() {
     for (int i = 1; i <= procNum; i++)  // j代表第几个产生式
     {
@@ -838,21 +977,16 @@ void Select() {
             }
         }
     }
-    // printf(
-    //     "\n************************************Select集************************"
-    //     "******\n\n");
-    // for (int i = 0; i < procNum; i++) {
-    //     printf("Select[%d] = ", i + 1);
-    //     for (int j = 0;; j++) {
-    //         if (select[i][j] == -1) {
-    //             break;
-    //         }
-    //         printf("%s ", searchMapping(select[i][j]));
-    //     }
-    //     printf("\n");
-    // }
 }
-//输出预测分析表
+
+/*
+ *函数名称：MTable
+ *参数：
+ *实现功能：输出预测分析表
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void MTable() {
     fstream outfile;
     outfile.open("OutputFile\\preciateTable.txt", ios::out);
@@ -909,19 +1043,40 @@ void MTable() {
     outfile.close();
 }
 
-void InitStack(SeqStack *S) /*初始化顺序栈*/
-{
-    S->top = -1;
-}
-int Push(SeqStack *S, int x) /*进栈*/
-{
+/*
+ *函数名称：InitStack
+ *参数：*S 栈指针
+ *实现功能：初始化顺序栈
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+void InitStack(SeqStack *S) { S->top = -1; }
+
+/*
+ *函数名称：Push
+ *参数：*S 栈指针 *x 字符指针
+ *实现功能：入栈
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+int Push(SeqStack *S, int x) {
     if (S->top == Stack_Size - 1) return 0;
     S->top++;
     S->elem[S->top] = x;
     return 1;
 }
-int Pop(SeqStack *S) /*出栈*/
-{
+
+/*
+ *函数名称：Pop
+ *参数：*S 栈指针
+ *实现功能：出栈
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+int Pop(SeqStack *S) {
     if (S->top == -1)
         return 0;
     else {
@@ -929,8 +1084,16 @@ int Pop(SeqStack *S) /*出栈*/
         return 1;
     }
 }
-int GetTop(SeqStack *S, int *x) /*取栈顶元素*/
-{
+
+/*
+ *函数名称：GetTop
+ *参数：*S 栈指针，*x 字符指针
+ *实现功能：取栈顶元素
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+int GetTop(SeqStack *S, int *x) {
     if (S->top == -1)
         return 0;
     else {
@@ -938,23 +1101,47 @@ int GetTop(SeqStack *S, int *x) /*取栈顶元素*/
         return 1;
     }
 }
-void ShowStack1(SeqStack *S) /*显示栈的字符，先输出栈底元素*/
-{
+
+/*
+ *函数名称：ShowStack1
+ *参数：*S 栈指针
+ *实现功能：显示栈的字符，先输出栈底元素
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+void ShowStack1(SeqStack *S) {
     int i;
     for (i = S->top; i >= 0; i--) {
         // printf("%s ",searchMapping(S->elem[i]));
         resultfile << searchMapping(S->elem[i]) << " ";
     }
 }
-void ShowStack2(SeqStack *S) /*显示栈的字符，先输出栈顶元素*/
-{
+
+/*
+ *函数名称：ShowStack2
+ *参数：*S 栈指针
+ *实现功能：显示栈的字符，先输出栈顶元素
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
+void ShowStack2(SeqStack *S) {
     int i;
     for (i = S->top; i >= 0; i--) {
         // printf("%s ",searchMapping(S->elem[i]));
         resultfile << searchMapping(S->elem[i]) << " ";
     }
 }
-//分析源程序
+
+/*
+ *函数名称：Analysis
+ *参数：
+ *实现功能：分析源程序，对结果输出进行分析
+ *最近更改时间：4/30
+ *更改作者：张一鸣
+ *完成情况：DONE
+ */
 void Analysis() {
     //分析结果输出
     resultfile.open("OutputFile\\preciateResult.txt", ios::out);

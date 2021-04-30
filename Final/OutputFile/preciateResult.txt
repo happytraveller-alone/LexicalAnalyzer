@@ -1,0 +1,1597 @@
+��1��
+����ջ:S # 
+����ջ:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��S->func
+
+��2��
+����ջ:func # 
+����ջ:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��func->typeIDN(args)func_body
+
+��3��
+����ջ:type IDN ( args ) func_body # 
+����ջ:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->void
+
+��4��
+����ջ:void IDN ( args ) func_body # 
+����ջ:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��5��
+����ջ:IDN ( args ) func_body # 
+����ջ:IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��6��
+����ջ:( args ) func_body # 
+����ջ:( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��7��
+����ջ:args ) func_body # 
+����ջ:) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��args->$
+
+��8��
+����ջ:) func_body # 
+����ջ:) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��9��
+����ջ:func_body # 
+����ջ:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��func_body->block
+
+��10��
+����ջ:block # 
+����ջ:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��block->{stmts}
+
+��11��
+����ջ:{ stmts } # 
+����ջ:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��12��
+����ջ:stmts } # 
+����ջ:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��13��
+����ջ:stmt stmts } # 
+����ջ:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��14��
+����ջ:type assign_stmt stmts } # 
+����ջ:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->string
+
+��15��
+����ջ:string assign_stmt stmts } # 
+����ջ:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��16��
+����ջ:assign_stmt stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��17��
+����ջ:expression ; stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��18��
+����ջ:value operation ; stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��19��
+����ջ:item value' operation ; stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��20��
+����ջ:factor item' value' operation ; stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��21��
+����ջ:IDN call_func item' value' operation ; stmts } # 
+����ջ:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��22��
+����ջ:call_func item' value' operation ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��23��
+����ջ:item' value' operation ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��24��
+����ջ:value' operation ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��25��
+����ջ:operation ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��26��
+����ջ:equal_op value ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��27��
+����ջ:= value ; stmts } # 
+����ջ:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��28��
+����ջ:value ; stmts } # 
+����ջ:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��29��
+����ջ:item value' ; stmts } # 
+����ջ:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��30��
+����ջ:factor item' value' ; stmts } # 
+����ջ:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��31��
+����ջ:const item' value' ; stmts } # 
+����ջ:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->STR
+
+��32��
+����ջ:STR item' value' ; stmts } # 
+����ջ:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��33��
+����ջ:item' value' ; stmts } # 
+����ջ:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��34��
+����ջ:value' ; stmts } # 
+����ջ:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��35��
+����ջ:; stmts } # 
+����ջ:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��36��
+����ջ:stmts } # 
+����ջ:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��37��
+����ջ:stmt stmts } # 
+����ջ:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��38��
+����ջ:type assign_stmt stmts } # 
+����ջ:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->char
+
+��39��
+����ջ:char assign_stmt stmts } # 
+����ջ:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��40��
+����ջ:assign_stmt stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��41��
+����ջ:expression ; stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��42��
+����ջ:value operation ; stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��43��
+����ջ:item value' operation ; stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��44��
+����ջ:factor item' value' operation ; stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��45��
+����ջ:IDN call_func item' value' operation ; stmts } # 
+����ջ:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��46��
+����ջ:call_func item' value' operation ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��47��
+����ջ:item' value' operation ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��48��
+����ջ:value' operation ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��49��
+����ջ:operation ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��50��
+����ջ:equal_op value ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��51��
+����ջ:= value ; stmts } # 
+����ջ:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��52��
+����ջ:value ; stmts } # 
+����ջ:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��53��
+����ջ:item value' ; stmts } # 
+����ջ:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��54��
+����ջ:factor item' value' ; stmts } # 
+����ջ:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��55��
+����ջ:const item' value' ; stmts } # 
+����ջ:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->CHAR
+
+��56��
+����ջ:CHAR item' value' ; stmts } # 
+����ջ:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��57��
+����ջ:item' value' ; stmts } # 
+����ջ:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��58��
+����ջ:value' ; stmts } # 
+����ջ:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��59��
+����ջ:; stmts } # 
+����ջ:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��60��
+����ջ:stmts } # 
+����ջ:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��61��
+����ջ:stmt stmts } # 
+����ջ:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��62��
+����ջ:type assign_stmt stmts } # 
+����ջ:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->float
+
+��63��
+����ջ:float assign_stmt stmts } # 
+����ջ:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��64��
+����ջ:assign_stmt stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��65��
+����ջ:expression ; stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��66��
+����ջ:value operation ; stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��67��
+����ջ:item value' operation ; stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��68��
+����ջ:factor item' value' operation ; stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��69��
+����ջ:IDN call_func item' value' operation ; stmts } # 
+����ջ:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��70��
+����ջ:call_func item' value' operation ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��71��
+����ջ:item' value' operation ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��72��
+����ջ:value' operation ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��73��
+����ջ:operation ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��74��
+����ջ:equal_op value ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��75��
+����ջ:= value ; stmts } # 
+����ջ:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��76��
+����ջ:value ; stmts } # 
+����ջ:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��77��
+����ջ:item value' ; stmts } # 
+����ջ:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��78��
+����ջ:factor item' value' ; stmts } # 
+����ջ:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��79��
+����ջ:const item' value' ; stmts } # 
+����ջ:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->FLOAT
+
+��80��
+����ջ:FLOAT item' value' ; stmts } # 
+����ջ:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��81��
+����ջ:item' value' ; stmts } # 
+����ջ:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��82��
+����ջ:value' ; stmts } # 
+����ջ:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��83��
+����ջ:; stmts } # 
+����ջ:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��84��
+����ջ:stmts } # 
+����ջ:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��85��
+����ջ:stmt stmts } # 
+����ջ:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��86��
+����ջ:type assign_stmt stmts } # 
+����ջ:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->int
+
+��87��
+����ջ:int assign_stmt stmts } # 
+����ջ:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��88��
+����ջ:assign_stmt stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��89��
+����ջ:expression ; stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��90��
+����ջ:value operation ; stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��91��
+����ջ:item value' operation ; stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��92��
+����ջ:factor item' value' operation ; stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��93��
+����ջ:IDN call_func item' value' operation ; stmts } # 
+����ջ:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��94��
+����ջ:call_func item' value' operation ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��95��
+����ջ:item' value' operation ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��96��
+����ջ:value' operation ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��97��
+����ջ:operation ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��98��
+����ջ:equal_op value ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��99��
+����ջ:= value ; stmts } # 
+����ջ:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��100��
+����ջ:value ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��101��
+����ջ:item value' ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��102��
+����ջ:factor item' value' ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��103��
+����ջ:const item' value' ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��104��
+����ջ:num_const item' value' ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��105��
+����ջ:INT item' value' ; stmts } # 
+����ջ:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��106��
+����ջ:item' value' ; stmts } # 
+����ջ:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��107��
+����ջ:value' ; stmts } # 
+����ջ:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��108��
+����ջ:; stmts } # 
+����ջ:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��109��
+����ջ:stmts } # 
+����ջ:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��110��
+����ջ:stmt stmts } # 
+����ջ:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->iteration_stmt
+
+��111��
+����ջ:iteration_stmt stmts } # 
+����ջ:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��iteration_stmt->for(isnull_expr;isnull_expr;isnull_expr)block
+
+��112��
+����ջ:for ( isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
+����ջ:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��113��
+����ջ:( isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
+����ջ:( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��114��
+����ջ:isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
+����ջ:; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��isnull_expr->$
+
+��115��
+����ջ:; isnull_expr ; isnull_expr ) block stmts } # 
+����ջ:; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��116��
+����ջ:isnull_expr ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��isnull_expr->expression
+
+��117��
+����ջ:expression ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��118��
+����ջ:value operation ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��119��
+����ջ:item value' operation ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��120��
+����ջ:factor item' value' operation ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��121��
+����ջ:IDN call_func item' value' operation ; isnull_expr ) block stmts } # 
+����ջ:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��122��
+����ջ:call_func item' value' operation ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��123��
+����ջ:item' value' operation ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��124��
+����ջ:value' operation ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��125��
+����ջ:operation ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->compare_opvalue
+
+��126��
+����ջ:compare_op value ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��compare_op-><=
+
+��127��
+����ջ:<= value ; isnull_expr ) block stmts } # 
+����ջ:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��128��
+����ջ:value ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��129��
+����ջ:item value' ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��130��
+����ջ:factor item' value' ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��131��
+����ջ:const item' value' ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��132��
+����ջ:num_const item' value' ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��133��
+����ջ:INT item' value' ; isnull_expr ) block stmts } # 
+����ջ:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��134��
+����ջ:item' value' ; isnull_expr ) block stmts } # 
+����ջ:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��135��
+����ջ:value' ; isnull_expr ) block stmts } # 
+����ջ:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��136��
+����ջ:; isnull_expr ) block stmts } # 
+����ջ:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��137��
+����ջ:isnull_expr ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��isnull_expr->expression
+
+��138��
+����ջ:expression ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��139��
+����ջ:value operation ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��140��
+����ջ:item value' operation ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��141��
+����ջ:factor item' value' operation ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��142��
+����ջ:IDN call_func item' value' operation ) block stmts } # 
+����ջ:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��143��
+����ջ:call_func item' value' operation ) block stmts } # 
+����ջ:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��144��
+����ջ:item' value' operation ) block stmts } # 
+����ջ:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��145��
+����ջ:value' operation ) block stmts } # 
+����ջ:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��146��
+����ջ:operation ) block stmts } # 
+����ջ:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->++
+
+��147��
+����ջ:++ ) block stmts } # 
+����ջ:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��148��
+����ջ:) block stmts } # 
+����ջ:) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��149��
+����ջ:block stmts } # 
+����ջ:{ if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��block->{stmts}
+
+��150��
+����ջ:{ stmts } stmts } # 
+����ջ:{ if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��151��
+����ջ:stmts } stmts } # 
+����ջ:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��152��
+����ջ:stmt stmts } stmts } # 
+����ջ:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->branch_stmt
+
+��153��
+����ջ:branch_stmt stmts } stmts } # 
+����ջ:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��branch_stmt->if(logical_expression)blockresult
+
+��154��
+����ջ:if ( logical_expression ) block result stmts } stmts } # 
+����ջ:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��155��
+����ջ:( logical_expression ) block result stmts } stmts } # 
+����ջ:( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��156��
+����ջ:logical_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��logical_expression->expressionbool_expression
+
+��157��
+����ջ:expression bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��158��
+����ջ:value operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��159��
+����ջ:item value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��160��
+����ջ:factor item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��161��
+����ջ:IDN call_func item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��162��
+����ջ:call_func item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��163��
+����ջ:item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��164��
+����ջ:value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��165��
+����ջ:operation bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->compare_opvalue
+
+��166��
+����ջ:compare_op value bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��compare_op->==
+
+��167��
+����ջ:== value bool_expression ) block result stmts } stmts } # 
+����ջ:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��168��
+����ջ:value bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��169��
+����ջ:item value' bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��170��
+����ջ:factor item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��171��
+����ջ:const item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��172��
+����ջ:num_const item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��173��
+����ջ:INT item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��174��
+����ջ:item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��175��
+����ջ:value' bool_expression ) block result stmts } stmts } # 
+����ջ:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��176��
+����ջ:bool_expression ) block result stmts } stmts } # 
+����ջ:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��bool_expression->lopexpressionbool_expression
+
+��177��
+����ջ:lop expression bool_expression ) block result stmts } stmts } # 
+����ջ:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��lop->&&
+
+��178��
+����ջ:&& expression bool_expression ) block result stmts } stmts } # 
+����ջ:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��179��
+����ջ:expression bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��180��
+����ջ:value operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��181��
+����ջ:item value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��182��
+����ջ:factor item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��183��
+����ջ:IDN call_func item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��184��
+����ջ:call_func item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��185��
+����ջ:item' value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��186��
+����ջ:value' operation bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��187��
+����ջ:operation bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->compare_opvalue
+
+��188��
+����ջ:compare_op value bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��compare_op->==
+
+��189��
+����ջ:== value bool_expression ) block result stmts } stmts } # 
+����ջ:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��190��
+����ջ:value bool_expression ) block result stmts } stmts } # 
+����ջ:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��191��
+����ջ:item value' bool_expression ) block result stmts } stmts } # 
+����ջ:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��192��
+����ջ:factor item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��193��
+����ջ:const item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->FLOAT
+
+��194��
+����ջ:FLOAT item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��195��
+����ջ:item' value' bool_expression ) block result stmts } stmts } # 
+����ջ:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��196��
+����ջ:value' bool_expression ) block result stmts } stmts } # 
+����ջ:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��197��
+����ջ:bool_expression ) block result stmts } stmts } # 
+����ջ:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��bool_expression->$
+
+��198��
+����ջ:) block result stmts } stmts } # 
+����ջ:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��199��
+����ջ:block result stmts } stmts } # 
+����ջ:{ IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��block->{stmts}
+
+��200��
+����ջ:{ stmts } result stmts } stmts } # 
+����ջ:{ IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��201��
+����ջ:stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��202��
+����ջ:stmt stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��203��
+����ջ:type assign_stmt stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->$
+
+��204��
+����ջ:assign_stmt stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��205��
+����ջ:expression ; stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��206��
+����ջ:value operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��207��
+����ջ:item value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��208��
+����ջ:factor item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��209��
+����ջ:IDN call_func item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��210��
+����ջ:call_func item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��211��
+����ջ:item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��212��
+����ջ:value' operation ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��213��
+����ջ:operation ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��214��
+����ջ:equal_op value ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��215��
+����ջ:= value ; stmts } result stmts } stmts } # 
+����ջ:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��216��
+����ջ:value ; stmts } result stmts } stmts } # 
+����ջ:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��217��
+����ջ:item value' ; stmts } result stmts } stmts } # 
+����ջ:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��218��
+����ջ:factor item' value' ; stmts } result stmts } stmts } # 
+����ջ:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��219��
+����ջ:const item' value' ; stmts } result stmts } stmts } # 
+����ջ:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->FLOAT
+
+��220��
+����ջ:FLOAT item' value' ; stmts } result stmts } stmts } # 
+����ջ:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��221��
+����ջ:item' value' ; stmts } result stmts } stmts } # 
+����ջ:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��222��
+����ջ:value' ; stmts } result stmts } stmts } # 
+����ջ:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��223��
+����ջ:; stmts } result stmts } stmts } # 
+����ջ:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��224��
+����ջ:stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��225��
+����ջ:stmt stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��226��
+����ջ:type assign_stmt stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->$
+
+��227��
+����ջ:assign_stmt stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��228��
+����ջ:expression ; stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��229��
+����ջ:value operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��230��
+����ջ:item value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��231��
+����ջ:factor item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��232��
+����ջ:IDN call_func item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��233��
+����ջ:call_func item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��234��
+����ջ:item' value' operation ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��235��
+����ջ:value' operation ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��236��
+����ջ:operation ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��237��
+����ջ:equal_op value ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��238��
+����ջ:= value ; stmts } result stmts } stmts } # 
+����ջ:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��239��
+����ջ:value ; stmts } result stmts } stmts } # 
+����ջ:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��240��
+����ջ:item value' ; stmts } result stmts } stmts } # 
+����ջ:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��241��
+����ջ:factor item' value' ; stmts } result stmts } stmts } # 
+����ջ:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��242��
+����ջ:IDN call_func item' value' ; stmts } result stmts } stmts } # 
+����ջ:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��243��
+����ջ:call_func item' value' ; stmts } result stmts } stmts } # 
+����ջ:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��244��
+����ջ:item' value' ; stmts } result stmts } stmts } # 
+����ջ:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->*factoritem'
+
+��245��
+����ջ:* factor item' value' ; stmts } result stmts } stmts } # 
+����ջ:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��246��
+����ջ:factor item' value' ; stmts } result stmts } stmts } # 
+����ջ:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��247��
+����ջ:const item' value' ; stmts } result stmts } stmts } # 
+����ջ:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��248��
+����ջ:num_const item' value' ; stmts } result stmts } stmts } # 
+����ջ:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��249��
+����ջ:INT item' value' ; stmts } result stmts } stmts } # 
+����ջ:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��250��
+����ջ:item' value' ; stmts } result stmts } stmts } # 
+����ջ:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��251��
+����ջ:value' ; stmts } result stmts } stmts } # 
+����ջ:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��252��
+����ջ:; stmts } result stmts } stmts } # 
+����ջ:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��253��
+����ջ:stmts } result stmts } stmts } # 
+����ջ:} } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->$
+
+��254��
+����ջ:} result stmts } stmts } # 
+����ջ:} } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��255��
+����ջ:result stmts } stmts } # 
+����ջ:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��result->$
+
+��256��
+����ջ:stmts } stmts } # 
+����ջ:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->$
+
+��257��
+����ջ:} stmts } # 
+����ջ:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��258��
+����ջ:stmts } # 
+����ջ:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��259��
+����ջ:stmt stmts } # 
+����ջ:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->iteration_stmt
+
+��260��
+����ջ:iteration_stmt stmts } # 
+����ջ:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��iteration_stmt->while(logical_expression)block
+
+��261��
+����ջ:while ( logical_expression ) block stmts } # 
+����ջ:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��262��
+����ջ:( logical_expression ) block stmts } # 
+����ջ:( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��263��
+����ջ:logical_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��logical_expression->expressionbool_expression
+
+��264��
+����ջ:expression bool_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��265��
+����ջ:value operation bool_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��266��
+����ջ:item value' operation bool_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��267��
+����ջ:factor item' value' operation bool_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��268��
+����ջ:IDN call_func item' value' operation bool_expression ) block stmts } # 
+����ջ:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��269��
+����ջ:call_func item' value' operation bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��270��
+����ջ:item' value' operation bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��271��
+����ջ:value' operation bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��272��
+����ջ:operation bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->compare_opvalue
+
+��273��
+����ջ:compare_op value bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��compare_op->>
+
+��274��
+����ջ:> value bool_expression ) block stmts } # 
+����ջ:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��275��
+����ջ:value bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��276��
+����ջ:item value' bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��277��
+����ջ:factor item' value' bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��278��
+����ջ:const item' value' bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��279��
+����ջ:num_const item' value' bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��280��
+����ջ:INT item' value' bool_expression ) block stmts } # 
+����ջ:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��281��
+����ջ:item' value' bool_expression ) block stmts } # 
+����ջ:) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��282��
+����ջ:value' bool_expression ) block stmts } # 
+����ջ:) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��283��
+����ջ:bool_expression ) block stmts } # 
+����ջ:) { IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��bool_expression->$
+
+��284��
+����ջ:) block stmts } # 
+����ջ:) { IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��285��
+����ջ:block stmts } # 
+����ջ:{ IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��block->{stmts}
+
+��286��
+����ջ:{ stmts } stmts } # 
+����ջ:{ IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��287��
+����ջ:stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��288��
+����ջ:stmt stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��289��
+����ջ:type assign_stmt stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->$
+
+��290��
+����ջ:assign_stmt stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��291��
+����ջ:expression ; stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��292��
+����ջ:value operation ; stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��293��
+����ջ:item value' operation ; stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��294��
+����ջ:factor item' value' operation ; stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��295��
+����ջ:IDN call_func item' value' operation ; stmts } stmts } # 
+����ջ:IDN -- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��296��
+����ջ:call_func item' value' operation ; stmts } stmts } # 
+����ջ:-- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��297��
+����ջ:item' value' operation ; stmts } stmts } # 
+����ջ:-- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��298��
+����ջ:value' operation ; stmts } stmts } # 
+����ջ:-- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��299��
+����ջ:operation ; stmts } stmts } # 
+����ջ:-- ; IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->--
+
+��300��
+����ջ:-- ; stmts } stmts } # 
+����ջ:-- ; IDN = IDN % INT ; } } # 
+ƥ��!
+��301��
+����ջ:; stmts } stmts } # 
+����ջ:; IDN = IDN % INT ; } } # 
+ƥ��!
+��302��
+����ջ:stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmts->stmtstmts
+
+��303��
+����ջ:stmt stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��stmt->typeassign_stmt
+
+��304��
+����ջ:type assign_stmt stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��type->$
+
+��305��
+����ջ:assign_stmt stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��assign_stmt->expression;
+
+��306��
+����ջ:expression ; stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��expression->valueoperation
+
+��307��
+����ջ:value operation ; stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��308��
+����ջ:item value' operation ; stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��309��
+����ջ:factor item' value' operation ; stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��310��
+����ջ:IDN call_func item' value' operation ; stmts } stmts } # 
+����ջ:IDN = IDN % INT ; } } # 
+ƥ��!
+��311��
+����ջ:call_func item' value' operation ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��312��
+����ջ:item' value' operation ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+�����Ƴ�ʽ��item'->$
+
+��313��
+����ջ:value' operation ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+�����Ƴ�ʽ��value'->$
+
+��314��
+����ջ:operation ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+�����Ƴ�ʽ��operation->equal_opvalue
+
+��315��
+����ջ:equal_op value ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+�����Ƴ�ʽ��equal_op->=
+
+��316��
+����ջ:= value ; stmts } stmts } # 
+����ջ:= IDN % INT ; } } # 
+ƥ��!
+��317��
+����ջ:value ; stmts } stmts } # 
+����ջ:IDN % INT ; } } # 
+�����Ƴ�ʽ��value->itemvalue'
+
+��318��
+����ջ:item value' ; stmts } stmts } # 
+����ջ:IDN % INT ; } } # 
+�����Ƴ�ʽ��item->factoritem'
+
+��319��
+����ջ:factor item' value' ; stmts } stmts } # 
+����ջ:IDN % INT ; } } # 
+�����Ƴ�ʽ��factor->IDNcall_func
+
+��320��
+����ջ:IDN call_func item' value' ; stmts } stmts } # 
+����ջ:IDN % INT ; } } # 
+ƥ��!
+��321��
+����ջ:call_func item' value' ; stmts } stmts } # 
+����ջ:% INT ; } } # 
+�����Ƴ�ʽ��call_func->$
+
+��322��
+����ջ:item' value' ; stmts } stmts } # 
+����ջ:% INT ; } } # 
+�����Ƴ�ʽ��item'->%factoritem'
+
+��323��
+����ջ:% factor item' value' ; stmts } stmts } # 
+����ջ:% INT ; } } # 
+ƥ��!
+��324��
+����ջ:factor item' value' ; stmts } stmts } # 
+����ջ:INT ; } } # 
+�����Ƴ�ʽ��factor->const
+
+��325��
+����ջ:const item' value' ; stmts } stmts } # 
+����ջ:INT ; } } # 
+�����Ƴ�ʽ��const->num_const
+
+��326��
+����ջ:num_const item' value' ; stmts } stmts } # 
+����ջ:INT ; } } # 
+�����Ƴ�ʽ��num_const->INT
+
+��327��
+����ջ:INT item' value' ; stmts } stmts } # 
+����ջ:INT ; } } # 
+ƥ��!
+��328��
+����ջ:item' value' ; stmts } stmts } # 
+����ջ:; } } # 
+�����Ƴ�ʽ��item'->$
+
+��329��
+����ջ:value' ; stmts } stmts } # 
+����ջ:; } } # 
+�����Ƴ�ʽ��value'->$
+
+��330��
+����ջ:; stmts } stmts } # 
+����ջ:; } } # 
+ƥ��!
+��331��
+����ջ:stmts } stmts } # 
+����ջ:} } # 
+�����Ƴ�ʽ��stmts->$
+
+��332��
+����ջ:} stmts } # 
+����ջ:} } # 
+ƥ��!
+��333��
+����ջ:stmts } # 
+����ջ:} # 
+�����Ƴ�ʽ��stmts->$
+
+��334��
+����ջ:} # 
+����ջ:} # 
+ƥ��!
+��335��
+����ջ:# 
+����ջ:# 
+�ɹ�!
