@@ -1,8 +1,8 @@
 # 使用文档：
 # 可使用命令为 make,make oclean,make clean
 # make 进行文件的编译运行，生成可执行文件
-# make clean 删除预编译.o文件核和可执行文件
-# make oclean 删除预编译.o文件
+# make clean 删除预编译.o文件核,可执行文件,输出的文本文件
+# make oclean 删除预编译.o文件，输出的文本文件
 
 CC = g++ #C++编译
 CXXFLAGS = -Wall -fexec-charset=UTF-8 -fexec-charset=UTF-8 -std=c++11 #显示警告，输入编码UTF-8,
@@ -21,7 +21,7 @@ $(objects) : %.o : %.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@
 
 
-.PHONY: oclean
+.PHONY: clean
 clean:
 	del $(objects) $(output) project.exe
 oclean:
