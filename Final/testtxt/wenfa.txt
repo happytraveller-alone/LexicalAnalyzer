@@ -4,6 +4,7 @@ type -> int
 type -> char
 type -> float
 type -> void
+type -> string
 type -> $
 args -> type IDN arg
 args -> $

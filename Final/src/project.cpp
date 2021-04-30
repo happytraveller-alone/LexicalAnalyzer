@@ -27,7 +27,6 @@ int main() {
     initNode();
     scanner();
     BraMappingError();
-    printNodeLink();
     printErrorLink();
     // printIdentLink();
     printNode1();

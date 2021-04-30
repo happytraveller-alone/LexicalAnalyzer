@@ -4,13 +4,13 @@
 //关键字
 #define FOR 1
 #define CONTINUE 2
-#define BREAK 3 
+#define BREAK 3
 #define IF 4
 #define ELSE 5
-#define FLOAT 6 
-#define INT 7 //这里的是关键字
+#define FLOAT 6
+#define INT 7
 #define CHAR 8
-#define STR 9 
+#define STR 9
 #define VOID 10
 #define RETURN 11
 #define WHILE 12
@@ -20,7 +20,7 @@
 #define INIT 15
 
 // 常量
-#define int_val  20 
+#define int_val 20
 #define float_val 21
 #define char_val 22
 #define str_val 23
@@ -30,29 +30,28 @@
 #define IDN 30
 #define IDENTIFER_DESC "标志符"
 
-
 //运算符
-#define AND 71                  // &&
-#define OR 72                   // ||
-#define ADD 73                  // +
-#define SUB 74                  // -
-#define MUL 75                  // *
-#define DIV 76                  // /
-#define MOD 77                  // %
-#define ASG 78                  // =
-#define GRT_THAN 79             // >
-#define LES_THAN 80             // < 
-#define EQUAL 81                // ==
-#define LES_EQUAL 82            // <=
-#define GRT_EQUAL 83            // >=
-#define NOT_EQUAL 84            // !=
-#define SELF_ADD 85             // ++
-#define SELF_SUB 86             // --
-#define COMPLETE_ADD 87         // +=
-#define COMPLETE_SUB 88         // -=
-#define COMPLETE_MUL 89         // *=
-#define COMPLETE_DIV 90         // /=
-#define COMPLETE_MOD 91         //%=
+#define AND 71           // &&
+#define OR 72            // ||
+#define ADD 73           // +
+#define SUB 74           // -
+#define MUL 75           // *
+#define DIV 76           // /
+#define MOD 77           // %
+#define ASG 78           // =
+#define GRT_THAN 79      // >
+#define LES_THAN 80      // <
+#define EQUAL 81         // ==
+#define LES_EQUAL 82     // <=
+#define GRT_EQUAL 83     // >=
+#define NOT_EQUAL 84     // !=
+#define SELF_ADD 85      // ++
+#define SELF_SUB 86      // --
+#define COMPLETE_ADD 87  // +=
+#define COMPLETE_SUB 88  // -=
+#define COMPLETE_MUL 89  // *=
+#define COMPLETE_DIV 90  // /=
+#define COMPLETE_MOD 91  //%=
 #define OPE_DESC "运算符"
 
 //限界符
@@ -63,11 +62,9 @@
 #define L_BOUNDER 104    //  {
 #define R_BOUNDER 105    // }
 #define POINTER 106      // .
-#define COMMA 107       // ,
+#define COMMA 107        // ,
 #define SEMI 108         // ;
 #define CLE_OPE_DESC "限界符"
-
-
 
 //错误类型
 #define FLOAT_ERROR "float表示错误"
@@ -91,7 +88,6 @@
 #define R_BOUNDER_ERROR "'}'没有对应项"
 #define R_BOUNDER_ERROR_NUM 10
 
-
 #define _NULL "无"
 
 #define DESCRIBE 4000
@@ -99,12 +95,10 @@
 #define STRING 4002
 #define DIGIT 4003
 
-
 struct NormalNode {
     char content[30];   //内容
     char describe[30];  //词法单元名
     int type;           //种别码
-    int addr;           //入口地址
     int line;           //所在行数
     NormalNode *next;   //下一个节点
 };
@@ -114,17 +108,13 @@ void initOperMapping();
 void initLimitMapping();
 void initAddMap();
 
-    void
-    initNode(); //初始化结点
+void initNode();  //初始化结点
 void createNewNode(const char *content, const char *descirbe, int type,
                    int addr, int line);  //建立新结点
 void createNewError(const char *content, const char *descirbe, int type,
-                    int line);      //建立报
-int createNewIden(const char *content, const char *descirbe, int type, int addr,
-                  int line);
-void printNodeLink();
+                    int line);  //建立报错结点
 void printErrorLink();
-void printIdentLink();
+// void printIdentLink();
 int mystrlen(char *word);
 void preProcess(char *word, int line);
 void close();

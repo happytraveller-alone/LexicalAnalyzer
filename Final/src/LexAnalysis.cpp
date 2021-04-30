@@ -5,8 +5,19 @@
  * @Author: happytraveller-alone
  * @Date: 2021-04-29 23:32:45
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 14:57:55
+ * @LastEditTime: 2021-04-30 16:39:00
  */
+
+/**！！！！！！！！！！！！！！！！！！！！
+ * @notice
+ *更改前请查看该注释
+ *添加函数的注释，如函数完成情况为DONE，即无需更改
+ *需更改完成情况为TODO的函数，同时在函数内部添加部分语句的标注
+ *若确定函数更改完成，更改完成作者为自己，并修改时间（本次不用，默认为今天）
+ *
+ *
+ *
+ **/
 #include "LexAnalysis.h"
 
 #include <stdio.h>
@@ -29,38 +40,33 @@ int rightBig = 0;            //
 int lineBra[6][1000] = {0};  //
 int static_iden_number = 0;  //
 
-fstream filecifa;
-//
-NormalNode *normalHead;  //
+fstream filecifa;  //定义输出的词法文件
 
-//
+NormalNode *normalHead;  //定义识别TOKEN表的首结点
+
+//定义报错的TOKEN结构体
 struct ErrorNode {
-    char content[30];   //
-    char describe[30];  //
-    int type;
-    int line;         //
-    ErrorNode *next;  //
+    char content[30];   //定义未识别TOKEN内容
+    char describe[30];  //定义未识别TOKEN描述
+    int type;           //定义未识别TOKEN类型
+    int line;           //定义未识别TOKEN的行数
+    ErrorNode *next;    //定义指向下一个未识别TOKEN的指针
 };
+ErrorNode *errorHead;  //定义表头
 
-ErrorNode *errorHead;  //
+vector<pair<const char *, int> > keyMap;    //定义关键字表
+vector<pair<const char *, int> > operMap;   //定义数学运算符号表
+vector<pair<const char *, int> > limitMap;  //定义限界符号表
+vector<pair<const char *, int> > AddMap;    //定义后续添加的表
 
-//
-struct IdentiferNode {
-    char content[30];     //
-    char describe[30];    //
-    int type;             //
-    int addr;             //
-    int line;             //
-    IdentiferNode *next;  //
-};
-IdentiferNode *idenHead;  //
-
-vector<pair<const char *, int> > keyMap;    //
-vector<pair<const char *, int> > operMap;   //
-vector<pair<const char *, int> > limitMap;  //
-vector<pair<const char *, int> > AddMap;    //
-
-// C
+/*
+ *函数名称：initKeyMapping
+ *参数：无
+ *实现功能：初始化关键字Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initKeyMapping() {
     keyMap.clear();
     keyMap.push_back(make_pair("break", BREAK));
@@ -77,7 +83,14 @@ void initKeyMapping() {
     keyMap.push_back(make_pair("string", STR));
 }
 
-//初始化数学运算符号表
+/*
+ *函数名称：initOperMapping
+ *参数：无
+ *实现功能：初始化数学运算符号Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initOperMapping() {
     operMap.clear();
     operMap.push_back(make_pair("*", MUL));
@@ -103,7 +116,14 @@ void initOperMapping() {
     operMap.push_back(make_pair("%=", COMPLETE_MOD));
 }
 
-//
+/*
+ *函数名称：initLimitMapping
+ *参数：无
+ *实现功能：初始化界符号Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initLimitMapping() {
     limitMap.clear();
     limitMap.push_back(make_pair("(", LEFT_BRA));
@@ -117,7 +137,14 @@ void initLimitMapping() {
     limitMap.push_back(make_pair(";", SEMI));
 }
 
-// map
+/*
+ *函数名称：initAddMap
+ *参数：无
+ *实现功能：初始化常量类型符号Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void initAddMap() {
     AddMap.clear();
     AddMap.push_back(make_pair("STR", str_val));
@@ -128,7 +155,14 @@ void initAddMap() {
     AddMap.push_back(make_pair("IDN", IDN));
 }
 
-//
+/*
+ *函数名称：initNode
+ *参数：无
+ *实现功能：初始化常量类型符号Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：TODO:
+ */
 void initNode() {
     normalHead = new NormalNode();
     strcpy(normalHead->content, "");
@@ -143,16 +177,16 @@ void initNode() {
     strcpy(errorHead->describe, "");
     errorHead->line = -1;
     errorHead->next = NULL;
-
-    idenHead = new IdentiferNode();
-    strcpy(idenHead->content, "");
-    strcpy(idenHead->describe, "");
-    idenHead->type = -1;
-    idenHead->addr = -1;
-    idenHead->line = -1;
-    idenHead->next = NULL;
 }
 
+/*
+ *函数名称：createNewNode
+ *参数：
+ *实现功能：
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：TODO:
+ */
 void createNewNode(const char *content, const char *descirbe, int type,
                    int addr, int line) {
     NormalNode *p = normalHead;
@@ -172,6 +206,14 @@ void createNewNode(const char *content, const char *descirbe, int type,
     p->next = temp;
 }
 
+/*
+ *函数名称：createNewError
+ *参数：无
+ *实现功能：初始化常量类型符号Map
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：TODO:
+ */
 void createNewError(const char *content, const char *descirbe, int type,
                     int line) {
     ErrorNode *p = errorHead;
@@ -188,32 +230,14 @@ void createNewError(const char *content, const char *descirbe, int type,
     p->next = temp;
 }
 
-int createNewIden(const char *content, const char *descirbe, int type, int addr,
-                  int line) {
-    IdentiferNode *p = idenHead;
-    IdentiferNode *temp = new IdentiferNode();
-    int flag = 0;
-    int addr_temp = -2;
-    while (p->next != NULL) {
-        if (strcmp(content, p->next->content) == 0) {
-            flag = 1;
-            addr_temp = p->next->addr;
-        }
-        p = p->next;
-    }
-    if (flag == 0) {
-        addr_temp = ++static_iden_number;
-    }
-    strcpy(temp->content, content);
-    strcpy(temp->describe, descirbe);
-    temp->type = type;
-    temp->addr = addr_temp;
-    temp->line = line;
-    temp->next = NULL;
-    p->next = temp;
-    return addr_temp;
-}
-
+/*
+ *函数名称：printNode1
+ *参数：无
+ *实现功能：输出打印识别到的TOKEN
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void printNode1() {
     filecifa.open("OutputFile\\Filecifa.txt", ios::out);
     filecifa << "TOKEN:" << endl << "[ ";
@@ -246,6 +270,14 @@ void printNode1() {
     filecifa.close();
 }
 
+/*
+ *函数名称：printNode2
+ *参数：无
+ *实现功能：输出打印识别到的TOKEN
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void printNode2() {
     NormalNode *p = normalHead;
     p = p->next;
@@ -275,12 +307,21 @@ void printNode2() {
     filecifa.close();
 }
 
+/*
+ *函数名称：printNodeLink
+ *参数：无
+ *实现功能：输出打印识别到的TOKEN的详细信息
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void printNodeLink() {
     fstream Nodelink;
     Nodelink.open("OutputFile\\TokenAnalysis.txt", ios::out);
     NormalNode *p = normalHead;
     p = p->next;
-    Nodelink << "***********************分析表************************" << endl;
+    Nodelink << "***********************词法分析表************************"
+             << endl;
     Nodelink << setw(8) << "内容" << setw(10) << "描述" << setw(11) << "种别码"
              << setw(10) << "地址" << setw(8) << "行号" << endl;
     while (p != NULL) {
@@ -298,6 +339,14 @@ void printNodeLink() {
     Nodelink.close();
 }
 
+/*
+ *函数名称：printErrorLink
+ *参数：无
+ *实现功能：输出打印未识别到的TOKEN的详细信息
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void printErrorLink() {
     fstream Errorlink;
     Errorlink.open("OutputFile\\ErrorAnalysis.txt", ios::out);
@@ -316,25 +365,14 @@ void printErrorLink() {
     Errorlink.close();
 }
 
-// void printIdentLink() {
-//     IdentiferNode *p = idenHead;
-//     p = p->next;
-//     cout << "*****************标志符表*******************" << endl;
-//     cout << setw(30) << "Token" << setw(10) << "Describle"
-//          << "\t"
-//          << "Species number"
-//          << "\t"
-//          << "Adress"
-//          << "\t"
-//          << "Line" << endl;
-//     while (p != NULL) {
-//         cout << setw(30) << p->content << setw(10) << p->describe << "\t"
-//              << p->type << "\t" << p->addr << "\t" << p->line << endl;
-//         p = p->next;
-//     }
-//     cout << endl << endl;
-// }
-
+/*
+ *函数名称：mystrlen
+ *参数：char* word 字符指针
+ *实现功能：获取一个完整的TOKEN
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int mystrlen(char *word) {
     if (*word == '\0') {
         return 0;
@@ -343,12 +381,28 @@ int mystrlen(char *word) {
     }
 }
 
+/*
+ *函数名称：close
+ *参数：无
+ *实现功能：删除所有的表头
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void close() {
     // delete idenHead;
     // delete errorHead;
     // delete normalHead;
 }
 
+/*
+ *函数名称：seekKey
+ *参数：TOKEN的起始字符指针
+ *实现功能：进入关键字表进行查询，返回种别号，默认标识符
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int seekKey(char *word) {
     for (int i = 0; i < int(keyMap.size()); i++) {
         if (strcmp(word, keyMap[i].first) == 0) {
@@ -358,13 +412,20 @@ int seekKey(char *word) {
     return IDN;
 }
 
+/*
+ *函数名称：scanner
+ *参数：无
+ *实现功能：打开测试文件，逐行读取字符获取TOKEN，并根据键值表查找，归类为终结符表和非终结符表并输出
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 void scanner() {
-    // char filename[30];
     char ch;
-    char array[30];  // 30
+    char array[30];
     char *word;
     int i;
-    int line = 1;  //
+    int line = 1;
 
     FILE *infile;
     infile = fopen("testtxt\\test.txt", "r");
@@ -375,7 +436,6 @@ void scanner() {
     ch = fgetc(infile);
     while (ch != EOF) {
         i = 0;
-        //,è
         if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == '_') {
             while ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
                    (ch >= '0' && ch <= '9') || ch == '_') {
@@ -389,8 +449,6 @@ void scanner() {
             if (seekTemp != IDN) {
                 createNewNode(word, KEY_DESC, seekTemp, -1, line);
             } else {
-                int addr_tmp =
-                    createNewIden(word, IDENTIFER_DESC, seekTemp, -1, line);
                 createNewNode(word, IDENTIFER_DESC, seekTemp, addr_tmp, line);
             }
             fseek(infile, -1L, SEEK_CUR);  //
@@ -655,6 +713,14 @@ void scanner() {
     }
 }
 
+/*
+ *函数名称：BraMappingError
+ *参数：无
+ *实现功能：
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：TODO:
+ */
 void BraMappingError() {
     if (leftSmall != rightSmall) {
         int i = (leftSmall > rightSmall) ? (leftSmall - rightSmall)
