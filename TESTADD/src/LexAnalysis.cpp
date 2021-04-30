@@ -5,7 +5,7 @@
  * @Author: 王越 谢远峰 张一鸣
  * @Date: 2021-04-22
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 21:03:38
+ * @LastEditTime: 2021-04-30 20:11:14
  */
 #include "LexAnalysis.h"
 
@@ -29,7 +29,7 @@ int rightBig = 0;            //
 int lineBra[6][1000] = {0};  //
 int static_iden_number = 0;  //模拟标志符的地址
 fstream filecifa;            //定义输出的词法文件
-
+ 
 NormalNode *normalHead;  //定义识别TOKEN表的首结点
 
 //定义报错的TOKEN结构体
@@ -299,7 +299,8 @@ void printNode1() {
                 filecifa << "STRING, ";
                 break;
             case IDN:
-                if (!strcmp(p->content, "main"))
+                cout<<p->content<<endl;
+                if(!strcmp(p->content,"main"))
                     filecifa << "main, ";
                 else
                     filecifa << "IDN, ";
@@ -409,22 +410,6 @@ void printErrorLink() {
     Errorlink.close();
 }
 
-void printIdentLink() {
-    fstream IdentLink;
-    IdentLink.open("OutputFile\\IdenList.txt", ios::out);
-    IdentiferNode *p = idenHead;
-    p = p->next;
-    IdentLink << "***********************符号表************************"
-              << endl;
-    IdentLink << setw(8) << "内容" << setw(10) << "描述" << setw(11) << "种别码"
-              << setw(10) << "地址" << setw(8) << "行号" << endl;
-    while (p != NULL) {
-        IdentLink << setw(8) << p->content << setw(10) << p->describe
-                  << setw(10) << p->type << setw(15) << p->line << endl;
-        p = p->next;
-    }
-    IdentLink << endl;
-}
 /*
  *函数名称：mystrlen
  *参数：char* word 字符指针

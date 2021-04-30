@@ -1,0 +1,30 @@
+TOKEN:
+[ void, main, (, ), {, int, IDN, =, INT, ;, while, (, IDN, <=, INT, ), {, IDN, =, IDN, +, INT, ;, }, }, ]
+
+
+      void         <VOID,_>
+      main         <IDN,main>
+         (         <SE,_>
+         )         <SE,_>
+         {         <SE,_>
+       int         <INT,_>
+         i         <IDN,i>
+         =         <OP,=>
+         2         <2,_>
+         ;         <SE,_>
+     while         <WHILE,_>
+         (         <SE,_>
+         i         <IDN,i>
+        <=         <OP,<=>
+         4         <4,_>
+         )         <SE,_>
+         {         <SE,_>
+         i         <IDN,i>
+         =         <OP,=>
+         i         <IDN,i>
+         +         <OP,+>
+         1         <1,_>
+         ;         <SE,_>
+         }         <SE,_>
+         }         <SE,_>
+

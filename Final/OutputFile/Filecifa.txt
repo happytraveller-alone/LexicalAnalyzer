@@ -1,5 +1,5 @@
 TOKEN:
-[ void, IDN, (, ), {, string, IDN, =, STRING, ;, char, IDN, =, CHAR, ;, float, IDN, =, FLOAT, ;, int, IDN, =, INT, ;, for, (, ;, IDN, <=, INT, ;, IDN, ++, ), {, if, (, IDN, ==, INT, &&, IDN, ==, FLOAT, ), {, IDN, =, FLOAT, ;, IDN, =, IDN, *, INT, ;, }, }, while, (, IDN, >, INT, ), {, IDN, --, ;, IDN, =, IDN, %, INT, ;, }, }, ]
+[ void, main, (, ), {, string, IDN, =, STRING, ;, char, IDN, =, CHAR, ;, float, IDN, =, FLOAT, ;, int, IDN, =, INT, ;, for, (, ;, IDN, <=, INT, ;, IDN, ++, ), {, if, (, IDN, ==, INT, &&, IDN, ==, FLOAT, ), {, IDN, =, FLOAT, ;, IDN, =, IDN, *, INT, ;, }, }, while, (, IDN, >, INT, ), {, IDN, --, ;, IDN, =, IDN, %, INT, ;, }, }, ]
 
 
       void         <VOID,_>
