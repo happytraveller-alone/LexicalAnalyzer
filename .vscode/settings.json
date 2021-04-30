@@ -121,4 +121,9 @@
             "borderRadius": "2px",
         }
     ],
+    "editor.rulers": [
+    
+    ],
+    "editor.wordWrap": "on",
+    "files.encoding": "gb2312",
 }

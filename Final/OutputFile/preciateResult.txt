@@ -1,0 +1,54 @@
+第1步
+符号栈:S # 
+输入栈:void IDN ( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：S->func
+
+第2步
+符号栈:func # 
+输入栈:void IDN ( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：func->typeIDN(args)func_body
+
+第3步
+符号栈:type IDN ( args ) func_body # 
+输入栈:void IDN ( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：type->void
+
+第4步
+符号栈:void IDN ( args ) func_body # 
+输入栈:void IDN ( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+匹配!
+第5步
+符号栈:IDN ( args ) func_body # 
+输入栈:IDN ( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+匹配!
+第6步
+符号栈:( args ) func_body # 
+输入栈:( ) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+匹配!
+第7步
+符号栈:args ) func_body # 
+输入栈:) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：args->$
+
+第8步
+符号栈:) func_body # 
+输入栈:) { wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+匹配!
+第9步
+符号栈:func_body # 
+输入栈:{ wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：func_body->block
+
+第10步
+符号栈:block # 
+输入栈:{ wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+所用推出式：block->{stmts}
+
+第11步
+符号栈:{ stmts } # 
+输入栈:{ wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+匹配!
+第12步
+符号栈:stmts } # 
+输入栈:wrong IDN ; int IDN = INT ; int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; IDN = IDN ; } } # 
+Error

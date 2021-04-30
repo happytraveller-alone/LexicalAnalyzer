@@ -1,0 +1,9 @@
+void main(){
+   string Atest;
+   int i = 2;
+   int w_y = 0;
+   while(i <= 4){
+       i = i+1;
+        w_y =  i;
+}
+}

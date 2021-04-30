@@ -36,6 +36,14 @@ int connectFirst[Max_Length];  //将某些First集结合起来的集合
 int followVisit[Max_Proc];  //记录某非终结符的Follow集是否已经求过
 int followRecu[Max_Proc];   //在求Follow集时使用的防治递归的集合
 
+// 构造预测分析表
+int select[Max_Proc][Max_Length];
+int M[Max_NonTer][Max_Ter][Max_Length2];
+
+extern NormalNode *normalHead;  //首结点
+
+fstream resultfile;
+
 // extern的部分代表可能出现的终结符和其编号,extern表示变量可能出现在别的文件中
 extern vector<pair<const char *, int> > keyMap;
 extern vector<pair<const char *, int> > operMap;
@@ -47,7 +55,6 @@ vector<pair<const char *, int> > terMap;  //终结符映射表,不可重复的
 vector<pair<const char *, int> >
     specialMap;  //文法中的特殊符号映射表，包括-> | $(空)
 
-// DONE:
 // 对文法中的约定符号进行处理->, 空($)、#
 void initSpecialMapping() {
     specialMap.clear();
@@ -56,7 +63,6 @@ void initSpecialMapping() {
     specialMap.push_back(make_pair("#", GRAMMAR_SPECIAL));
 }
 
-// DONE:
 // ok 动态生成非终结符放入map，在基点的基础上，确保不和终结符冲突，返回syn
 int dynamicNonTer(char *word) {
     int i = 0;
@@ -81,7 +87,7 @@ int dynamicNonTer(char *word) {
     return dynamicNum;
 }
 
-// DONE:
+// ok
 // 判断文法中提取的符号是不是终结符，是的话存入map返回syn，否则调用dynamicNoter处理非终结符
 int seekCodeNum(char *word) {
     //处理文法中的特殊符号
@@ -127,13 +133,11 @@ int seekCodeNum(char *word) {
     return dynamicNonTer(word);
 }
 
-// DONE:
 // 通过编号匹配内容
-// 实现成功
 const char *searchMapping(int num) {
     //标志符
     if (num == IDN) {
-        return "id";
+        return "IDN";
     }
     //处理文法中的特殊符号
     for (int i = 0; i < int(specialMap.size()); i++) {
@@ -156,7 +160,7 @@ const char *searchMapping(int num) {
     return "wrong";
 }
 
-// TODO: ADD something
+// ok
 // 读取处理文法，将产生式拆分以后存入到了proc中输出，并且填入了终结符和非终结符MAP输出
 void initGrammer() {
     FILE *infile;
@@ -168,7 +172,7 @@ void initGrammer() {
     int line = 1;
     int count = 0;  //是文法读入过程中当前行读到了第几个文法单元
     // int orNum = 0;
-    infile = fopen("wenfa.txt", "r");
+    infile = fopen("testtxt\\wenfa.txt", "r");
     if (!infile) {
         printf("文法打开失败！\n");
         return;
@@ -179,17 +183,18 @@ void initGrammer() {
 
     memset(proc, -1, sizeof(proc));
 
-    /*FIRST集所需进行的初始化*/
     memset(first, -1, sizeof(first));
     memset(firstVisit, 0, sizeof(firstVisit));  //非终结符的first集还未求过
     memset(EmptyStore, -1, sizeof(EmptyStore));
     memset(emptyRecu, -1, sizeof(emptyRecu));
 
-    /*FOLLOW集所需进行的初始化*/
     memset(follow, -1, sizeof(follow));
     memset(connectFirst, -1, sizeof(connectFirst));
     memset(followVisit, 0, sizeof(followVisit));  //非终结符的follow集还未求过
     memset(followRecu, -1, sizeof(followRecu));
+
+    memset(select, -1, sizeof(select));
+    memset(M, -1, sizeof(M));
 
     ch = fgetc(infile);
     i = 0;
@@ -215,20 +220,36 @@ void initGrammer() {
         if (codeNum != 0) {
             count++;
             proc[line][count] =
-                codeNum;  //将存字符存在产生式数组中，此时的line是txt中文法的line
+                codeNum;  //将此字符存在产生式数组中，此时的line是txt中文法的line
         }
         //原本需要回退一个字符，由于是冗余字符，不回退
         if (ch == '\n') {  //一行读完以后才需要进行拆分工作
             count = 0;
+            // orNum = 0;
             line++;
             ch = fgetc(infile);
         }
     }
     procNum = line;
 
+    fstream outfile0;
+    outfile0.open("OutputFile\\grammar.txt", ios::out);
+    outfile0 << "***************Grammar Table******************" << endl;
+    for (int i = 1; i <= line; i++) {
+        for (int j = 1; j < Max_Length; j++) {
+            if (proc[i][j] != -1) {
+                outfile0 << searchMapping(proc[i][j]);
+            } else {
+                break;
+            }
+        }
+        outfile0 << endl;
+    }
+    outfile0.close();
+
     // 输出终结符到文件
     fstream outfile1;
-    outfile1.open("terminal.txt", ios::out);
+    outfile1.open("OutputFile\\terminal.txt", ios::out);
     outfile1 << "terminal list:" << endl;
     for (int i = 0; i < int(terMap.size()); i++) {
         outfile1 << terMap[i].first << endl;
@@ -237,7 +258,7 @@ void initGrammer() {
 
     // 输出非终结符到文件
     fstream outfile2;
-    outfile2.open("nonterminal.txt", ios::out);
+    outfile2.open("OutputFile\\nonterminal.txt", ios::out);
     outfile2 << "nonterminal list:" << endl;
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         outfile2 << nonTerMap[i].first << endl;
@@ -245,11 +266,6 @@ void initGrammer() {
     outfile2.close();
 }
 
-/*
- *生成FIRST集合
- */
-
-// DONE:
 //判断某个标号是不是终结符的标号，1代表是，0代表否
 int inTer(int n) {
     for (int i = 0; i < int(terMap.size()); i++) {
@@ -259,8 +275,6 @@ int inTer(int n) {
     }
     return 0;
 }
-
-// DONE:
 //判断某个标号是不是非终结符的标号,1代表是，0代表否
 int inNonTer(int n) {
     for (int i = 0; i < int(nonTerMap.size()); i++) {
@@ -271,7 +285,6 @@ int inNonTer(int n) {
     return 0;
 }
 
-// DONE:
 //判断某个标号在不在此时的empty集中，1代表是，0代表否
 int inEmpty(int n) {
     //当前Empty集的长度
@@ -289,8 +302,7 @@ int inEmpty(int n) {
     return 0;
 }
 
-// DONE:
-//判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
+//????判断某个标号在不在此时的emptyRecu集中，1代表是，0代表否
 int inEmptyRecu(int n) {
     //当前Empty集的长度
     int emptyLength = 0;
@@ -307,8 +319,7 @@ int inEmptyRecu(int n) {
     return 0;
 }
 
-// DONE:
-// TODO: 写清楚内部逻辑
+//？？？？？？？？？
 //将s集合合并至d集合中，type = 1代表包括空（$）,type = 2代表不包括空
 void merge(int *d, int *s, int type) {
     int flag = 0;
@@ -341,7 +352,6 @@ void merge(int *d, int *s, int type) {
     }
 }
 
-// DONE:
 //先求出能直接推出空的非终结符集合
 //局限性：A->BC B->空 C->空 无法得到A 能推出空 产生式右端只有一个单元
 void nullSet(int currentNum) {
@@ -358,7 +368,6 @@ void nullSet(int currentNum) {
     }
 }
 
-// DONE:
 //判断该非终结符是否能推出空，但终结符也可能传入，但没关系
 int reduNull(int currentNon) {
     int temp[2];
@@ -417,21 +426,22 @@ int reduNull(int currentNon) {
     return 0;
 }
 
-// DONE:
 //求first集，传入的参数是在非终结符集合中的序号
 void firstSet(int i) {
     int k = 0;
     int currentNon = nonTerMap[i].second;  //当前的非终结符标号
     //依次遍历全部产生式
-    // cout<<nonTerMap[i].first<<endl;
+    // cout<<"         "<<nonTerMap[i].first<<endl;
     for (int j = 1; j <= procNum; j++)  // j代表第几个产生式
     {
         //找到该非终结符的产生式
         if (currentNon == proc[j][1])  //注意从1开始
         {
+            // if (i == 12) cout << nonTerMap[i].first << endl;
             //当右边的第一个是终结符或者空的时候
             if (inTer(proc[j][3]) == 1 || proc[j][3] == GRAMMAR_NULL) {
                 //并入当前非终结符的first集中
+                // if (i == 12) cout << "              " << proc[j][3] << endl;
                 int temp[2];
                 temp[0] = proc[j][3];
                 temp[1] = -1;  //其实是模拟字符串操作的手段
@@ -515,17 +525,16 @@ void firstSet(int i) {
     firstVisit[i] = 1;
 }
 
-// DONE:
+// first构造
 void First() {
     //先求出能直接推出空的非终结符集合
     nullSet(GRAMMAR_NULL);  // OK
-    printf("\n");
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         firstSet(i);
     }
 
     fstream outfile3;
-    outfile3.open("first.txt", ios::out);
+    outfile3.open("OutputFile\\first.txt", ios::out);
     outfile3 << "first list:" << endl;
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         outfile3 << "First[" << nonTerMap[i].first << "] = ";
@@ -540,26 +549,7 @@ void First() {
     outfile3.close();
 }
 
-/*
- *生成FOLLOW集合
- */
-
-// NOTE:NEED TO READ
-//判断某个标号是不是在产生式的右边
-int inProcRight(int n, int *p) {
-    //注意这里默认是从3开始
-    for (int i = 3;; i++) {
-        if (p[i] == -1) {
-            break;
-        }
-        if (p[i] == n) {
-            return 1;
-        }
-    }
-    return 0;
-}
-
-// NOTE:NEED TO READ
+//判断某个标号在不在此时的followRecu集中，1代表是，0代表否
 int inFollowRecu(int n) {
     int followLength = 0;
     for (followLength = 0;; followLength++) {
@@ -575,7 +565,20 @@ int inFollowRecu(int n) {
     return 0;
 }
 
-// NOTE:NEED TO READ
+//判断某个标号是不是在产生式的右边
+int inProcRight(int n, int *p) {
+    //注意这里默认是从3开始
+    for (int i = 3;; i++) {
+        if (p[i] == -1) {
+            break;
+        }
+        if (p[i] == n) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 //将First结合起来的函数
 void connectFirstSet(int *p) {
     int i = 0;
@@ -675,19 +678,17 @@ void connectFirstSet(int *p) {
     }
 }
 
-// NOTE:NEED TO READ
-// FOLLOE集合生成
 void followSet(int i) {
     int currentNon = nonTerMap[i].second;  //当前的非终结符标号
     int temp[2];
     int result = 1;
     temp[0] = currentNon;
     temp[1] = -1;
-    merge(followRecu, temp, 1);  // NOTE:将当前标号加入防递归集合中
+    merge(followRecu, temp, 1);  //将当前标号加入防递归集合中
 
     //如果当前符号就是开始符号,把特殊符号加入其Follow集中
-    if (proc[1][1] == currentNon) {  //?
-        temp[0] = GRAMMAR_SPECIAL;   //这个也是要处理的
+    if (proc[1][1] == currentNon) {
+        temp[0] = GRAMMAR_SPECIAL;  //这个也是要处理的
         temp[1] = -1;
         merge(follow[i], temp, 1);
     }
@@ -768,30 +769,15 @@ void followSet(int i) {
     followVisit[i] = 1;
 }
 
-// NOTE:NEED TO READ
 //求所有非终结符的Follow集
 void Follow() {
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         followRecu[0] = -1;
         followSet(i);
     }
-    // printf(
-    //     "\n************************************Follow集************************"
-    //     "******\n\n");
-    // for (int i = 0; i < int(nonTerMap.size()); i++) {
-    //     printf("Follow[%s] = ", nonTerMap[i].first);
-    //     for (int j = 0;; j++) {
-    //         if (follow[i][j] == -1) {
-    //             break;
-    //         }
-    //         printf("%s ", searchMapping(follow[i][j]));
-    //     }
-    //     printf("\n");
-    // }
 
     fstream outfile4;
-    outfile4.open("follow.txt", ios::out);
-    outfile4 << "follow list:" << endl;
+    outfile4.open("OutputFile\\follow.txt", ios::out);
     for (int i = 0; i < int(nonTerMap.size()); i++) {
         outfile4 << "Follow[" << nonTerMap[i].first << "] = ";
         for (int j = 0;; j++) {
@@ -803,4 +789,302 @@ void Follow() {
         outfile4 << endl;
     }
     outfile4.close();
+}
+
+//求已经分解的产生式对应的Select集,注意Select集中不能含有空($),因而Type=2
+void Select() {
+    for (int i = 1; i <= procNum; i++)  // j代表第几个产生式
+    {
+        int leftNum = proc[i][1];  //产生式的左边
+        int h = 0;
+        int result = 1;
+        for (h = 0; h < int(nonTerMap.size()); h++) {
+            if (nonTerMap[h].second == leftNum) {
+                break;
+            }
+        }
+
+        int rightLength = 1;
+        for (rightLength = 1;; rightLength++) {
+            if (proc[i][rightLength + 2] == -1) {
+                break;
+            }
+        }
+        rightLength--;
+        //如果右部推出式的长度为1并且是空,select[i-1] = follow[左边]
+        if (rightLength == 1 && proc[i][rightLength + 2] == GRAMMAR_NULL) {
+            merge(select[i - 1], follow[h], 2);
+        }
+        //如果右部不是空的时候,select[i-1] = first[右部全部]
+        //如果右部能够推出空，select[i-1] = first[右部全部] ^ follow[左边]
+        else {
+            int temp2[Max_Length];
+            int n = 0;
+            memset(temp2, -1, sizeof(temp2));
+            for (n = 1; n <= rightLength; n++) {
+                temp2[n - 1] = proc[i][n + 2];
+            }
+            temp2[rightLength] = -1;
+            connectFirst[0] = -1;  //应该重新初始化一下
+            connectFirstSet(temp2);
+            merge(select[i - 1], connectFirst, 2);
+            for (n = 1; n <= rightLength; n++) {
+                emptyRecu[0] = -1;
+                result *= reduNull(proc[i][n + 2]);
+            }
+            //如果右部能推出空，将follow[左边]并入select[i-1]中
+            if (result == 1) {
+                merge(select[i - 1], follow[h], 2);
+            }
+        }
+    }
+    // printf(
+    //     "\n************************************Select集************************"
+    //     "******\n\n");
+    // for (int i = 0; i < procNum; i++) {
+    //     printf("Select[%d] = ", i + 1);
+    //     for (int j = 0;; j++) {
+    //         if (select[i][j] == -1) {
+    //             break;
+    //         }
+    //         printf("%s ", searchMapping(select[i][j]));
+    //     }
+    //     printf("\n");
+    // }
+}
+//输出预测分析表
+void MTable() {
+    fstream outfile;
+    outfile.open("OutputFile\\preciateTable.txt", ios::out);
+
+    for (int i = 0; i < procNum; i++) {
+        int m = 0;  //非终结符的序号
+        for (int t = 0; t < int(nonTerMap.size()); t++) {
+            if (nonTerMap[t].second == proc[i + 1][1]) {
+                m = t;
+                break;
+            }
+        }
+
+        for (int j = 0;; j++) {
+            if (select[i][j] == -1) {
+                break;
+            }
+            for (int k = 0; k < int(terMap.size()); k++) {
+                if (terMap[k].second == select[i][j]) {
+                    int n = 0;
+                    for (n = 1; n <= Max_Length2; n++) {
+                        M[m][k][n - 1] = proc[i + 1][n];
+                        if (proc[i + 1][n] == -1) {
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    outfile
+        << "********************Predictive Analysis Table********************"
+        << endl;
+    for (int i = 0; i < int(nonTerMap.size()); i++) {
+        for (int j = 0; j < int(terMap.size()); j++) {
+            outfile << "M[" << nonTerMap[i].first << "][" << terMap[j].first
+                    << "] = ";
+            // printf("M[%s][%s] = ",nonTerMap[i].first,terMap[j].first);
+            for (int k = 0;; k++) {
+                if (M[i][j][k] == -1) {
+                    break;
+                }
+                outfile << searchMapping(M[i][j][k]);
+                // printf("%s ",searchMapping(M[i][j][k]));
+            }
+            outfile << endl;
+            // printf("\n");
+        }
+        outfile << endl << endl;
+        // printf("\n\n");
+    }
+    outfile.close();
+}
+
+void InitStack(SeqStack *S) /*初始化顺序栈*/
+{
+    S->top = -1;
+}
+int Push(SeqStack *S, int x) /*进栈*/
+{
+    if (S->top == Stack_Size - 1) return 0;
+    S->top++;
+    S->elem[S->top] = x;
+    return 1;
+}
+int Pop(SeqStack *S) /*出栈*/
+{
+    if (S->top == -1)
+        return 0;
+    else {
+        S->top--;
+        return 1;
+    }
+}
+int GetTop(SeqStack *S, int *x) /*取栈顶元素*/
+{
+    if (S->top == -1)
+        return 0;
+    else {
+        *x = S->elem[S->top];
+        return 1;
+    }
+}
+void ShowStack1(SeqStack *S) /*显示栈的字符，先输出栈底元素*/
+{
+    int i;
+    for (i = S->top; i >= 0; i--) {
+        // printf("%s ",searchMapping(S->elem[i]));
+        resultfile << searchMapping(S->elem[i]) << " ";
+    }
+}
+void ShowStack2(SeqStack *S) /*显示栈的字符，先输出栈顶元素*/
+{
+    int i;
+    for (i = S->top; i >= 0; i--) {
+        // printf("%s ",searchMapping(S->elem[i]));
+        resultfile << searchMapping(S->elem[i]) << " ";
+    }
+}
+//分析源程序
+void Analysis() {
+    //分析结果输出
+    resultfile.open("OutputFile\\preciateResult.txt", ios::out);
+
+    SeqStack s1, s2;  // 符号栈中间形式 和 输入串
+    int c1, c2;
+    int i = 0;
+    int reserve[Stack_Size];  //符号栈反向入栈
+    NormalNode *p = normalHead;
+    int s1Length = 0;
+    memset(reserve, -1, sizeof(reserve));
+
+    InitStack(&s1); /*初始化符号栈和输入串*/
+    InitStack(&s2);
+    Push(&s1, GRAMMAR_SPECIAL);
+    Push(&s1, proc[1][1]);
+    Push(&s2, GRAMMAR_SPECIAL);
+
+    p = p->next;
+    while (p != NULL) {
+        reserve[i++] = p->type;
+        p = p->next;
+    }
+    //求左边栈的长度
+    for (s1Length = 0;; s1Length++) {
+        if (reserve[s1Length] == -1) {
+            break;
+        }
+    }
+    //反向入栈
+    for (i = s1Length; i > 0; i--) {
+        Push(&s2, reserve[i - 1]);
+    }
+
+    for (i = 0;; i++) /*分析*/
+    {
+        // getch();
+        int flag = 0;
+        int h1;
+        int h2;
+        // printf("第%d步：\n",i+1);  /*输出该步的相应信息*/
+        resultfile << "第" << i + 1 << "步" << endl;
+        // printf("符号栈:");
+        resultfile << "符号栈:";
+        ShowStack1(&s1);
+        // printf("\n");
+        resultfile << endl;
+        // printf("输入栈:");
+        resultfile << "输入栈:";
+        ShowStack2(&s2);
+        // printf("\n");
+        resultfile << endl;
+
+        GetTop(&s1, &c1); /*取栈顶元素，记为c1，c2*/
+        GetTop(&s2, &c2);
+        if (c1 == GRAMMAR_SPECIAL &&
+            c2 == GRAMMAR_SPECIAL) /*当符号栈和输入栈都剩余#时，分析成功*/
+        {
+            // printf("成功!\n");
+            resultfile << "成功!" << endl;
+            break;
+        }
+        if (c1 == GRAMMAR_SPECIAL &&
+            c2 !=
+                GRAMMAR_SPECIAL) /*当符号栈剩余#，而输入串未结束时，分析失败 */
+        {
+            // printf("失败!\n");
+            resultfile << "失败!" << endl;
+            break;
+        }
+        if (c1 == c2) /*符号栈的栈顶元素和输入串的栈顶元素相同时，同时弹出*/
+        {
+            Pop(&s1);
+            Pop(&s2);
+            flag = 1;
+        }
+
+        else /*查预测分析表*/
+        {
+            //记录下非终结符的位置
+            for (h1 = 0; h1 < int(nonTerMap.size()); h1++) {
+                if (nonTerMap[h1].second == c1) {
+                    break;
+                }
+            }
+            //记录下终结符的位置
+            for (h2 = 0; h2 < int(terMap.size()); h2++) {
+                if (terMap[h2].second == c2) {
+                    break;
+                }
+            }
+            if (M[h1][h2][0] == -1) {
+                // printf("Error\n");
+                resultfile << "Error" << endl;
+                break;  //如果错误的话，直接终止分析
+            } else {
+                int length = 0;
+                //记录下推导式的长度
+                for (length = 0;; length++) {
+                    if (M[h1][h2][length] == -1) {
+                        break;
+                    }
+                }
+                Pop(&s1);
+                //如果不是空的话，反向入栈
+                if (M[h1][h2][2] != GRAMMAR_NULL) {
+                    for (int k = length - 1; k >= 2; k--) {
+                        Push(&s1, M[h1][h2][k]);
+                    }
+                }
+            }
+        }
+        if (flag == 1) {
+            // printf("匹配！\n");
+            resultfile << "匹配!" << endl;
+        } else {
+            resultfile << "所用推出式：";
+            // printf("所用推出式：");
+            int w = 0;
+            //记录下推导式的长度
+            for (w = 0;; w++) {
+                if (M[h1][h2][w] == -1) {
+                    break;
+                }
+                // printf("%s ",searchMapping(M[h1][h2][w]));
+                resultfile << searchMapping(M[h1][h2][w]);
+            }
+            // printf("\n\n");
+            resultfile << endl << endl;
+        }
+    }
+    resultfile.close();
 }
