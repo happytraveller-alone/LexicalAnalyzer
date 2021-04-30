@@ -5,7 +5,7 @@
  * @Author: happytraveller-alone
  * @Date: 2021-04-29 23:32:45
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 16:39:00
+ * @LastEditTime: 2021-04-30 19:42:34
  */
 
 /**！！！！！！！！！！！！！！！！！！！！
@@ -38,9 +38,8 @@ int rightMiddle = 0;         //
 int leftBig = 0;             //
 int rightBig = 0;            //
 int lineBra[6][1000] = {0};  //
-int static_iden_number = 0;  //
-
-fstream filecifa;  //定义输出的词法文件
+int static_iden_number = 0;  //模拟标志符的地址
+fstream filecifa;            //定义输出的词法文件
 
 NormalNode *normalHead;  //定义识别TOKEN表的首结点
 
@@ -53,6 +52,16 @@ struct ErrorNode {
     ErrorNode *next;    //定义指向下一个未识别TOKEN的指针
 };
 ErrorNode *errorHead;  //定义表头
+
+struct IdentiferNode {
+    char content[30];     //内容
+    char describe[30];    //描述
+    int type;             //种别类
+    int addr;             //入口地址
+    int line;             //所在行
+    IdentiferNode *next;  //下一个节点
+};
+IdentiferNode *idenHead;  //首节点
 
 vector<pair<const char *, int> > keyMap;    //定义关键字表
 vector<pair<const char *, int> > operMap;   //定义数学运算符号表
@@ -177,6 +186,14 @@ void initNode() {
     strcpy(errorHead->describe, "");
     errorHead->line = -1;
     errorHead->next = NULL;
+
+    idenHead = new IdentiferNode();
+    strcpy(idenHead->content, "");
+    strcpy(idenHead->describe, "");
+    idenHead->type = -1;
+    idenHead->addr = -1;
+    idenHead->line = -1;
+    idenHead->next = NULL;
 }
 
 /*
@@ -228,6 +245,33 @@ void createNewError(const char *content, const char *descirbe, int type,
         p = p->next;
     }
     p->next = temp;
+}
+
+//加入新的identifer返回值是新的标志符的入口地址
+int createNewIden(const char *content, const char *descirbe, int type, int addr,
+                  int line) {
+    IdentiferNode *p = idenHead;
+    IdentiferNode *temp = new IdentiferNode();
+    int flag = 0;
+    int addr_temp = -2;
+    while (p->next != NULL) {
+        if (strcmp(content, p->next->content) == 0) {
+            flag = 1;
+            addr_temp = p->next->addr;
+        }
+        p = p->next;
+    }
+    if (flag == 0) {
+        addr_temp = ++static_iden_number;  //用自增来模拟入口地址
+    }
+    strcpy(temp->content, content);
+    strcpy(temp->describe, descirbe);
+    temp->type = type;
+    temp->addr = addr_temp;
+    temp->line = line;
+    temp->next = NULL;
+    p->next = temp;
+    return addr_temp;
 }
 
 /*
@@ -422,20 +466,21 @@ int seekKey(char *word) {
  */
 void scanner() {
     char ch;
-    char array[30];
+    char array[30];  //单词长度上限??30
     char *word;
     int i;
-    int line = 1;
+    int line = 1;  //行数
 
     FILE *infile;
     infile = fopen("testtxt\\test.txt", "r");
     while (!infile) {
-        printf("Open File failed!!!\n");
+        printf("打开文件失败！\n");
         return;
     }
     ch = fgetc(infile);
     while (ch != EOF) {
         i = 0;
+        //以字母或者下划线开,处理关键字或者标识符
         if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == '_') {
             while ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
                    (ch >= '0' && ch <= '9') || ch == '_') {
@@ -446,23 +491,25 @@ void scanner() {
             memcpy(word, array, i);
             word[i] = '\0';
             int seekTemp = seekKey(word);
-            if (seekTemp != IDN) {
+            if (seekTemp != IDN) {  //首先查看是否为关键字
                 createNewNode(word, KEY_DESC, seekTemp, -1, line);
             } else {
+                int addr_tmp =
+                    createNewIden(word, IDENTIFER_DESC, seekTemp, -1, line);
                 createNewNode(word, IDENTIFER_DESC, seekTemp, addr_tmp, line);
             }
-            fseek(infile, -1L, SEEK_CUR);  //
+            fseek(infile, -1L, SEEK_CUR);  //向后回退一??
         }
-        //èè
+        //以数字开头，处理数字
         else if (ch >= '0' && ch <= '9') {
             int flag = 0;
             int flag2 = 0;
-            //è
+            //处理整数
             while (ch >= '0' && ch <= '9') {
                 array[i++] = ch;
                 ch = fgetc(infile);
             }
-            //èfloat
+            //处理float
             if (ch == '.') {
                 flag2 = 1;
                 array[i++] = ch;
@@ -479,7 +526,7 @@ void scanner() {
             word = new char[i + 1];
             memcpy(word, array, i);
             word[i] = '\0';
-            if (flag == 1) {  // float
+            if (flag == 1) {  //错误的float类型
                 createNewError(word, FLOAT_ERROR, FLOAT_ERROR_NUM, line);
             } else {
                 if (flag2 == 0) {
@@ -488,20 +535,20 @@ void scanner() {
                     createNewNode(word, CONSTANT_DESC, float_val, -1, line);
                 }
             }
-            fseek(infile, -1L, SEEK_CUR);  //
+            fseek(infile, -1L, SEEK_CUR);  //向后回退一??
         }
-        //"/"
+        //??"/"开??
         else if (ch == '/') {
             ch = fgetc(infile);
-            //è"/="
+            //处理运算??"/="
             if (ch == '=') {
                 createNewNode("/=", OPE_DESC, COMPLETE_DIV, -1, line);
-            }  //èè
+            }  //处理除号
             else {
                 createNewNode("/", OPE_DESC, DIV, -1, line);
             }
         }
-        //è
+        //处理常量字符??
         else if (ch == '"') {
             ch = fgetc(infile);
             i = 0;
@@ -521,7 +568,7 @@ void scanner() {
             word[i] = '\0';
             createNewNode(word, CONSTANT_DESC, str_val, -1, line);
         }
-        //è
+        //处理常量字符
         else if (ch == '\'') {
             ch = fgetc(infile);
             i = 0;
@@ -549,19 +596,19 @@ void scanner() {
             if (ch == EOF) {
                 return;
             }
-            //è-è
+            //处理-开头的运算??
             else if (ch == '-') {
                 array[i++] = ch;
                 ch = fgetc(infile);
                 if (ch >= '0' && ch <= '9') {
                     int flag = 0;
                     int flag2 = 0;
-                    //è
+                    //处理整数
                     while (ch >= '0' && ch <= '9') {
                         array[i++] = ch;
                         ch = fgetc(infile);
                     }
-                    //èfloat
+                    //处理float
                     if (ch == '.') {
                         flag2 = 1;
                         array[i++] = ch;
@@ -588,8 +635,7 @@ void scanner() {
                             createNewNode(word, CONSTANT_DESC, FLOAT, -1, line);
                         }
                     }
-                    fseek(infile, -1L,
-                          SEEK_CUR);  //
+                    fseek(infile, -1L, SEEK_CUR);  //向后回退一??
                 } else if (ch == '-') {
                     createNewNode("--", OPE_DESC, SELF_SUB, -1, line);
                 } else if (ch == '=') {
@@ -599,7 +645,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è+è
+            //处理+开头的运算
             else if (ch == '+') {
                 ch = fgetc(infile);
                 if (ch == '+') {
@@ -611,7 +657,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è*è
+            //处理*开头的运算
             else if (ch == '*') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -621,7 +667,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è%è
+            //处理%开头的运算??
             else if (ch == '%') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -631,14 +677,14 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è&è
+            //处理&开头的运算
             else if (ch == '&') {
                 ch = fgetc(infile);
                 if (ch == '&') {
                     createNewNode("&&", OPE_DESC, AND, -1, line);
                 }
             }
-            //è<è
+            //处理<开头的运算
             else if (ch == '<') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -648,7 +694,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è>è
+            //处理>开头的运算??
             else if (ch == '>') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -658,7 +704,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //è|è
+            //处理|开头的运算??
             else if (ch == '|') {
                 ch = fgetc(infile);
                 if (ch == '|') {

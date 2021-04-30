@@ -1,3 +1,25 @@
+/*
+ * @Description:
+ * @Solution:
+ * @Version: 2.0
+ * @Author: happytraveller-alone
+ * @Date: 2021-04-29 23:32:45
+ * @LastEditors: happytraveller-alone
+ * @LastEditTime: 2021-04-30 16:39:00
+ */
+
+/**£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡
+ * @notice
+ *¸ü¸ÄÇ°Çë²é¿´¸Ã×¢ÊÍ
+ *Ìí¼Óº¯ÊıµÄ×¢ÊÍ£¬Èçº¯ÊıÍê³ÉÇé¿öÎªDONE£¬¼´ÎŞĞè¸ü¸Ä
+ *Ğè¸ü¸ÄÍê³ÉÇé¿öÎªTODOµÄº¯Êı£¬Í¬Ê±ÔÚº¯ÊıÄÚ²¿Ìí¼Ó²¿·ÖÓï¾äµÄ±ê×¢
+ *ÈôÈ·¶¨º¯Êı¸ü¸ÄÍê³É£¬¸ü¸ÄÍê³É×÷ÕßÎª×Ô¼º£¬²¢ĞŞ¸ÄÊ±¼ä£¨±¾´Î²»ÓÃ£¬Ä¬ÈÏÎª½ñÌì£©
+ *
+ *
+ *
+ **/
+#include "LexAnalysis.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,51 +29,44 @@
 #include <iostream>
 #include <vector>
 
-#include "LexAnalysis.h"
-
 using namespace std;
 
-//æ‹¬å·æ˜¯å¦åŒ¹é…
-int leftSmall = 0;    //å·¦å°æ‹¬å·
-int rightSmall = 0;   //å³å°æ‹¬å·
-int leftMiddle = 0;   //å·¦ä¸­æ‹¬å·
-int rightMiddle = 0;  //å³ä¸­æ‹¬å·
-int leftBig = 0;      //å·¦å¤§æ‹¬å·
-int rightBig = 0;     //å³å¤§æ‹¬å·
-int lineBra[6][1000] = {0};  //æ‹¬å·å’Œè¡Œæ•°çš„å¯¹åº”å…³ç³»ï¼Œç¬¬ä¸€ç»´ä»£è¡¨å·¦?6ç§æ‹¬?
-int static_iden_number = 0;  //æ¨¡æ‹Ÿæ ‡å¿—ç¬¦çš„åœ°å€ï¼Œè‡ª????
+int leftSmall = 0;           //
+int rightSmall = 0;          //
+int leftMiddle = 0;          //
+int rightMiddle = 0;         //
+int leftBig = 0;             //
+int rightBig = 0;            //
+int lineBra[6][1000] = {0};  //
+int static_iden_number = 0;  //
 
-// æ­£å¸¸TokenèŠ‚ç‚¹
-NormalNode *normalHead;  //æ­£å¸¸é¦–ç»“ç‚¹
+fstream filecifa;  //¶¨ÒåÊä³öµÄ´Ê·¨ÎÄ¼ş
 
-// é”™è¯¯èŠ‚ç‚¹
+NormalNode *normalHead;  //¶¨ÒåÊ¶±ğTOKEN±íµÄÊ×½áµã
+
+//¶¨Òå±¨´íµÄTOKEN½á¹¹Ìå
 struct ErrorNode {
-    char content[30];   //é”™è¯¯å†…å®¹
-    char describe[30];  //é”™è¯¯æè¿°
-    int type;
-    int line;         //æ‰€åœ¨è¡Œ
-    ErrorNode *next;  //ä¸‹ä¸€ä¸ªèŠ‚
+    char content[30];   //¶¨ÒåÎ´Ê¶±ğTOKENÄÚÈİ
+    char describe[30];  //¶¨ÒåÎ´Ê¶±ğTOKENÃèÊö
+    int type;           //¶¨ÒåÎ´Ê¶±ğTOKENÀàĞÍ
+    int line;           //¶¨ÒåÎ´Ê¶±ğTOKENµÄĞĞÊı
+    ErrorNode *next;    //¶¨ÒåÖ¸ÏòÏÂÒ»¸öÎ´Ê¶±ğTOKENµÄÖ¸Õë
 };
+ErrorNode *errorHead;  //¶¨Òå±íÍ·
 
-ErrorNode *errorHead;  //é”™è¯¯é¦–ç»“ç‚¹
+vector<pair<const char *, int> > keyMap;    //¶¨Òå¹Ø¼ü×Ö±í
+vector<pair<const char *, int> > operMap;   //¶¨ÒåÊıÑ§ÔËËã·ûºÅ±í
+vector<pair<const char *, int> > limitMap;  //¶¨ÒåÏŞ½ç·ûºÅ±í
+vector<pair<const char *, int> > AddMap;    //¶¨ÒåºóĞøÌí¼ÓµÄ±í
 
-//æ ‡å¿—ç¬¦èŠ‚
-struct IdentiferNode {
-    char content[30];     //å†…å®¹
-    char describe[30];    //æè¿°
-    int type;             //ç§åˆ«ç±»
-    int addr;             //å…¥å£åœ°å€
-    int line;             //æ‰€åœ¨è¡Œ
-    IdentiferNode *next;  //ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
-};
-IdentiferNode *idenHead;  //é¦–èŠ‚??
-
-vector<pair<const char *, int> > keyMap;    //å…³é”®å­—è¡¨
-vector<pair<const char *, int> > operMap;   //è¿ç®—è¡¨
-vector<pair<const char *, int> > limitMap;  //é™ç•Œç¬¦å·è¡¨
-vector<pair<const char *, int> > AddMap;  //ä¸ºæ–¹ä¾¿æ–‡æ³•åˆ†ç±»å¢æ·»çš„é™„è¡¨
-
-//åˆå§‹åŒ–Cè¯­è¨€çš„å…³é”®å­—çš„é›†åˆ
+/*
+ *º¯ÊıÃû³Æ£ºinitKeyMapping
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯¹Ø¼ü×ÖMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void initKeyMapping() {
     keyMap.clear();
     keyMap.push_back(make_pair("break", BREAK));
@@ -68,7 +83,14 @@ void initKeyMapping() {
     keyMap.push_back(make_pair("string", STR));
 }
 
-//åˆå§‹åŒ–è¿ç®—ç¬¦é›†åˆ
+/*
+ *º¯ÊıÃû³Æ£ºinitOperMapping
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯ÊıÑ§ÔËËã·ûºÅMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void initOperMapping() {
     operMap.clear();
     operMap.push_back(make_pair("*", MUL));
@@ -94,7 +116,14 @@ void initOperMapping() {
     operMap.push_back(make_pair("%=", COMPLETE_MOD));
 }
 
-//é™ç•Œç¬¦å·
+/*
+ *º¯ÊıÃû³Æ£ºinitLimitMapping
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯½ç·ûºÅMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void initLimitMapping() {
     limitMap.clear();
     limitMap.push_back(make_pair("(", LEFT_BRA));
@@ -108,7 +137,14 @@ void initLimitMapping() {
     limitMap.push_back(make_pair(";", SEMI));
 }
 
-//æ–‡æ³•é™„åŠ map
+/*
+ *º¯ÊıÃû³Æ£ºinitAddMap
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯³£Á¿ÀàĞÍ·ûºÅMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void initAddMap() {
     AddMap.clear();
     AddMap.push_back(make_pair("STR", str_val));
@@ -119,7 +155,14 @@ void initAddMap() {
     AddMap.push_back(make_pair("IDN", IDN));
 }
 
-//ä¸‰ç§ç±»å‹çš„èŠ‚ç‚¹åšä¸€ä¸ªåˆå§‹åŒ–å·¥ä½œ
+/*
+ *º¯ÊıÃû³Æ£ºinitNode
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯³£Á¿ÀàĞÍ·ûºÅMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºTODO:
+ */
 void initNode() {
     normalHead = new NormalNode();
     strcpy(normalHead->content, "");
@@ -134,16 +177,16 @@ void initNode() {
     strcpy(errorHead->describe, "");
     errorHead->line = -1;
     errorHead->next = NULL;
-
-    idenHead = new IdentiferNode();
-    strcpy(idenHead->content, "");
-    strcpy(idenHead->describe, "");
-    idenHead->type = -1;
-    idenHead->addr = -1;
-    idenHead->line = -1;
-    idenHead->next = NULL;
 }
-//åŠ å…¥æ–°çš„æ­£å¸¸èŠ‚ç‚¹
+
+/*
+ *º¯ÊıÃû³Æ£ºcreateNewNode
+ *²ÎÊı£º
+ *ÊµÏÖ¹¦ÄÜ£º
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºTODO:
+ */
 void createNewNode(const char *content, const char *descirbe, int type,
                    int addr, int line) {
     NormalNode *p = normalHead;
@@ -162,7 +205,15 @@ void createNewNode(const char *content, const char *descirbe, int type,
 
     p->next = temp;
 }
-//åŠ å…¥æ–°çš„é”™è¯¯ç»“ç‚¹
+
+/*
+ *º¯ÊıÃû³Æ£ºcreateNewError
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º³õÊ¼»¯³£Á¿ÀàĞÍ·ûºÅMap
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºTODO:
+ */
 void createNewError(const char *content, const char *descirbe, int type,
                     int line) {
     ErrorNode *p = errorHead;
@@ -178,166 +229,150 @@ void createNewError(const char *content, const char *descirbe, int type,
     }
     p->next = temp;
 }
-//åŠ å…¥æ–°çš„identiferè¿”å›å€¼æ˜¯æ–°çš„æ ‡å¿—ç¬¦çš„å…¥å£åœ°å€
-int createNewIden(const char *content, const char *descirbe, int type, int addr,
-                  int line) {
-    IdentiferNode *p = idenHead;
-    IdentiferNode *temp = new IdentiferNode();
-    int flag = 0;
-    int addr_temp = -2;
-    while (p->next != NULL) {
-        if (strcmp(content, p->next->content) == 0) {
-            flag = 1;
-            addr_temp = p->next->addr;
-        }
-        p = p->next;
-    }
-    if (flag == 0) {
-        addr_temp = ++static_iden_number;  //ç”¨è‡ªå¢æ¥æ¨¡æ‹Ÿå…¥å£åœ°å€
-    }
-    strcpy(temp->content, content);
-    strcpy(temp->describe, descirbe);
-    temp->type = type;
-    temp->addr = addr_temp;
-    temp->line = line;
-    temp->next = NULL;
-    p->next = temp;
-    return addr_temp;
-}
 
-void printNodeLink() {
-    NormalNode *p = normalHead;
-    p = p->next;
-    cout << "************************************åˆ†æè¡¨************************"
-            "******"
-         << endl
-         << endl;
-    cout << setw(30) << "å†…å®¹" << setw(10) << "æè¿°"
-         << "\t"
-         << "ç§åˆ«å±æ€§"
-         << "\t"
-         << "åœ°å€"
-         << "\t"
-         << "è¡Œå·" << endl;
-    while (p != NULL) {
-        if (p->type == IDN) {
-            cout << setw(30) << p->content << setw(10) << p->describe << "\t"
-                 << p->type << "\t" << p->addr << "\t" << p->line << endl;
-        } else {
-            cout << setw(30) << p->content << setw(10) << p->describe << "\t"
-                 << p->type << "\t"
-                 << "\t" << p->line << endl;
-        }
-        p = p->next;
-    }
-    cout << endl << endl;
-}
 /*
-é”™è¯¯ç§ç±»??
-1.floatè¡¨ç¤ºé”™è¯¯
-4.å­—ç¬¦ä¸²å¸¸é‡æ²¡æœ‰ç»“æŸç¬¦
-5.å­—ç¬¦å¸¸é‡æ²¡æœ‰ç»“æŸ??
-6.éæ³•å­—ç¬¦
-7.'('æ²¡æœ‰å¯¹åº”??
-8.é¢„å¤„ç†é”™??
-*/
-//ç¬¬ä¸€ä¸ªè¾“å‡ºæ ·å¼
+ *º¯ÊıÃû³Æ£ºprintNode1
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£ºÊä³ö´òÓ¡Ê¶±ğµ½µÄTOKEN
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void printNode1() {
-    cout << "TOKENåºåˆ—ï¼š" << endl << "[ ";
+    filecifa.open("OutputFile\\Filecifa.txt", ios::out);
+    filecifa << "TOKEN:" << endl << "[ ";
     NormalNode *p = normalHead;
     p = p->next;
     while (p != NULL) {
         switch (p->type) {
             case int_val:
-                cout << "INT, ";
+                filecifa << "INT, ";
                 break;
             case float_val:
-                cout << "FLOAT, ";
+                filecifa << "FLOAT, ";
                 break;
             case char_val:
-                cout << "CHAR, ";
+                filecifa << "CHAR, ";
                 break;
             case str_val:
-                cout << "STRING, ";
+                filecifa << "STRING, ";
                 break;
             case IDN:
-                cout << "IDN, ";
+                filecifa << "IDN, ";
                 break;
             default:
-                cout << p->content << ", ";
+                filecifa << p->content << ", ";
                 break;
         }
         p = p->next;
     }
-    cout << ']' << endl;
+    filecifa << ']' << endl;
+    filecifa.close();
 }
-//ç¬¬äºŒä¸ªè¾“å‡ºæ ·å¼
+
+/*
+ *º¯ÊıÃû³Æ£ºprintNode2
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£ºÊä³ö´òÓ¡Ê¶±ğµ½µÄTOKEN
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void printNode2() {
     NormalNode *p = normalHead;
     p = p->next;
 
+    filecifa.open("OutputFile\\Filecifa.txt", ios::app);
+    filecifa << endl << endl;
     while (p != NULL) {
         if (p->type == IDN) {
-            cout << setw(10) << p->content << setw(10) << "<"
-                 << "IDN," << p->content << ">" << endl;
+            filecifa << setw(10) << p->content << setw(10) << "<"
+                     << "IDN," << p->content << ">" << endl;
         } else if (p->type < 40 && p->type >= 0) {
-            cout << setw(10) << p->content << setw(10) << "<"
-                 << (strupr(p->content)) << ",_>" << endl;
+            filecifa << setw(10) << p->content << setw(10) << "<"
+                     << (strupr(p->content)) << ",_>" << endl;
         } else if (p->type > 50 && p->type < 60) {
-            cout << setw(10) << p->content << setw(10) << "<"
-                 << "CONST," << p->content << ">" << endl;
+            filecifa << setw(10) << p->content << setw(10) << "<"
+                     << "CONST," << p->content << ">" << endl;
         } else if (p->type >= 70 && p->type < 100) {
-            cout << setw(10) << p->content << setw(10) << "<"
-                 << "OP," << p->content << ">" << endl;
+            filecifa << setw(10) << p->content << setw(10) << "<"
+                     << "OP," << p->content << ">" << endl;
         } else if (p->type >= 100) {
-            cout << setw(10) << p->content << setw(10) << "<"
-                 << "SE,_>" << endl;
+            filecifa << setw(10) << p->content << setw(10) << "<"
+                     << "SE,_>" << endl;
         }
         p = p->next;
     }
-    cout << endl << endl;  //
+    filecifa << endl;
+    filecifa.close();
 }
+
+/*
+ *º¯ÊıÃû³Æ£ºprintNodeLink
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£ºÊä³ö´òÓ¡Ê¶±ğµ½µÄTOKENµÄÏêÏ¸ĞÅÏ¢
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
+void printNodeLink() {
+    fstream Nodelink;
+    Nodelink.open("OutputFile\\TokenAnalysis.txt", ios::out);
+    NormalNode *p = normalHead;
+    p = p->next;
+    Nodelink << "***********************´Ê·¨·ÖÎö±í************************"
+             << endl;
+    Nodelink << setw(8) << "ÄÚÈİ" << setw(10) << "ÃèÊö" << setw(11) << "ÖÖ±ğÂë"
+             << setw(10) << "µØÖ·" << setw(8) << "ĞĞºÅ" << endl;
+    while (p != NULL) {
+        if (p->type == IDN) {
+            Nodelink << setw(8) << p->content << setw(10) << p->describe
+                     << setw(10) << p->type << setw(8) << p->addr << setw(7)
+                     << p->line << endl;
+        } else {
+            Nodelink << setw(8) << p->content << setw(10) << p->describe
+                     << setw(10) << p->type << setw(15) << p->line << endl;
+        }
+        p = p->next;
+    }
+    Nodelink << endl;
+    Nodelink.close();
+}
+
+/*
+ *º¯ÊıÃû³Æ£ºprintErrorLink
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£ºÊä³ö´òÓ¡Î´Ê¶±ğµ½µÄTOKENµÄÏêÏ¸ĞÅÏ¢
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void printErrorLink() {
+    fstream Errorlink;
+    Errorlink.open("OutputFile\\ErrorAnalysis.txt", ios::out);
     ErrorNode *p = errorHead;
     p = p->next;
-    cout << "************************************é”™è¯¯************************"
-            "******"
-         << endl
-         << endl;
-    cout << setw(10) << "å†…å®¹" << setw(30) << "æè¿°"
-         << "\t"
-         << "ç±»å‹"
-         << "\t"
-         << "è¡Œå·" << endl;
+    Errorlink << "***********************´íÎó±í************************"
+              << endl;
+    Errorlink << setw(8) << "ÄÚÈİ" << setw(10) << "ÃèÊö" << setw(8) << "ÀàĞÍ"
+              << setw(8) << "ĞĞºÅ" << endl;
     while (p != NULL) {
-        cout << setw(10) << p->content << setw(30) << p->describe << "\t"
-             << p->type << "\t" << p->line << endl;
+        Errorlink << setw(8) << p->content << setw(10) << p->describe << setw(8)
+                  << p->type << setw(7) << p->line << endl;
         p = p->next;
     }
-    cout << endl << endl;
+    cout << endl;
+    Errorlink.close();
 }
-//æ ‡å¿—ç¬¦è¡¨ï¼Œæœ‰é‡å¤éƒ¨åˆ†ï¼Œæš‚ä¸è€ƒè™‘
-void printIdentLink() {
-    IdentiferNode *p = idenHead;
-    p = p->next;
-    cout << "************************************æ ‡å¿—ç¬¦è¡¨**********************"
-            "********"
-         << endl
-         << endl;
-    cout << setw(30) << "å†…å®¹" << setw(10) << "æè¿°"
-         << "\t"
-         << "ç§åˆ«"
-         << "\t"
-         << "åœ°å€"
-         << "\t"
-         << "è¡Œå·" << endl;
-    while (p != NULL) {
-        cout << setw(30) << p->content << setw(10) << p->describe << "\t"
-             << p->type << "\t" << p->addr << "\t" << p->line << endl;
-        p = p->next;
-    }
-    cout << endl << endl;
-}
+
+/*
+ *º¯ÊıÃû³Æ£ºmystrlen
+ *²ÎÊı£ºchar* word ×Ö·ûÖ¸Õë
+ *ÊµÏÖ¹¦ÄÜ£º»ñÈ¡Ò»¸öÍêÕûµÄTOKEN
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 int mystrlen(char *word) {
     if (*word == '\0') {
         return 0;
@@ -346,12 +381,28 @@ int mystrlen(char *word) {
     }
 }
 
+/*
+ *º¯ÊıÃû³Æ£ºclose
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£ºÉ¾³ıËùÓĞµÄ±íÍ·
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void close() {
     // delete idenHead;
     // delete errorHead;
     // delete normalHead;
 }
 
+/*
+ *º¯ÊıÃû³Æ£ºseekKey
+ *²ÎÊı£ºTOKENµÄÆğÊ¼×Ö·ûÖ¸Õë
+ *ÊµÏÖ¹¦ÄÜ£º½øÈë¹Ø¼ü×Ö±í½øĞĞ²éÑ¯£¬·µ»ØÖÖ±ğºÅ£¬Ä¬ÈÏ±êÊ¶·û
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 int seekKey(char *word) {
     for (int i = 0; i < int(keyMap.size()); i++) {
         if (strcmp(word, keyMap[i].first) == 0) {
@@ -361,26 +412,30 @@ int seekKey(char *word) {
     return IDN;
 }
 
+/*
+ *º¯ÊıÃû³Æ£ºscanner
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º´ò¿ª²âÊÔÎÄ¼ş£¬ÖğĞĞ¶ÁÈ¡×Ö·û»ñÈ¡TOKEN£¬²¢¸ù¾İ¼üÖµ±í²éÕÒ£¬¹éÀàÎªÖÕ½á·û±íºÍ·ÇÖÕ½á·û±í²¢Êä³ö
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºDONE
+ */
 void scanner() {
-    char filename[30];
     char ch;
-    char array[30];  //å•è¯é•¿åº¦ä¸Šé™??30
+    char array[30];
     char *word;
     int i;
-    int line = 1;  //è¡Œæ•°
+    int line = 1;
 
     FILE *infile;
-    printf("è¯·è¾“å…¥è¦è¿›è¡Œè¯­æ³•åˆ†æçš„Cè¯­è¨€ç¨‹åºï¼š\n");
-    scanf("%s", filename);
-    infile = fopen(filename, "r");
+    infile = fopen("testtxt\\test.txt", "r");
     while (!infile) {
-        printf("æ‰“å¼€æ–‡ä»¶å¤±è´¥ï¼\n");
+        printf("Open File failed!!!\n");
         return;
     }
     ch = fgetc(infile);
     while (ch != EOF) {
         i = 0;
-        //ä»¥å­—æ¯æˆ–è€…ä¸‹åˆ’çº¿å¼€,å¤„ç†å…³é”®å­—æˆ–è€…æ ‡è¯†ç¬¦
         if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') || ch == '_') {
             while ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') ||
                    (ch >= '0' && ch <= '9') || ch == '_') {
@@ -391,25 +446,23 @@ void scanner() {
             memcpy(word, array, i);
             word[i] = '\0';
             int seekTemp = seekKey(word);
-            if (seekTemp != IDN) {  //é¦–å…ˆæŸ¥çœ‹æ˜¯å¦ä¸ºå…³é”®å­—
+            if (seekTemp != IDN) {
                 createNewNode(word, KEY_DESC, seekTemp, -1, line);
             } else {
-                int addr_tmp =
-                    createNewIden(word, IDENTIFER_DESC, seekTemp, -1, line);
                 createNewNode(word, IDENTIFER_DESC, seekTemp, addr_tmp, line);
             }
-            fseek(infile, -1L, SEEK_CUR);  //å‘åå›é€€ä¸€??
+            fseek(infile, -1L, SEEK_CUR);  //
         }
-        //ä»¥æ•°å­—å¼€å¤´ï¼Œå¤„ç†æ•°å­—
+        //¨¨¨¨
         else if (ch >= '0' && ch <= '9') {
             int flag = 0;
             int flag2 = 0;
-            //å¤„ç†æ•´æ•°
+            //¨¨
             while (ch >= '0' && ch <= '9') {
                 array[i++] = ch;
                 ch = fgetc(infile);
             }
-            //å¤„ç†float
+            //¨¨float
             if (ch == '.') {
                 flag2 = 1;
                 array[i++] = ch;
@@ -426,7 +479,7 @@ void scanner() {
             word = new char[i + 1];
             memcpy(word, array, i);
             word[i] = '\0';
-            if (flag == 1) {  //é”™è¯¯çš„floatç±»å‹
+            if (flag == 1) {  // float
                 createNewError(word, FLOAT_ERROR, FLOAT_ERROR_NUM, line);
             } else {
                 if (flag2 == 0) {
@@ -435,20 +488,20 @@ void scanner() {
                     createNewNode(word, CONSTANT_DESC, float_val, -1, line);
                 }
             }
-            fseek(infile, -1L, SEEK_CUR);  //å‘åå›é€€ä¸€??
+            fseek(infile, -1L, SEEK_CUR);  //
         }
-        //??"/"å¼€??
+        //"/"
         else if (ch == '/') {
             ch = fgetc(infile);
-            //å¤„ç†è¿ç®—??"/="
+            //¨¨"/="
             if (ch == '=') {
                 createNewNode("/=", OPE_DESC, COMPLETE_DIV, -1, line);
-            }  //å¤„ç†é™¤å·
+            }  //¨¨¨¨
             else {
                 createNewNode("/", OPE_DESC, DIV, -1, line);
             }
         }
-        //å¤„ç†å¸¸é‡å­—ç¬¦??
+        //¨¨
         else if (ch == '"') {
             ch = fgetc(infile);
             i = 0;
@@ -468,7 +521,7 @@ void scanner() {
             word[i] = '\0';
             createNewNode(word, CONSTANT_DESC, str_val, -1, line);
         }
-        //å¤„ç†å¸¸é‡å­—ç¬¦
+        //¨¨
         else if (ch == '\'') {
             ch = fgetc(infile);
             i = 0;
@@ -496,19 +549,19 @@ void scanner() {
             if (ch == EOF) {
                 return;
             }
-            //å¤„ç†-å¼€å¤´çš„è¿ç®—??
+            //¨¨-¨¨
             else if (ch == '-') {
                 array[i++] = ch;
                 ch = fgetc(infile);
                 if (ch >= '0' && ch <= '9') {
                     int flag = 0;
                     int flag2 = 0;
-                    //å¤„ç†æ•´æ•°
+                    //¨¨
                     while (ch >= '0' && ch <= '9') {
                         array[i++] = ch;
                         ch = fgetc(infile);
                     }
-                    //å¤„ç†float
+                    //¨¨float
                     if (ch == '.') {
                         flag2 = 1;
                         array[i++] = ch;
@@ -535,7 +588,8 @@ void scanner() {
                             createNewNode(word, CONSTANT_DESC, FLOAT, -1, line);
                         }
                     }
-                    fseek(infile, -1L, SEEK_CUR);  //å‘åå›é€€ä¸€??
+                    fseek(infile, -1L,
+                          SEEK_CUR);  //
                 } else if (ch == '-') {
                     createNewNode("--", OPE_DESC, SELF_SUB, -1, line);
                 } else if (ch == '=') {
@@ -545,7 +599,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†+å¼€å¤´çš„è¿ç®—
+            //¨¨+¨¨
             else if (ch == '+') {
                 ch = fgetc(infile);
                 if (ch == '+') {
@@ -557,7 +611,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†*å¼€å¤´çš„è¿ç®—
+            //¨¨*¨¨
             else if (ch == '*') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -567,7 +621,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†%å¼€å¤´çš„è¿ç®—??
+            //¨¨%¨¨
             else if (ch == '%') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -577,14 +631,14 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†&å¼€å¤´çš„è¿ç®—
+            //¨¨&¨¨
             else if (ch == '&') {
                 ch = fgetc(infile);
                 if (ch == '&') {
                     createNewNode("&&", OPE_DESC, AND, -1, line);
                 }
             }
-            //å¤„ç†<å¼€å¤´çš„è¿ç®—
+            //¨¨<¨¨
             else if (ch == '<') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -594,7 +648,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†>å¼€å¤´çš„è¿ç®—??
+            //¨¨>¨¨
             else if (ch == '>') {
                 ch = fgetc(infile);
                 if (ch == '=') {
@@ -604,7 +658,7 @@ void scanner() {
                     fseek(infile, -1L, SEEK_CUR);
                 }
             }
-            //å¤„ç†|å¼€å¤´çš„è¿ç®—??
+            //¨¨|¨¨
             else if (ch == '|') {
                 ch = fgetc(infile);
                 if (ch == '|') {
@@ -658,6 +712,15 @@ void scanner() {
         ch = fgetc(infile);
     }
 }
+
+/*
+ *º¯ÊıÃû³Æ£ºBraMappingError
+ *²ÎÊı£ºÎŞ
+ *ÊµÏÖ¹¦ÄÜ£º
+ *×î½ü¸ü¸ÄÊ±¼ä£º4/30
+ *¸ü¸Ä×÷Õß£ºĞ»Ô¶·å
+ *Íê³ÉÇé¿ö£ºTODO:
+ */
 void BraMappingError() {
     if (leftSmall != rightSmall) {
         int i = (leftSmall > rightSmall) ? (leftSmall - rightSmall)
