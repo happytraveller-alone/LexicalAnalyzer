@@ -5,7 +5,7 @@
  * @Author: happytraveller-alone
  * @Date: 2021-04-29 23:32:45
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 14:47:41
+ * @LastEditTime: 2021-04-30 20:25:10
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,8 +27,9 @@ int main() {
     initNode();
     scanner();
     BraMappingError();
+    printNodeLink();
     printErrorLink();
-    // printIdentLink();
+    printIdentLink();
     printNode1();
     printNode2();
 

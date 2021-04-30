@@ -8,7 +8,7 @@
 #define IF 4
 #define ELSE 5
 #define FLOAT 6
-#define INT 7
+#define INT 7  //这里的是关键字
 #define CHAR 8
 #define STR 9
 #define VOID 10
@@ -99,6 +99,7 @@ struct NormalNode {
     char content[30];   //内容
     char describe[30];  //词法单元名
     int type;           //种别码
+    int addr;           //入口地址
     int line;           //所在行数
     NormalNode *next;   //下一个节点
 };
@@ -112,9 +113,12 @@ void initNode();  //初始化结点
 void createNewNode(const char *content, const char *descirbe, int type,
                    int addr, int line);  //建立新结点
 void createNewError(const char *content, const char *descirbe, int type,
-                    int line);  //建立报错结点
+                    int line);  //建立报
+int createNewIden(const char *content, const char *descirbe, int type, int addr,
+                  int line);
+void printNodeLink();
 void printErrorLink();
-// void printIdentLink();
+void printIdentLink();
 int mystrlen(char *word);
 void preProcess(char *word, int line);
 void close();

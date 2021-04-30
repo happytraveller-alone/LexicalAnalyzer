@@ -1,23 +1,12 @@
 /*
- * @Description:
+ * @Description: 词法分析器
  * @Solution:
- * @Version: 2.0
- * @Author: happytraveller-alone
- * @Date: 2021-04-29 23:32:45
+ * @Version: 4.0
+ * @Author: 王越 谢远峰 张一鸣
+ * @Date: 2021-04-22
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 19:42:34
+ * @LastEditTime: 2021-04-30 20:25:36
  */
-
-/**！！！！！！！！！！！！！！！！！！！！
- * @notice
- *更改前请查看该注释
- *添加函数的注释，如函数完成情况为DONE，即无需更改
- *需更改完成情况为TODO的函数，同时在函数内部添加部分语句的标注
- *若确定函数更改完成，更改完成作者为自己，并修改时间（本次不用，默认为今天）
- *
- *
- *
- **/
 #include "LexAnalysis.h"
 
 #include <stdio.h>
@@ -53,6 +42,7 @@ struct ErrorNode {
 };
 ErrorNode *errorHead;  //定义表头
 
+//定义认证的TOIKEN信息
 struct IdentiferNode {
     char content[30];     //内容
     char describe[30];    //描述
@@ -167,10 +157,10 @@ void initAddMap() {
 /*
  *函数名称：initNode
  *参数：无
- *实现功能：初始化常量类型符号Map
+ *实现功能：初始化三个表的头结点
  *最近更改时间：4/30
  *更改作者：谢远峰
- *完成情况：TODO:
+ *完成情况：DONE
  */
 void initNode() {
     normalHead = new NormalNode();
@@ -198,11 +188,11 @@ void initNode() {
 
 /*
  *函数名称：createNewNode
- *参数：
- *实现功能：
+ *参数：token内容，token描述，token类型，token所在行地址，token所在行数
+ *实现功能：根据传入参数创建TOKEN结点
  *最近更改时间：4/30
  *更改作者：谢远峰
- *完成情况：TODO:
+ *完成情况：DONE
  */
 void createNewNode(const char *content, const char *descirbe, int type,
                    int addr, int line) {
@@ -225,11 +215,11 @@ void createNewNode(const char *content, const char *descirbe, int type,
 
 /*
  *函数名称：createNewError
- *参数：无
- *实现功能：初始化常量类型符号Map
+ *参数：token内容，token描述，token类型，token所在行地址，token所在行数
+ *实现功能：根据传入参数创建错误TOKEN结点
  *最近更改时间：4/30
  *更改作者：谢远峰
- *完成情况：TODO:
+ *完成情况：DONE
  */
 void createNewError(const char *content, const char *descirbe, int type,
                     int line) {
@@ -247,7 +237,14 @@ void createNewError(const char *content, const char *descirbe, int type,
     p->next = temp;
 }
 
-//加入新的identifer返回值是新的标志符的入口地址
+/*
+ *函数名称：createNewError
+ *参数：token内容，token描述，token类型，token所在行地址，token所在行数
+ *实现功能：加入新的标识符结点
+ *最近更改时间：4/30
+ *更改作者：谢远峰
+ *完成情况：DONE
+ */
 int createNewIden(const char *content, const char *descirbe, int type, int addr,
                   int line) {
     IdentiferNode *p = idenHead;
@@ -409,6 +406,22 @@ void printErrorLink() {
     Errorlink.close();
 }
 
+void printIdentLink() {
+    fstream IdentLink;
+    IdentLink.open("OutputFile\\IdenList.txt", ios::out);
+    IdentiferNode *p = idenHead;
+    p = p->next;
+    IdentLink << "***********************符号表************************"
+              << endl;
+    IdentLink << setw(8) << "内容" << setw(10) << "描述" << setw(11) << "种别码"
+              << setw(10) << "地址" << setw(8) << "行号" << endl;
+    while (p != NULL) {
+        IdentLink << setw(8) << p->content << setw(10) << p->describe
+                  << setw(10) << p->type << setw(15) << p->line << endl;
+        p = p->next;
+    }
+    IdentLink << endl;
+}
 /*
  *函数名称：mystrlen
  *参数：char* word 字符指针
@@ -762,10 +775,10 @@ void scanner() {
 /*
  *函数名称：BraMappingError
  *参数：无
- *实现功能：
+ *实现功能：判定括号的匹配情况（小括号，中括号，大括号）
  *最近更改时间：4/30
  *更改作者：谢远峰
- *完成情况：TODO:
+ *完成情况：DONE
  */
 void BraMappingError() {
     if (leftSmall != rightSmall) {
