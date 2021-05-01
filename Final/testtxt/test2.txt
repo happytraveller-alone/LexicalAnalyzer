@@ -1,0 +1,16 @@
+void main(){
+   string x1y_f = "xie ge";
+   char _ym = 'a';
+   float w_y = 1.1;
+   int i = 1;
+   for(;i<=20;i++){
+       if(i==3 && w_y==1.1){
+           w_y = 3.1415926;
+           i = i * 2;
+       }
+    }
+    while(i>0){
+        i--;
+        i = i % 3;
+    }
+}

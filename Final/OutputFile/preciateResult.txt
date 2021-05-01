@@ -1,1597 +1,479 @@
 第1步
 符号栈:S # 
-输入栈:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:void IDN ( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：S->func
 
 第2步
 符号栈:func # 
-输入栈:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:void IDN ( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：func->typeIDN(args)func_body
 
 第3步
 符号栈:type IDN ( args ) func_body # 
-输入栈:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:void IDN ( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：type->void
 
 第4步
 符号栈:void IDN ( args ) func_body # 
-输入栈:void IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:void IDN ( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第5步
 符号栈:IDN ( args ) func_body # 
-输入栈:IDN ( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN ( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第6步
 符号栈:( args ) func_body # 
-输入栈:( ) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:( ) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第7步
 符号栈:args ) func_body # 
-输入栈:) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：args->$
 
 第8步
 符号栈:) func_body # 
-输入栈:) { string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第9步
 符号栈:func_body # 
-输入栈:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:{ int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：func_body->block
 
 第10步
 符号栈:block # 
-输入栈:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:{ int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：block->{stmts}
 
 第11步
 符号栈:{ stmts } # 
-输入栈:{ string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:{ int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第12步
 符号栈:stmts } # 
-输入栈:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：stmts->stmtstmts
 
 第13步
 符号栈:stmt stmts } # 
-输入栈:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：stmt->typeassign_stmt
 
 第14步
 符号栈:type assign_stmt stmts } # 
-输入栈:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->string
+输入栈:int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：type->int
 
 第15步
-符号栈:string assign_stmt stmts } # 
-输入栈:string IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+符号栈:int assign_stmt stmts } # 
+输入栈:int IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第16步
 符号栈:assign_stmt stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：assign_stmt->expression;
 
 第17步
 符号栈:expression ; stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：expression->valueoperation
 
 第18步
 符号栈:value operation ; stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
 第19步
 符号栈:item value' operation ; stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
 第20步
 符号栈:factor item' value' operation ; stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：factor->IDNcall_func
 
 第21步
 符号栈:IDN call_func item' value' operation ; stmts } # 
-输入栈:IDN = STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第22步
 符号栈:call_func item' value' operation ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：call_func->$
 
 第23步
 符号栈:item' value' operation ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item'->$
 
 第24步
 符号栈:value' operation ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value'->$
 
 第25步
 符号栈:operation ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：operation->equal_opvalue
 
 第26步
 符号栈:equal_op value ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：equal_op->=
 
 第27步
 符号栈:= value ; stmts } # 
-输入栈:= STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:= INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
 第28步
 符号栈:value ; stmts } # 
-输入栈:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
 第29步
 符号栈:item value' ; stmts } # 
-输入栈:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
 第30步
 符号栈:factor item' value' ; stmts } # 
-输入栈:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：factor->const
 
 第31步
 符号栈:const item' value' ; stmts } # 
-输入栈:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->STR
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：const->num_const
 
 第32步
-符号栈:STR item' value' ; stmts } # 
-输入栈:STR ; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第33步
-符号栈:item' value' ; stmts } # 
-输入栈:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
+符号栈:num_const item' value' ; stmts } # 
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：num_const->INT
 
+第33步
+符号栈:INT item' value' ; stmts } # 
+输入栈:INT ; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+匹配!
 第34步
-符号栈:value' ; stmts } # 
-输入栈:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
+符号栈:item' value' ; stmts } # 
+输入栈:; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：item'->$
 
 第35步
-符号栈:; stmts } # 
-输入栈:; char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第36步
-符号栈:stmts } # 
-输入栈:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
+符号栈:value' ; stmts } # 
+输入栈:; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：value'->$
 
+第36步
+符号栈:; stmts } # 
+输入栈:; while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+匹配!
 第37步
-符号栈:stmt stmts } # 
-输入栈:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
+符号栈:stmts } # 
+输入栈:while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：stmts->stmtstmts
 
 第38步
-符号栈:type assign_stmt stmts } # 
-输入栈:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->char
+符号栈:stmt stmts } # 
+输入栈:while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：stmt->iteration_stmt
 
 第39步
-符号栈:char assign_stmt stmts } # 
-输入栈:char IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第40步
-符号栈:assign_stmt stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第41步
-符号栈:expression ; stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第42步
-符号栈:value operation ; stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第43步
-符号栈:item value' operation ; stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第44步
-符号栈:factor item' value' operation ; stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第45步
-符号栈:IDN call_func item' value' operation ; stmts } # 
-输入栈:IDN = CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第46步
-符号栈:call_func item' value' operation ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第47步
-符号栈:item' value' operation ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第48步
-符号栈:value' operation ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第49步
-符号栈:operation ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->equal_opvalue
-
-第50步
-符号栈:equal_op value ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：equal_op->=
-
-第51步
-符号栈:= value ; stmts } # 
-输入栈:= CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第52步
-符号栈:value ; stmts } # 
-输入栈:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第53步
-符号栈:item value' ; stmts } # 
-输入栈:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第54步
-符号栈:factor item' value' ; stmts } # 
-输入栈:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第55步
-符号栈:const item' value' ; stmts } # 
-输入栈:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->CHAR
-
-第56步
-符号栈:CHAR item' value' ; stmts } # 
-输入栈:CHAR ; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第57步
-符号栈:item' value' ; stmts } # 
-输入栈:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第58步
-符号栈:value' ; stmts } # 
-输入栈:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第59步
-符号栈:; stmts } # 
-输入栈:; float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第60步
-符号栈:stmts } # 
-输入栈:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第61步
-符号栈:stmt stmts } # 
-输入栈:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
-
-第62步
-符号栈:type assign_stmt stmts } # 
-输入栈:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->float
-
-第63步
-符号栈:float assign_stmt stmts } # 
-输入栈:float IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第64步
-符号栈:assign_stmt stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第65步
-符号栈:expression ; stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第66步
-符号栈:value operation ; stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第67步
-符号栈:item value' operation ; stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第68步
-符号栈:factor item' value' operation ; stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第69步
-符号栈:IDN call_func item' value' operation ; stmts } # 
-输入栈:IDN = FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第70步
-符号栈:call_func item' value' operation ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第71步
-符号栈:item' value' operation ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第72步
-符号栈:value' operation ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第73步
-符号栈:operation ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->equal_opvalue
-
-第74步
-符号栈:equal_op value ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：equal_op->=
-
-第75步
-符号栈:= value ; stmts } # 
-输入栈:= FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第76步
-符号栈:value ; stmts } # 
-输入栈:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第77步
-符号栈:item value' ; stmts } # 
-输入栈:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第78步
-符号栈:factor item' value' ; stmts } # 
-输入栈:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第79步
-符号栈:const item' value' ; stmts } # 
-输入栈:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->FLOAT
-
-第80步
-符号栈:FLOAT item' value' ; stmts } # 
-输入栈:FLOAT ; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第81步
-符号栈:item' value' ; stmts } # 
-输入栈:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第82步
-符号栈:value' ; stmts } # 
-输入栈:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第83步
-符号栈:; stmts } # 
-输入栈:; int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第84步
-符号栈:stmts } # 
-输入栈:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第85步
-符号栈:stmt stmts } # 
-输入栈:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
-
-第86步
-符号栈:type assign_stmt stmts } # 
-输入栈:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->int
-
-第87步
-符号栈:int assign_stmt stmts } # 
-输入栈:int IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第88步
-符号栈:assign_stmt stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第89步
-符号栈:expression ; stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第90步
-符号栈:value operation ; stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第91步
-符号栈:item value' operation ; stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第92步
-符号栈:factor item' value' operation ; stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第93步
-符号栈:IDN call_func item' value' operation ; stmts } # 
-输入栈:IDN = INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第94步
-符号栈:call_func item' value' operation ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第95步
-符号栈:item' value' operation ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第96步
-符号栈:value' operation ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第97步
-符号栈:operation ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->equal_opvalue
-
-第98步
-符号栈:equal_op value ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：equal_op->=
-
-第99步
-符号栈:= value ; stmts } # 
-输入栈:= INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第100步
-符号栈:value ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第101步
-符号栈:item value' ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第102步
-符号栈:factor item' value' ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第103步
-符号栈:const item' value' ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->num_const
-
-第104步
-符号栈:num_const item' value' ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：num_const->INT
-
-第105步
-符号栈:INT item' value' ; stmts } # 
-输入栈:INT ; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第106步
-符号栈:item' value' ; stmts } # 
-输入栈:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第107步
-符号栈:value' ; stmts } # 
-输入栈:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第108步
-符号栈:; stmts } # 
-输入栈:; for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第109步
-符号栈:stmts } # 
-输入栈:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第110步
-符号栈:stmt stmts } # 
-输入栈:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->iteration_stmt
-
-第111步
 符号栈:iteration_stmt stmts } # 
-输入栈:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：iteration_stmt->for(isnull_expr;isnull_expr;isnull_expr)block
-
-第112步
-符号栈:for ( isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
-输入栈:for ( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第113步
-符号栈:( isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
-输入栈:( ; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第114步
-符号栈:isnull_expr ; isnull_expr ; isnull_expr ) block stmts } # 
-输入栈:; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：isnull_expr->$
-
-第115步
-符号栈:; isnull_expr ; isnull_expr ) block stmts } # 
-输入栈:; IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第116步
-符号栈:isnull_expr ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：isnull_expr->expression
-
-第117步
-符号栈:expression ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第118步
-符号栈:value operation ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第119步
-符号栈:item value' operation ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第120步
-符号栈:factor item' value' operation ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第121步
-符号栈:IDN call_func item' value' operation ; isnull_expr ) block stmts } # 
-输入栈:IDN <= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第122步
-符号栈:call_func item' value' operation ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第123步
-符号栈:item' value' operation ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第124步
-符号栈:value' operation ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第125步
-符号栈:operation ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->compare_opvalue
-
-第126步
-符号栈:compare_op value ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：compare_op-><=
-
-第127步
-符号栈:<= value ; isnull_expr ) block stmts } # 
-输入栈:<= INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第128步
-符号栈:value ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第129步
-符号栈:item value' ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第130步
-符号栈:factor item' value' ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第131步
-符号栈:const item' value' ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->num_const
-
-第132步
-符号栈:num_const item' value' ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：num_const->INT
-
-第133步
-符号栈:INT item' value' ; isnull_expr ) block stmts } # 
-输入栈:INT ; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第134步
-符号栈:item' value' ; isnull_expr ) block stmts } # 
-输入栈:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第135步
-符号栈:value' ; isnull_expr ) block stmts } # 
-输入栈:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第136步
-符号栈:; isnull_expr ) block stmts } # 
-输入栈:; IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第137步
-符号栈:isnull_expr ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：isnull_expr->expression
-
-第138步
-符号栈:expression ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第139步
-符号栈:value operation ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第140步
-符号栈:item value' operation ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第141步
-符号栈:factor item' value' operation ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第142步
-符号栈:IDN call_func item' value' operation ) block stmts } # 
-输入栈:IDN ++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第143步
-符号栈:call_func item' value' operation ) block stmts } # 
-输入栈:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第144步
-符号栈:item' value' operation ) block stmts } # 
-输入栈:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第145步
-符号栈:value' operation ) block stmts } # 
-输入栈:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第146步
-符号栈:operation ) block stmts } # 
-输入栈:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->++
-
-第147步
-符号栈:++ ) block stmts } # 
-输入栈:++ ) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第148步
-符号栈:) block stmts } # 
-输入栈:) { if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第149步
-符号栈:block stmts } # 
-输入栈:{ if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：block->{stmts}
-
-第150步
-符号栈:{ stmts } stmts } # 
-输入栈:{ if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第151步
-符号栈:stmts } stmts } # 
-输入栈:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第152步
-符号栈:stmt stmts } stmts } # 
-输入栈:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->branch_stmt
-
-第153步
-符号栈:branch_stmt stmts } stmts } # 
-输入栈:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：branch_stmt->if(logical_expression)blockresult
-
-第154步
-符号栈:if ( logical_expression ) block result stmts } stmts } # 
-输入栈:if ( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第155步
-符号栈:( logical_expression ) block result stmts } stmts } # 
-输入栈:( IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第156步
-符号栈:logical_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：logical_expression->expressionbool_expression
-
-第157步
-符号栈:expression bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第158步
-符号栈:value operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第159步
-符号栈:item value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第160步
-符号栈:factor item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第161步
-符号栈:IDN call_func item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第162步
-符号栈:call_func item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第163步
-符号栈:item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第164步
-符号栈:value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第165步
-符号栈:operation bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->compare_opvalue
-
-第166步
-符号栈:compare_op value bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：compare_op->==
-
-第167步
-符号栈:== value bool_expression ) block result stmts } stmts } # 
-输入栈:== INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第168步
-符号栈:value bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第169步
-符号栈:item value' bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第170步
-符号栈:factor item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第171步
-符号栈:const item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->num_const
-
-第172步
-符号栈:num_const item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：num_const->INT
-
-第173步
-符号栈:INT item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:INT && IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第174步
-符号栈:item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第175步
-符号栈:value' bool_expression ) block result stmts } stmts } # 
-输入栈:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第176步
-符号栈:bool_expression ) block result stmts } stmts } # 
-输入栈:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：bool_expression->lopexpressionbool_expression
-
-第177步
-符号栈:lop expression bool_expression ) block result stmts } stmts } # 
-输入栈:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：lop->&&
-
-第178步
-符号栈:&& expression bool_expression ) block result stmts } stmts } # 
-输入栈:&& IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第179步
-符号栈:expression bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第180步
-符号栈:value operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第181步
-符号栈:item value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第182步
-符号栈:factor item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第183步
-符号栈:IDN call_func item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:IDN == FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第184步
-符号栈:call_func item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第185步
-符号栈:item' value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第186步
-符号栈:value' operation bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第187步
-符号栈:operation bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->compare_opvalue
-
-第188步
-符号栈:compare_op value bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：compare_op->==
-
-第189步
-符号栈:== value bool_expression ) block result stmts } stmts } # 
-输入栈:== FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第190步
-符号栈:value bool_expression ) block result stmts } stmts } # 
-输入栈:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第191步
-符号栈:item value' bool_expression ) block result stmts } stmts } # 
-输入栈:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第192步
-符号栈:factor item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第193步
-符号栈:const item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->FLOAT
-
-第194步
-符号栈:FLOAT item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:FLOAT ) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第195步
-符号栈:item' value' bool_expression ) block result stmts } stmts } # 
-输入栈:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第196步
-符号栈:value' bool_expression ) block result stmts } stmts } # 
-输入栈:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第197步
-符号栈:bool_expression ) block result stmts } stmts } # 
-输入栈:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：bool_expression->$
-
-第198步
-符号栈:) block result stmts } stmts } # 
-输入栈:) { IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第199步
-符号栈:block result stmts } stmts } # 
-输入栈:{ IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：block->{stmts}
-
-第200步
-符号栈:{ stmts } result stmts } stmts } # 
-输入栈:{ IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第201步
-符号栈:stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第202步
-符号栈:stmt stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
-
-第203步
-符号栈:type assign_stmt stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->$
-
-第204步
-符号栈:assign_stmt stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第205步
-符号栈:expression ; stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第206步
-符号栈:value operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第207步
-符号栈:item value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第208步
-符号栈:factor item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第209步
-符号栈:IDN call_func item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第210步
-符号栈:call_func item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第211步
-符号栈:item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第212步
-符号栈:value' operation ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第213步
-符号栈:operation ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->equal_opvalue
-
-第214步
-符号栈:equal_op value ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：equal_op->=
-
-第215步
-符号栈:= value ; stmts } result stmts } stmts } # 
-输入栈:= FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第216步
-符号栈:value ; stmts } result stmts } stmts } # 
-输入栈:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第217步
-符号栈:item value' ; stmts } result stmts } stmts } # 
-输入栈:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第218步
-符号栈:factor item' value' ; stmts } result stmts } stmts } # 
-输入栈:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第219步
-符号栈:const item' value' ; stmts } result stmts } stmts } # 
-输入栈:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->FLOAT
-
-第220步
-符号栈:FLOAT item' value' ; stmts } result stmts } stmts } # 
-输入栈:FLOAT ; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第221步
-符号栈:item' value' ; stmts } result stmts } stmts } # 
-输入栈:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第222步
-符号栈:value' ; stmts } result stmts } stmts } # 
-输入栈:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第223步
-符号栈:; stmts } result stmts } stmts } # 
-输入栈:; IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第224步
-符号栈:stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第225步
-符号栈:stmt stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
-
-第226步
-符号栈:type assign_stmt stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：type->$
-
-第227步
-符号栈:assign_stmt stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第228步
-符号栈:expression ; stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第229步
-符号栈:value operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第230步
-符号栈:item value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第231步
-符号栈:factor item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第232步
-符号栈:IDN call_func item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:IDN = IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第233步
-符号栈:call_func item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第234步
-符号栈:item' value' operation ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第235步
-符号栈:value' operation ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第236步
-符号栈:operation ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->equal_opvalue
-
-第237步
-符号栈:equal_op value ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：equal_op->=
-
-第238步
-符号栈:= value ; stmts } result stmts } stmts } # 
-输入栈:= IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第239步
-符号栈:value ; stmts } result stmts } stmts } # 
-输入栈:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第240步
-符号栈:item value' ; stmts } result stmts } stmts } # 
-输入栈:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第241步
-符号栈:factor item' value' ; stmts } result stmts } stmts } # 
-输入栈:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第242步
-符号栈:IDN call_func item' value' ; stmts } result stmts } stmts } # 
-输入栈:IDN * INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第243步
-符号栈:call_func item' value' ; stmts } result stmts } stmts } # 
-输入栈:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第244步
-符号栈:item' value' ; stmts } result stmts } stmts } # 
-输入栈:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->*factoritem'
-
-第245步
-符号栈:* factor item' value' ; stmts } result stmts } stmts } # 
-输入栈:* INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第246步
-符号栈:factor item' value' ; stmts } result stmts } stmts } # 
-输入栈:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：factor->const
-
-第247步
-符号栈:const item' value' ; stmts } result stmts } stmts } # 
-输入栈:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：const->num_const
-
-第248步
-符号栈:num_const item' value' ; stmts } result stmts } stmts } # 
-输入栈:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：num_const->INT
-
-第249步
-符号栈:INT item' value' ; stmts } result stmts } stmts } # 
-输入栈:INT ; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第250步
-符号栈:item' value' ; stmts } result stmts } stmts } # 
-输入栈:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：item'->$
-
-第251步
-符号栈:value' ; stmts } result stmts } stmts } # 
-输入栈:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：value'->$
-
-第252步
-符号栈:; stmts } result stmts } stmts } # 
-输入栈:; } } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第253步
-符号栈:stmts } result stmts } stmts } # 
-输入栈:} } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->$
-
-第254步
-符号栈:} result stmts } stmts } # 
-输入栈:} } while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第255步
-符号栈:result stmts } stmts } # 
-输入栈:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：result->$
-
-第256步
-符号栈:stmts } stmts } # 
-输入栈:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->$
-
-第257步
-符号栈:} stmts } # 
-输入栈:} while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-匹配!
-第258步
-符号栈:stmts } # 
-输入栈:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第259步
-符号栈:stmt stmts } # 
-输入栈:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：stmt->iteration_stmt
-
-第260步
-符号栈:iteration_stmt stmts } # 
-输入栈:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：iteration_stmt->while(logical_expression)block
 
-第261步
+第40步
 符号栈:while ( logical_expression ) block stmts } # 
-输入栈:while ( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:while ( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
-第262步
+第41步
 符号栈:( logical_expression ) block stmts } # 
-输入栈:( IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:( IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
-第263步
+第42步
 符号栈:logical_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：logical_expression->expressionbool_expression
 
-第264步
+第43步
 符号栈:expression bool_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：expression->valueoperation
 
-第265步
+第44步
 符号栈:value operation bool_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
-第266步
+第45步
 符号栈:item value' operation bool_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
-第267步
+第46步
 符号栈:factor item' value' operation bool_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：factor->IDNcall_func
 
-第268步
+第47步
 符号栈:IDN call_func item' value' operation bool_expression ) block stmts } # 
-输入栈:IDN > INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN <= INT ) { IDN = IDN + INT ; } } # 
 匹配!
-第269步
+第48步
 符号栈:call_func item' value' operation bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：call_func->$
 
-第270步
+第49步
 符号栈:item' value' operation bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item'->$
 
-第271步
+第50步
 符号栈:value' operation bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value'->$
 
-第272步
+第51步
 符号栈:operation bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
 所用推出式：operation->compare_opvalue
 
-第273步
+第52步
 符号栈:compare_op value bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
-所用推出式：compare_op->>
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
+所用推出式：compare_op-><=
 
-第274步
-符号栈:> value bool_expression ) block stmts } # 
-输入栈:> INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+第53步
+符号栈:<= value bool_expression ) block stmts } # 
+输入栈:<= INT ) { IDN = IDN + INT ; } } # 
 匹配!
-第275步
+第54步
 符号栈:value bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
-第276步
+第55步
 符号栈:item value' bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
-第277步
+第56步
 符号栈:factor item' value' bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 所用推出式：factor->const
 
-第278步
+第57步
 符号栈:const item' value' bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 所用推出式：const->num_const
 
-第279步
+第58步
 符号栈:num_const item' value' bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 所用推出式：num_const->INT
 
-第280步
+第59步
 符号栈:INT item' value' bool_expression ) block stmts } # 
-输入栈:INT ) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:INT ) { IDN = IDN + INT ; } } # 
 匹配!
-第281步
+第60步
 符号栈:item' value' bool_expression ) block stmts } # 
-输入栈:) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { IDN = IDN + INT ; } } # 
 所用推出式：item'->$
 
-第282步
+第61步
 符号栈:value' bool_expression ) block stmts } # 
-输入栈:) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { IDN = IDN + INT ; } } # 
 所用推出式：value'->$
 
-第283步
+第62步
 符号栈:bool_expression ) block stmts } # 
-输入栈:) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { IDN = IDN + INT ; } } # 
 所用推出式：bool_expression->$
 
-第284步
+第63步
 符号栈:) block stmts } # 
-输入栈:) { IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:) { IDN = IDN + INT ; } } # 
 匹配!
-第285步
+第64步
 符号栈:block stmts } # 
-输入栈:{ IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:{ IDN = IDN + INT ; } } # 
 所用推出式：block->{stmts}
 
-第286步
+第65步
 符号栈:{ stmts } stmts } # 
-输入栈:{ IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:{ IDN = IDN + INT ; } } # 
 匹配!
-第287步
+第66步
 符号栈:stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：stmts->stmtstmts
 
-第288步
+第67步
 符号栈:stmt stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：stmt->typeassign_stmt
 
-第289步
+第68步
 符号栈:type assign_stmt stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：type->$
 
-第290步
+第69步
 符号栈:assign_stmt stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：assign_stmt->expression;
 
-第291步
+第70步
 符号栈:expression ; stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：expression->valueoperation
 
-第292步
+第71步
 符号栈:value operation ; stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
-第293步
+第72步
 符号栈:item value' operation ; stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
-第294步
+第73步
 符号栈:factor item' value' operation ; stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 所用推出式：factor->IDNcall_func
 
-第295步
+第74步
 符号栈:IDN call_func item' value' operation ; stmts } stmts } # 
-输入栈:IDN -- ; IDN = IDN % INT ; } } # 
+输入栈:IDN = IDN + INT ; } } # 
 匹配!
-第296步
+第75步
 符号栈:call_func item' value' operation ; stmts } stmts } # 
-输入栈:-- ; IDN = IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 所用推出式：call_func->$
 
-第297步
+第76步
 符号栈:item' value' operation ; stmts } stmts } # 
-输入栈:-- ; IDN = IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 所用推出式：item'->$
 
-第298步
+第77步
 符号栈:value' operation ; stmts } stmts } # 
-输入栈:-- ; IDN = IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 所用推出式：value'->$
 
-第299步
+第78步
 符号栈:operation ; stmts } stmts } # 
-输入栈:-- ; IDN = IDN % INT ; } } # 
-所用推出式：operation->--
-
-第300步
-符号栈:-- ; stmts } stmts } # 
-输入栈:-- ; IDN = IDN % INT ; } } # 
-匹配!
-第301步
-符号栈:; stmts } stmts } # 
-输入栈:; IDN = IDN % INT ; } } # 
-匹配!
-第302步
-符号栈:stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：stmts->stmtstmts
-
-第303步
-符号栈:stmt stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：stmt->typeassign_stmt
-
-第304步
-符号栈:type assign_stmt stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：type->$
-
-第305步
-符号栈:assign_stmt stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：assign_stmt->expression;
-
-第306步
-符号栈:expression ; stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：expression->valueoperation
-
-第307步
-符号栈:value operation ; stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：value->itemvalue'
-
-第308步
-符号栈:item value' operation ; stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：item->factoritem'
-
-第309步
-符号栈:factor item' value' operation ; stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-所用推出式：factor->IDNcall_func
-
-第310步
-符号栈:IDN call_func item' value' operation ; stmts } stmts } # 
-输入栈:IDN = IDN % INT ; } } # 
-匹配!
-第311步
-符号栈:call_func item' value' operation ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
-所用推出式：call_func->$
-
-第312步
-符号栈:item' value' operation ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
-所用推出式：item'->$
-
-第313步
-符号栈:value' operation ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
-所用推出式：value'->$
-
-第314步
-符号栈:operation ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 所用推出式：operation->equal_opvalue
 
-第315步
+第79步
 符号栈:equal_op value ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 所用推出式：equal_op->=
 
-第316步
+第80步
 符号栈:= value ; stmts } stmts } # 
-输入栈:= IDN % INT ; } } # 
+输入栈:= IDN + INT ; } } # 
 匹配!
-第317步
+第81步
 符号栈:value ; stmts } stmts } # 
-输入栈:IDN % INT ; } } # 
+输入栈:IDN + INT ; } } # 
 所用推出式：value->itemvalue'
 
-第318步
+第82步
 符号栈:item value' ; stmts } stmts } # 
-输入栈:IDN % INT ; } } # 
+输入栈:IDN + INT ; } } # 
 所用推出式：item->factoritem'
 
-第319步
+第83步
 符号栈:factor item' value' ; stmts } stmts } # 
-输入栈:IDN % INT ; } } # 
+输入栈:IDN + INT ; } } # 
 所用推出式：factor->IDNcall_func
 
-第320步
+第84步
 符号栈:IDN call_func item' value' ; stmts } stmts } # 
-输入栈:IDN % INT ; } } # 
+输入栈:IDN + INT ; } } # 
 匹配!
-第321步
+第85步
 符号栈:call_func item' value' ; stmts } stmts } # 
-输入栈:% INT ; } } # 
+输入栈:+ INT ; } } # 
 所用推出式：call_func->$
 
-第322步
+第86步
 符号栈:item' value' ; stmts } stmts } # 
-输入栈:% INT ; } } # 
-所用推出式：item'->%factoritem'
+输入栈:+ INT ; } } # 
+所用推出式：item'->$
 
-第323步
-符号栈:% factor item' value' ; stmts } stmts } # 
-输入栈:% INT ; } } # 
+第87步
+符号栈:value' ; stmts } stmts } # 
+输入栈:+ INT ; } } # 
+所用推出式：value'->+itemvalue'
+
+第88步
+符号栈:+ item value' ; stmts } stmts } # 
+输入栈:+ INT ; } } # 
 匹配!
-第324步
+第89步
+符号栈:item value' ; stmts } stmts } # 
+输入栈:INT ; } } # 
+所用推出式：item->factoritem'
+
+第90步
 符号栈:factor item' value' ; stmts } stmts } # 
 输入栈:INT ; } } # 
 所用推出式：factor->const
 
-第325步
+第91步
 符号栈:const item' value' ; stmts } stmts } # 
 输入栈:INT ; } } # 
 所用推出式：const->num_const
 
-第326步
+第92步
 符号栈:num_const item' value' ; stmts } stmts } # 
 输入栈:INT ; } } # 
 所用推出式：num_const->INT
 
-第327步
+第93步
 符号栈:INT item' value' ; stmts } stmts } # 
 输入栈:INT ; } } # 
 匹配!
-第328步
+第94步
 符号栈:item' value' ; stmts } stmts } # 
 输入栈:; } } # 
 所用推出式：item'->$
 
-第329步
+第95步
 符号栈:value' ; stmts } stmts } # 
 输入栈:; } } # 
 所用推出式：value'->$
 
-第330步
+第96步
 符号栈:; stmts } stmts } # 
 输入栈:; } } # 
 匹配!
-第331步
+第97步
 符号栈:stmts } stmts } # 
 输入栈:} } # 
 所用推出式：stmts->$
 
-第332步
+第98步
 符号栈:} stmts } # 
 输入栈:} } # 
 匹配!
-第333步
+第99步
 符号栈:stmts } # 
 输入栈:} # 
 所用推出式：stmts->$
 
-第334步
+第100步
 符号栈:} # 
 输入栈:} # 
 匹配!
-第335步
+第101步
 符号栈:# 
 输入栈:# 
 成功!

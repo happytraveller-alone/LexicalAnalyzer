@@ -828,12 +828,12 @@ void followSet(int i) {
             int h = 0;
             int kArray[Max_Length2];
             memset(kArray, -1, sizeof(kArray));
+            // 得到产生式左边的在非终结符表中的下标
             for (h = 0; h < int(nonTerMap.size()); h++) {
                 if (nonTerMap[h].second == leftNum) {
                     break;
                 }
             }
-
             for (rightLength = 1;; rightLength++) {
                 if (currentNon == proc[j][rightLength + 2]) {
                     kArray[k++] = rightLength;

@@ -5,7 +5,7 @@
  * @Author: 王越 谢远峰 张一鸣
  * @Date: 2021-04-22
  * @LastEditors: happytraveller-alone
- * @LastEditTime: 2021-04-30 21:03:38
+ * @LastEditTime: 2021-04-30 22:45:46
  */
 #include "LexAnalysis.h"
 
@@ -332,10 +332,10 @@ void printNode2() {
         if (p->type == IDN) {
             filecifa << setw(10) << p->content << setw(10) << "<"
                      << "IDN," << p->content << ">" << endl;
-        } else if (p->type < 40 && p->type >= 0) {
+        } else if (p->type < 20 && p->type >= 0) {
             filecifa << setw(10) << p->content << setw(10) << "<"
                      << (strupr(p->content)) << ",_>" << endl;
-        } else if (p->type > 50 && p->type < 60) {
+        } else if (p->type > 16 && p->type < 30) {
             filecifa << setw(10) << p->content << setw(10) << "<"
                      << "CONST," << p->content << ">" << endl;
         } else if (p->type >= 70 && p->type < 100) {
