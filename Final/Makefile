@@ -13,7 +13,7 @@ SRCS_CPP += $(foreach dir, $(DIRS), $(wildcard $(dir)/*.cpp))
 OBJS_CPP = $(patsubst %.cpp, %.o, $(src))
 target = project
 objects = src\\project.o  src\\LexAnalysis.o src\\SynAnalysis.o
-output = OutputFile\\*.txt
+output = OutputFile\\*.*
 $(target) : $(objects)
 	$(CC) $(CXXFLAGS) $^ -o $@
 

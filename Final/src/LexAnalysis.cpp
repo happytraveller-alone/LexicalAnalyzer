@@ -425,21 +425,6 @@ void printIdentLink() {
     }
     IdentLink << endl;
 }
-/*
- *函数名称：mystrlen
- *参数：char* word 字符指针
- *实现功能：获取一个完整的TOKEN
- *最近更改时间：4/30
- *更改作者：谢远峰
- *完成情况：DONE
- */
-int mystrlen(char *word) {
-    if (*word == '\0') {
-        return 0;
-    } else {
-        return 1 + mystrlen(word + 1);
-    }
-}
 
 /*
  *函数名称：close
@@ -487,8 +472,9 @@ void scanner() {
     int i;
     int line = 1;  //行数
 
+    // TODO:更改待读取文件
     FILE *infile;
-    infile = fopen("testtxt\\test.txt", "r");
+    infile = fopen("testtxt\\test3.txt", "r");
     while (!infile) {
         printf("打开文件失败！\n");
         return;

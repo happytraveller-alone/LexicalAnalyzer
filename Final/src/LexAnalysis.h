@@ -119,8 +119,7 @@ int createNewIden(const char *content, const char *descirbe, int type, int addr,
 void printNodeLink();
 void printErrorLink();
 void printIdentLink();
-int mystrlen(char *word);
-void preProcess(char *word, int line);
+
 void close();
 int seekKey(char *word);
 void scanner();

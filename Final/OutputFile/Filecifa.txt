@@ -1,8 +1,8 @@
 TOKEN:
-[ void, main, (, ), {, int, IDN, =, INT, ;, while, (, IDN, <=, INT, ), {, IDN, =, IDN, +, INT, ;, }, }, ]
+[ int, main, (, ), {, int, IDN, =, INT, ;, int, IDN, =, IDN, +, INT, ;, }, ]
 
 
-      void         <VOID,_>
+       int         <INT,_>
       main         <IDN,main>
          (         <SE,_>
          )         <SE,_>
@@ -10,21 +10,14 @@ TOKEN:
        int         <INT,_>
          i         <IDN,i>
          =         <OP,=>
-         2         <CONST,2>
+         0         <CONST,0>
          ;         <SE,_>
-     while         <WHILE,_>
-         (         <SE,_>
-         i         <IDN,i>
-        <=         <OP,<=>
-         4         <CONST,4>
-         )         <SE,_>
-         {         <SE,_>
-         i         <IDN,i>
+       int         <INT,_>
+         a         <IDN,a>
          =         <OP,=>
          i         <IDN,i>
          +         <OP,+>
-         1         <CONST,1>
+         2         <CONST,2>
          ;         <SE,_>
-         }         <SE,_>
          }         <SE,_>
 

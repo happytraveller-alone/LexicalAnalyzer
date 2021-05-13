@@ -1,0 +1,72 @@
+步骤,符号栈,输入栈,判断
+1,S # ,int IDN ( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：S->func
+2,func # ,int IDN ( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：func->typeIDN(args)func_body
+3,type IDN ( args ) func_body # ,int IDN ( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：type->int
+4,int IDN ( args ) func_body # ,int IDN ( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+5,IDN ( args ) func_body # ,IDN ( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+6,( args ) func_body # ,( ) { int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+7,args ) func_body # ,) { int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：args->$
+8,) func_body # ,) { int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+9,func_body # ,{ int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：func_body->block
+10,block # ,{ int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：block->{stmts}
+11,{ stmts } # ,{ int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+12,stmts } # ,int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：stmts->stmtstmts
+13,stmt stmts } # ,int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：stmt->typeassign_stmt
+14,type assign_stmt stmts } # ,int IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：type->int
+15,int assign_stmt stmts } # ,int IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+16,assign_stmt stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：assign_stmt->expression;
+17,expression ; stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：expression->valueoperation
+18,value operation ; stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：value->itemvalue'
+19,item value' operation ; stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：item->factoritem'
+20,factor item' value' operation ; stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,所用推出式：factor->IDNcall_func
+21,IDN call_func item' value' operation ; stmts } # ,IDN = INT ; int IDN = IDN + INT ; } # ,匹配!
+22,call_func item' value' operation ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,所用推出式：call_func->$
+23,item' value' operation ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,所用推出式：item'->$
+24,value' operation ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,所用推出式：value'->$
+25,operation ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,所用推出式：operation->equal_opvalue
+26,equal_op value ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,所用推出式：equal_op->=
+27,= value ; stmts } # ,= INT ; int IDN = IDN + INT ; } # ,匹配!
+28,value ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,所用推出式：value->itemvalue'
+29,item value' ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,所用推出式：item->factoritem'
+30,factor item' value' ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,所用推出式：factor->const
+31,const item' value' ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,所用推出式：const->num_const
+32,num_const item' value' ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,所用推出式：num_const->INT
+33,INT item' value' ; stmts } # ,INT ; int IDN = IDN + INT ; } # ,匹配!
+34,item' value' ; stmts } # ,; int IDN = IDN + INT ; } # ,所用推出式：item'->$
+35,value' ; stmts } # ,; int IDN = IDN + INT ; } # ,所用推出式：value'->$
+36,; stmts } # ,; int IDN = IDN + INT ; } # ,匹配!
+37,stmts } # ,int IDN = IDN + INT ; } # ,所用推出式：stmts->stmtstmts
+38,stmt stmts } # ,int IDN = IDN + INT ; } # ,所用推出式：stmt->typeassign_stmt
+39,type assign_stmt stmts } # ,int IDN = IDN + INT ; } # ,所用推出式：type->int
+40,int assign_stmt stmts } # ,int IDN = IDN + INT ; } # ,匹配!
+41,assign_stmt stmts } # ,IDN = IDN + INT ; } # ,所用推出式：assign_stmt->expression;
+42,expression ; stmts } # ,IDN = IDN + INT ; } # ,所用推出式：expression->valueoperation
+43,value operation ; stmts } # ,IDN = IDN + INT ; } # ,所用推出式：value->itemvalue'
+44,item value' operation ; stmts } # ,IDN = IDN + INT ; } # ,所用推出式：item->factoritem'
+45,factor item' value' operation ; stmts } # ,IDN = IDN + INT ; } # ,所用推出式：factor->IDNcall_func
+46,IDN call_func item' value' operation ; stmts } # ,IDN = IDN + INT ; } # ,匹配!
+47,call_func item' value' operation ; stmts } # ,= IDN + INT ; } # ,所用推出式：call_func->$
+48,item' value' operation ; stmts } # ,= IDN + INT ; } # ,所用推出式：item'->$
+49,value' operation ; stmts } # ,= IDN + INT ; } # ,所用推出式：value'->$
+50,operation ; stmts } # ,= IDN + INT ; } # ,所用推出式：operation->equal_opvalue
+51,equal_op value ; stmts } # ,= IDN + INT ; } # ,所用推出式：equal_op->=
+52,= value ; stmts } # ,= IDN + INT ; } # ,匹配!
+53,value ; stmts } # ,IDN + INT ; } # ,所用推出式：value->itemvalue'
+54,item value' ; stmts } # ,IDN + INT ; } # ,所用推出式：item->factoritem'
+55,factor item' value' ; stmts } # ,IDN + INT ; } # ,所用推出式：factor->IDNcall_func
+56,IDN call_func item' value' ; stmts } # ,IDN + INT ; } # ,匹配!
+57,call_func item' value' ; stmts } # ,+ INT ; } # ,所用推出式：call_func->$
+58,item' value' ; stmts } # ,+ INT ; } # ,所用推出式：item'->$
+59,value' ; stmts } # ,+ INT ; } # ,所用推出式：value'->+itemvalue'
+60,+ item value' ; stmts } # ,+ INT ; } # ,匹配!
+61,item value' ; stmts } # ,INT ; } # ,所用推出式：item->factoritem'
+62,factor item' value' ; stmts } # ,INT ; } # ,所用推出式：factor->const
+63,const item' value' ; stmts } # ,INT ; } # ,所用推出式：const->num_const
+64,num_const item' value' ; stmts } # ,INT ; } # ,所用推出式：num_const->INT
+65,INT item' value' ; stmts } # ,INT ; } # ,匹配!
+66,item' value' ; stmts } # ,; } # ,所用推出式：item'->$
+67,value' ; stmts } # ,; } # ,所用推出式：value'->$
+68,; stmts } # ,; } # ,匹配!
+69,stmts } # ,} # ,所用推出式：stmts->$
+70,} # ,} # ,匹配!
+71,# ,# ,成功!

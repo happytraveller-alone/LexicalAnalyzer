@@ -25,7 +25,6 @@ typedef struct {
 
 void initGrammer();
 int seekCodeNum(char* word);
-// void ceshi();
 void First();
 void Follow();
 void Select();

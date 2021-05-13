@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <vector>
 
@@ -989,7 +990,7 @@ void Select() {
  */
 void MTable() {
     fstream outfile;
-    outfile.open("OutputFile\\preciateTable.txt", ios::out);
+    outfile.open("OutputFile\\preciateTable.csv", ios::out);
 
     for (int i = 0; i < procNum; i++) {
         int m = 0;  //非终结符的序号
@@ -1018,15 +1019,20 @@ void MTable() {
             }
         }
     }
+    outfile << "预测分析表"
+            << ",";
+    for (int j = 0; j < int(terMap.size()); j++) {
+        if (strcmp(terMap[j].first, ",") == 0)
+            outfile << "，"
+                    << ",";
 
-    outfile
-        << "********************Predictive Analysis Table********************"
-        << endl;
+        else
+            outfile << terMap[j].first << ",";
+    }
+    outfile << endl;
     for (int i = 0; i < int(nonTerMap.size()); i++) {
+        outfile << nonTerMap[i].first << ",";
         for (int j = 0; j < int(terMap.size()); j++) {
-            outfile << "M[" << nonTerMap[i].first << "][" << terMap[j].first
-                    << "] = ";
-            // printf("M[%s][%s] = ",nonTerMap[i].first,terMap[j].first);
             for (int k = 0;; k++) {
                 if (M[i][j][k] == -1) {
                     break;
@@ -1034,10 +1040,10 @@ void MTable() {
                 outfile << searchMapping(M[i][j][k]);
                 // printf("%s ",searchMapping(M[i][j][k]));
             }
-            outfile << endl;
+            outfile << ",";
             // printf("\n");
         }
-        outfile << endl << endl;
+        outfile << endl;
         // printf("\n\n");
     }
     outfile.close();
@@ -1144,7 +1150,7 @@ void ShowStack2(SeqStack *S) {
  */
 void Analysis() {
     //分析结果输出
-    resultfile.open("OutputFile\\preciateResult.txt", ios::out);
+    resultfile.open("OutputFile\\preciateResult.csv", ios::out);
 
     SeqStack s1, s2;  // 符号栈中间形式 和 输入串
     int c1, c2;
@@ -1175,25 +1181,35 @@ void Analysis() {
     for (i = s1Length; i > 0; i--) {
         Push(&s2, reserve[i - 1]);
     }
-
+    resultfile << "步骤"
+               << ","
+               << "符号栈"
+               << ","
+               << "输入栈"
+               << ","
+               << "判断" << endl;
     for (i = 0;; i++) /*分析*/
     {
         // getch();
         int flag = 0;
         int h1;
         int h2;
+
         // printf("第%d步：\n",i+1);  /*输出该步的相应信息*/
-        resultfile << "第" << i + 1 << "步" << endl;
+        resultfile << i + 1 << ",";
         // printf("符号栈:");
-        resultfile << "符号栈:";
+        // resultfile << "符号栈:";
+        // resultfile << setw(30);
         ShowStack1(&s1);
         // printf("\n");
-        resultfile << endl;
+        resultfile << ",";
         // printf("输入栈:");
-        resultfile << "输入栈:";
+        // resultfile << "输入栈:";
+        // resultfile << setw(30);
         ShowStack2(&s2);
+        resultfile << ",";
         // printf("\n");
-        resultfile << endl;
+        // resultfile << endl;
 
         GetTop(&s1, &c1); /*取栈顶元素，记为c1，c2*/
         GetTop(&s2, &c2);
@@ -1270,7 +1286,7 @@ void Analysis() {
                 resultfile << searchMapping(M[h1][h2][w]);
             }
             // printf("\n\n");
-            resultfile << endl << endl;
+            resultfile << endl;
         }
     }
     resultfile.close();
